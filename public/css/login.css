@@ -1,0 +1,85 @@
+.container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    height: 98vh;
+    margin: 20px;
+    flex-direction: column;
+}
+
+.box1 {
+    margin-bottom: 0px;
+}
+
+.box2 {
+    margin-bottom: 20px;
+}
+
+.box3 {
+    display: flex;
+    height: 7rem;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+input {
+    margin-top: 20px;
+    margin-left: -5px;
+    padding: 10px;
+    width: 15rem;
+    border: 0px;
+    outline: none;
+    background-color: transparent;
+}
+
+.username, .password {
+    border-bottom:1px solid;
+    border-color: #737271;
+    padding-left: 15px;
+}
+
+.password {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.passwordRight {
+    margin: 0px;
+}
+
+#forgotPassword {
+    display: flex;
+    justify-content: flex-end;
+    color: maroon;
+    font-size: 14px;
+    margin-top: 7px;
+}
+
+.loginButton {
+    padding: 8px;
+    width: 6rem;
+    background-color: maroon;
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+#register {
+    color: maroon;
+}
+
+a {
+    text-decoration: none;
+}
+
+i {
+    color: #737271;
+}
+
+p {
+    font-size: 14px;
+}
