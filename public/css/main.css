@@ -1,0 +1,15 @@
+body {
+    background-color: #E5E4E2;
+}
+
+button {
+    cursor: pointer;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-background-clip: text; /* Clip background only around the text */
+  -webkit-text-fill-color: #000; /* Set text color to black (adjust as needed) */
+  transition: background-color 5000s ease-in-out 0s; /* Optional: Smooth transition */
+}
