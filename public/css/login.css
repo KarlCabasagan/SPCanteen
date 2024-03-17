@@ -35,7 +35,7 @@ input {
     background-color: transparent;
 }
 
-.username, .password {
+.username,.email,.password,.confirmpassword {
     border-bottom:1px solid;
     border-color: #737271;
     padding-left: 15px;

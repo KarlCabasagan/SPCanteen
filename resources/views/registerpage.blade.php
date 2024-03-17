@@ -9,6 +9,12 @@
     <link rel="stylesheet" href="{{asset('/fontawesome-free-6.5.1-web/css/all.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
+    <style>
+        body {
+            font-family: 'Montserrat';
+        }
+    </style>
+
     <title>Login Page</title>
 </head>
 <body>
@@ -21,20 +27,28 @@
                 <i class="fa-solid fa-user"></i>
                 <input type="text" id="username" placeholder="Username">
             </div>
+            <div class="username">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="text" id="username" placeholder="jannlennviernes@gmail.com">
+            </div>
             <div class="password">
                 <div class="passwordLeft">
                     <i class="fa-solid fa-lock"></i>
-                    <input type="password" id="password" placeholder="Password">
-                </div>
-                <div passwordRight>
-                    <div class="empty"></div>
-                    <i class="fa-solid fa-eye"></i>
+                    <input type="password" id="password" placeholder="Password">    
+                    <i class="fa-solid fa-eye"></i>     
                 </div>
             </div>
-            <a href="" id="forgotPassword">Forgot password?</a>
+            <div class="confirmpassword">
+                <div class="passwordLeft">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="confirmpassword" placeholder="Confirm Password">         
+                    <i class="fa-solid fa-eye"></i>
+                </div>  
+            </div>
+            <a href="forgotpassword" id="forgotPassword">Forgot password?</a>
         </div>
         <div class="box3">
-            <button class="loginButton">Login</button>
+            <button class="loginButton">Register</button>
             <p>Don't have an account? <a href="" id="register">Register</a></p>
         </div>
     </div>
