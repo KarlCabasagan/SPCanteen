@@ -48,7 +48,13 @@ input {
 }
 
 .passwordRight {
-    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.empty {
+    height: 10px;
 }
 
 #forgotPassword {

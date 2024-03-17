@@ -31,9 +31,12 @@
                 <div class="passwordLeft">
                     <i class="fa-solid fa-lock"></i>
                     <input type="password" id="password" placeholder="Password">
+                    
+                </div>
+                <div passwordRight>
+                    <div class="empty"></div>
                     <i class="fa-solid fa-eye"></i>
                 </div>
-                <div passwordRight></div>
             </div>
             <a href="" id="forgotPassword">Forgot password?</a>
         </div>
