@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{asset('/fontawesome-free-6.5.1-web/css/all.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
-    <title>Login Page</title>
+    <title>Register Page</title>
 </head>
 <body>
     <div class="container">
