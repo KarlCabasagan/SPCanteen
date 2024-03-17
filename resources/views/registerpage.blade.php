@@ -23,7 +23,7 @@
             </div>
             <div class="username">
                 <i class="fa-solid fa-envelope"></i>
-                <input type="text" id="username" placeholder="jannlennviernes@gmail.com">
+                <input type="text" id="username" placeholder="example@example.com">
             </div>
             <div class="password">
                 <div class="passwordLeft">
