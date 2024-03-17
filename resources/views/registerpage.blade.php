@@ -45,11 +45,10 @@
                     <i class="fa-solid fa-eye"></i>
                 </div>  
             </div>
-            <a href="forgotpassword" id="forgotPassword">Forgot password?</a>
         </div>
         <div class="box3">
             <button class="loginButton">Register</button>
-            <p>Don't have an account? <a href="" id="register">Register</a></p>
+            <p>Already have an account? <a href="" id="register">Login</a></p>
         </div>
     </div>
 </body>
