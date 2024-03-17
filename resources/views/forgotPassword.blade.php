@@ -9,12 +9,6 @@
     <link rel="stylesheet" href="{{asset('/fontawesome-free-6.5.1-web/css/all.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
-    <style>
-        body {
-            font-family: 'Montserrat';
-        }
-    </style>
-
     <title>Forgot Password</title>
 </head>
 <body>

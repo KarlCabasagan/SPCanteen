@@ -9,12 +9,6 @@
     <link rel="stylesheet" href="{{asset('/fontawesome-free-6.5.1-web/css/all.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 
-    <style>
-        body {
-            font-family: 'Montserrat';
-        }
-    </style>
-
     <title>Login Page</title>
 </head>
 <body>
@@ -31,7 +25,6 @@
                 <div class="passwordLeft">
                     <i class="fa-solid fa-lock"></i>
                     <input type="password" id="password" placeholder="Password">
-                    
                 </div>
                 <div passwordRight>
                     <div class="empty"></div>
