@@ -14,9 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('loginpage');  // welcome.blade.php
 });
 
 Route::get('/forgotpassword', function () {
     return view('forgotPassword');
+});
+
+Route::get('/registerpage', function () {
+    return view('registerpage');
 });
