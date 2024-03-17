@@ -24,3 +24,8 @@ Route::get('/forgotpassword', function () {
 Route::get('/registerpage', function () {
     return view('registerpage');
 });
+
+Route::get('/setupprofile', function () {
+    return view('setupprofile');
+});
+

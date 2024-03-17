@@ -1,0 +1,74 @@
+body {
+    padding: 0;
+    margin: 1% 0;
+    font-family: 'Montserrat'
+}
+
+h1 {
+    color: black;
+    padding: 10%;
+}
+
+h2 {
+    color: maroon; 
+    font-size: 25px;
+    padding: 3%;
+}
+
+.radio-btn {
+    display: flex; 
+    justify-content: center; 
+    padding: 5%;
+}
+
+.bottom-txt{
+    padding: 5%;
+}
+.radio-btn input[type="radio"] {
+    transform: scale(1.4); 
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.avatar-container {
+    position: relative;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #800000; 
+}
+
+.camera-icon {
+    position: absolute;
+    top: 65%;
+    right: -0px;
+    background-color: #830000;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.upload-btn {
+    background-color: maroon;
+    width: 100px;
+    color: white;
+    text-decoration: none;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.upload-btn:hover {
+    background-color: #800000;
+}
