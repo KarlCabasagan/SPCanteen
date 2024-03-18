@@ -24,15 +24,18 @@
 
         <form action="" method="">
             <div class="radio-btn">
-                <input type="radio" id="status_student" name="status" value="Student">
-                <label for="status_student"><b>Student</b></label>
-                <input type="radio" id="status_faculty" name="status" value="Faculty">
-                <label for="status_faculty"><b>Faculty</b></label>
+                <div class="student">
+                    <input type="radio" id="status_student" name="status" value="Student">
+                    <label for="status_student"><b>Student</b></label>
+                </div>
+                <div class="faculty">
+                    <input type="radio" id="status_faculty" name="status" value="Faculty">
+                    <label for="status_faculty"><b>Faculty</b></label>
+                </div>
             </div>
             <p class="bottom-txt">If done setting up your account, please click the button below to continue.</p>
             <button type="submit" class="upload-btn">Done</button>
         </form>
-
     </div>
 </body>
 </html>

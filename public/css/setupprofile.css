@@ -1,12 +1,5 @@
-body {
-    padding: 0;
-    margin: 1% 0;
-    font-family: 'Montserrat'
-}
-
 h1 {
     color: black;
-    padding: 10%;
 }
 
 h2 {
@@ -17,7 +10,7 @@ h2 {
 
 .radio-btn {
     display: flex; 
-    justify-content: center; 
+    justify-content: space-evenly; 
     padding: 5%;
 }
 
@@ -34,6 +27,7 @@ h2 {
     align-items: center;
     justify-content: center;
     text-align: center;
+    height: 80vh;
 }
 
 .avatar-container {
@@ -56,6 +50,7 @@ h2 {
     border-radius: 50%;
     padding: 10px;
     cursor: pointer;
+    color: white;
 }
 
 .upload-btn {
