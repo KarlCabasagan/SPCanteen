@@ -29,3 +29,7 @@ Route::get('/setupprofile', function () {
     return view('setupprofile');
 });
 
+Route::get('/favorites', function () {
+    return view('favorite');
+});
+
