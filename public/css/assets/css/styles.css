@@ -1,0 +1,43 @@
+#text-column {
+  text-decoration: none;
+}
+
+#text-column, a {
+  text-decoration: none;
+  color: var(--bs-secondary);
+  height: 60vh;
+}
+
+#text-column {
+  padding: 25%;
+}
+
+.AdminHeader {
+  position: relative;
+  left: 25%;
+}
+
+.TextHeader {
+  position: relative;
+  left: 50%;
+}
+
+.picture {
+  position: relative;
+  top: 55%;
+}
+
+.picture {
+  position: relative;
+  left: 20%;
+  top: -50%;
+}
+
+.PictureStatic {
+  position: relative;
+  top: 5%;
+  width: 65%;
+  left: 18%;
+  position: fixed;
+}
+
