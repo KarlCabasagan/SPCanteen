@@ -29,3 +29,23 @@ Route::get('/setupprofile', function () {
     return view('setupprofile');
 });
 
+Route::get('/admindashboard', function () {
+    return view('admindashboard');
+});
+
+Route::get('/adminproductlist', function () {
+    return view('adminproductlist');
+});
+
+Route::get('/adminscanner', function () {
+    return view('adminscanner');
+});
+
+Route::get('/test12', function () {
+    return view('test12');
+});
+
+
+
+
+

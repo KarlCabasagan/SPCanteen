@@ -1,0 +1,26 @@
+p2, p {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    font-family: Arial;
+    font-size: small;
+}
+
+p2 {
+    left: 5%;
+    top: 85%; 
+}
+
+p {
+    left: 3%;
+    top: 87%;
+}
+
+nav a i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+body {
+    overflow: hidden;
+}
