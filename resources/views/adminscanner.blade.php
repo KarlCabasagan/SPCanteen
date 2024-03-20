@@ -17,10 +17,10 @@
         <div class="text-nowrap d-flex flex-column justify-content-start align-items-center align-items-xl-center" style="height: 100vh;width: 18rem;color: var(--bs-body-color);background: var(--bs-body-bg);padding-top: initial;position: fixed;">
             <img src="/css/assets/img/423472445_7120341421354585_5211962867841594211_n.png" width="276" height="186" style="padding-top: 0;margin-top: 40px;">
             <nav class="d-flex flex-column" id="text-column">
-                <a href="#"><i class="fa-brands fa-windows"></i>Dashboard</a>
-                <a href="#"><i class="fa-solid fa-book"></i>Product List</a>
-                <a href="#"><i class="fa-regular fa-file"></i>Transaction History</a>
-                <a href="#"><i class="fa-solid fa-qrcode"></i>Order Scanner</a>
+                <a href="{{url('admindashboard')}}"><i class="fa-brands fa-windows"></i>Dashboard</a>
+                <a href="{{url('adminproductlist')}}"><i class="fa-solid fa-book"></i>Product List</a>
+                <a href="{{url('admintransactionhistory')}}"><i class="fa-regular fa-file"></i>Transaction History</a>
+                <a href="{{url('adminscanner')}}"><i class="fa-solid fa-qrcode"></i>Order Scanner</a>
                 <a href="#"><i class="fa-solid fa-right-from-bracket"></i>Logout</a>
             </nav>
         </div>
@@ -48,5 +48,3 @@
     </div>
 </body>
 </html>
-
-

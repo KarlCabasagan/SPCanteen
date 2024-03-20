@@ -41,8 +41,12 @@ Route::get('/adminscanner', function () {
     return view('adminscanner');
 });
 
-Route::get('/test12', function () {
-    return view('test12');
+Route::get('/adminmanageuser', function () {
+    return view('adminmanageuser');
+});
+
+Route::get('/admintransactionhistory', function () {
+    return view('admintransactionhistory');
 });
 
 

@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Admin Dashboard</title>
+    <title>Transaction History</title>
     <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/admindashboard.css">
+    <link rel="stylesheet" href="/css/admintransactionhistory.css">
     <link rel="stylesheet" href="/css/assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/assets/css/bs-theme-overrides.css">
     <link rel="stylesheet" href="/css/assets/css/styles.css">
     <link rel="stylesheet" href="{{asset('/fontawesome-free-6.5.1-web/css/all.min.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 </head>
+
 <body>
-    <div class="container-fluid d-flex flex-column-reverse justify-content-xl-start" style="height: 100vh;margin: 0;padding: 0;background: #e5e4e2;">
-        <img class="PictureStatic" src="/css/assets/img/Capture.jpg">
-        <div class="text-nowrap d-flex flex-column justify-content-start align-items-center align-items-xl-center" style="height: 100vh;width: 18rem;color: var(--bs-body-color);background: var(--bs-body-bg);padding-top: initial;position: fixed;">
-            <img src="/css/assets/img/423472445_7120341421354585_5211962867841594211_n.png" width="276" height="186" style="padding-top: 0;margin-top: 40px;">
+    <div class="container-fluid d-flex flex-column-reverse justify-content-xl-start"
+        style="height: 100vh;margin: 0;padding: 0;background: #e5e4e2;">
+        <div class="top-text">Transaction History</div>
+        <div class="text-nowrap d-flex flex-column justify-content-start align-items-center align-items-xl-center"
+            style="height: 100vh;width: 18rem;color: var(--bs-body-color);background: var(--bs-body-bg);padding-top: initial;position: fixed;">
+            <img src="/css/assets/img/423472445_7120341421354585_5211962867841594211_n.png" width="276"
+                height="186" style="padding-top: 0;margin-top: 40px;">
             <nav class="d-flex flex-column" id="text-column">
                 <a href="{{url('admindashboard')}}"><i class="fa-brands fa-windows"></i>Dashboard</a>
                 <a href="{{url('adminproductlist')}}"><i class="fa-solid fa-book"></i>Product List</a>
@@ -28,6 +33,6 @@
         <p2>SPC CANTEEN</p2>
         <p>© 2024 All Rights Reserved</p>
     </div>
-    <script src="/css/assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
 </html>
