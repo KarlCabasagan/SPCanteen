@@ -1,0 +1,99 @@
+nav a i {
+    margin-right: 15px;
+    font-size: 20px;
+}
+
+body {
+    overflow: hidden;
+}
+
+.search-bar {
+    position: fixed;
+    top: 30px;
+    right: 68%; 
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    padding: 10px;
+    border: 0.50px solid #000000;
+    border-radius: 10px;
+    width: 300px;
+}
+
+
+.search-bar button {
+    background-color: #ffffff;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+p2 {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    font-family: Arial;
+    font-size: small;
+    left: 5%;
+    top: 85%; 
+}
+
+p {
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    font-family: Arial;
+    font-size: small;
+    left: 3%;
+    top: 87%;
+}
+
+.search-icon-container {
+    display: inline-block;
+    background-color: lightgray; 
+    padding: 10px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.search-icon-container:hover {
+    background-color: darkgray; 
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 68%;
+    max-height: auto;
+    overflow-y: auto;
+    border: 0px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: auto;
+    margin-top: 100px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000; 
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #000;
+}
+
+th {
+    background-color: lightgray;
+}
+
+.highlight {
+    background-color: yellow;
+}
