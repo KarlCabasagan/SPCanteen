@@ -2,6 +2,7 @@
 
 @section('content')
     @auth
+        <h1>USER PAGE</h1>
         <form action="/logout" method="POST">
             @csrf
             <input type="submit" value="Logout">
