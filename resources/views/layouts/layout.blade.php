@@ -8,6 +8,7 @@
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="@yield('css', 'css/main.css')">
+    <script src="js/function.js"></script>
     <title>@yield('title', 'SPCanteen')</title>
 </head>
 <body>

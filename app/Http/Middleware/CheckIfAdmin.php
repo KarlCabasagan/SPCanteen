@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class CheckAuth
+class CheckIfAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,14 @@ class CheckAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check()) {
-            return $next($request);
+        $user = Auth::user();
+        if(!$user->role_id) {
+            abort(redirect()->intended('/setup'));
         }
-        abort(redirect()->intended('/'));
+        if($user->role_id === 1 || $user->role_id === 2) {
+            abort(redirect()->intended('/'));
+        }
+        
+        return $next($request);
     }
 }

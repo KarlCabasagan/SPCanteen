@@ -24,7 +24,9 @@ Route::get('/register', function () {
 Route::post('/register', [UserController::class, 'register']);
 
 Route::middleware(['logged-in'])->group(function () {
-    Route::get('/admin', function () {
-        return view('admin');
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin', function () {
+            return view('admin');
+        });
     });
 });
