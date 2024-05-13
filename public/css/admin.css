@@ -1,0 +1,350 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
+
+/* Navigation Bar CSS */
+
+.admin-navbar {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  width: 220px;
+  height: 100vh;
+  padding: 0 25px 0 25px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+#logo {
+  width: 250px;
+  margin-top: 30px;
+}
+
+.icon-bar a {
+  display: block;
+  text-align: left;
+  padding: 12px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: black;
+  font-size: 17px;
+}
+
+.icon-bar a:hover {
+  background-color: maroon;
+  color: white;
+  border-radius: 10px;
+}
+
+#logout {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btns {
+  margin-left: 6px;
+}
+
+.nav-btns {
+  margin-top: 10px;
+}
+
+#nav-txt {
+  margin-left: 10px;
+  font-weight: 100;
+  font-family: "Montserrat";
+}
+
+.copyright {
+  margin-top: 7em;
+  text-align: center;
+}
+
+/* Content */
+
+.content {
+  margin: 2rem 0 0 5rem;
+  width: 70rem;
+  height: 40rem;
+}
+
+/* Dashboard */
+
+.row1 {
+  display: flex;
+  height: 135px;
+  margin: 2rem 0 0 0;
+}
+
+.box1 {
+  background-color: white;
+  height: 7rem;
+  width: 15rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px #888888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.box2 {
+  background-color: white;
+  height: 7rem;
+  width: 15rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px #888888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.box3 {
+  background-color: white;
+  height: 7rem;
+  width: 15rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px #888888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.box4 {
+  background-color: white;
+  height: 7rem;
+  width: 15rem;
+  border-radius: 10px;
+  box-shadow: 1px 1px 4px #888888;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  padding: 10px;
+}
+
+.box-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#box-icon {
+  height: 5rem;
+  margin-left: 30px;
+}
+
+.sales-txt {
+  height: 5rem;
+  width: 8rem;
+  padding: 5px;
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  font-size: 25px;
+  font-weight: bolder;
+  font-family: "Montserrat";
+}
+
+.total-completed {
+  margin-top: 10px;
+}
+
+#days {
+  font-size: 10px;
+  opacity: 0.5;
+  text-align: center;
+  margin-left: 4px;
+}
+
+#arrow-icon {
+  height: 14px;
+}
+
+.percentage-days {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Add Product */
+
+.add-header {
+  width: 60rem;
+  margin: 5rem 0 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-product-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 4px #888888;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#add-txt {
+  margin-left: 15px;
+  font-size: 18px;
+  font-family: "Montserrat";
+}
+
+#add-btn {
+  font-size: 25px;
+}
+
+#search {
+  padding: 6px;
+  font-size: 17px;
+  border: none;
+  border-radius: 6px 0 0 6px;
+}
+
+.search-container .search-button {
+  float: right;
+  padding: 6px 10px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.search-button {
+  background-color: maroon;
+  color: white;
+  border-radius: 0 6px 6px 0;
+}
+
+.search-container .search-button:hover {
+  background: red;
+  color: white;
+}
+
+.product-list {
+  display: flex;
+  margin: 50px 0 0 80px;
+}
+
+.product {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+#product-img {
+  width: 190px;
+  height: 180px;
+  border-radius: 10px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 190px;
+  height: 58px;
+  margin-top: 122px;
+  border-radius:  0 0 10px 10px;
+  background-color: maroon;
+  opacity: 0.6;
+}
+
+/* Add Product Modal */
+
+.modal {
+  display: none;
+  width: 350px;
+  position: fixed;
+  top: 55%;
+  left: 56%;
+  transform: translate(-50%, -50%);
+  padding: 2.4rem 2rem 2rem;
+  background: #fff;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.modal.active {
+  display: block;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-content {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+#product-name {
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-left: 4px;
+  margin-bottom: 10px;
+}
+
+#product-price {
+  width: 80px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 4px;
+  padding-left: 4px;
+  margin-bottom: 10px;
+}
+
+#product-categories {
+  height: 25px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+#save {
+  background-color: maroon;
+  color: white;
+  padding: 10px 20px 10px 20px;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  margin-right: 4px;
+  font-weight: bold;
+  font-family: "Montserrat";
+}
+
+#close {
+  background-color: white;
+  border: 1px solid maroon;
+  color: maroon;
+  padding: 9px 20px 9px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 4px;
+  font-weight: bold;
+  font-family: "Montserrat";
+}

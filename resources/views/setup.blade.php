@@ -3,8 +3,7 @@
 @section('content')
     @section('css', 'css/auth.css')
     @section('title', 'SPCanteen - Login')
-
-    <div class="container2">
+    <div class="container">
         <div class="setup-form">
             <form id="profileForm" action="" method="POST" enctype="multipart/form-data">
                 <div class="info">

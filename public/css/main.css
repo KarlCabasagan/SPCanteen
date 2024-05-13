@@ -13,8 +13,6 @@ body {
 
 .container {
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
 }
 
@@ -54,13 +52,6 @@ body {
   font-size: 1em;
   color: maroon;
   font-weight: 600;
-}
-
-i {
-  color: maroon;
-  font-size: 20px;
-  margin: 24px 8px 0 0;
-  cursor: pointer;
 }
 
 .btn {

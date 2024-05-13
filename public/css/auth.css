@@ -1,5 +1,10 @@
 /* Login CSS */
 
+.container {
+  justify-content: center;
+  align-items: center;
+}
+
 .login-form {
   display: flex;
   justify-content: space-between;
@@ -68,7 +73,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 55rem;
+    width: 1rem;
   }
 
   .registration-form {
@@ -76,7 +81,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 55rem;
+    margin-bottom: 50px;
+    width: 1rem;
+    height: 1rem;
   }
 
   #logo {
@@ -89,10 +96,6 @@
 }
 
 /* Profile Setup CSS */
-
-.container2 {
-  height: 90vh;
-}
 
 .info {
   text-align: center;
@@ -180,4 +183,13 @@ input[type="radio"]:checked {
 .submit-btn {
   display: flex;
   justify-content: center;
+}
+
+/* Icons */
+
+i {
+  color: maroon;
+  font-size: 20px;
+  margin: 24px 8px 0 0;
+  cursor: pointer;
 }
