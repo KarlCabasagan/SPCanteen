@@ -1,34 +1,11 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  font-family: "Inter";
-}
-
-body {
-  background-color: #e5e4e2;
-}
-
 /* Login CSS */
 
 .container {
-  display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
-  height: 90vh;
 }
 
 .login-form {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 65rem;
-}
-
-.registration-form {
   display: flex;
   justify-content: space-between;
   width: 65rem;
@@ -39,120 +16,25 @@ body {
 }
 
 .logo1 {
-  margin-top: -12px;
+  margin-top: -27px;
 }
 
 .logo2 {
   margin-top: 40px;
 }
 
-.register {
+#forgot-password {
+  color: maroon;
+  text-decoration: none;
+  margin: 0 0 50px 230px;
+}
+
+.login {
   display: flex;
   justify-content: center;
 }
 
-.input-container {
-  position: relative;
-  display: flex;
-  width: 22rem;
-  height: 50px;
-  border-bottom: 2px solid maroon;
-  margin: 30px 16px;
-}
-
-.input-container label {
-  position: absolute;
-  top: 65%;
-  left: 5px;
-  transform: translateY(-50%);
-  font-size: 20px;
-  color: maroon;
-  font-weight: 500;
-  pointer-events: none;
-  transition: 0.5s;
-}
-
-.input-container input:focus ~ label,
-.input-container input:valid ~ label {
-  top: 8px;
-}
-
-.input-container input {
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  margin-left: 5px;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  color: maroon;
-  font-weight: 600;
-}
-
-.fas {
-  position: absolute;
-  left: 52px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #aaa;
-}
-
-.show-hide-password {
-  position: absolute;
-  top: 50%;
-  left: 310px;
-  transform: translateY(-50%);
-  cursor: pointer;
-}
-
-.input-field {
-  width: 290px;
-  padding: 5px 0 0 0;
-  margin: 5px 0 0 52px;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  border-bottom: 1px solid #999;
-  outline: none;
-  background: transparent;
-}
-
-#forgot-password {
-  color: maroon;
-  text-decoration: none;
-  margin: 0 0 50px 210px;
-}
-
-.login-btn {
-  width: 110px;
-  height: 50px;
-  margin: 40px 0 0 130px;
-  font-size: 17px;
-  background-color: maroon;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-family: "Montserrat";
-}
-
 #register-txt {
-  margin-top: 50px;
-  text-align: center;
-}
-
-#register-btn {
-  text-decoration: none;
-  color: maroon;
-}
-
-/* Registration CSS */
-
-.container2 {
-  margin-top: 70px;
-  height: 600px;
-}
-
-#login-txt {
   margin-top: 50px;
   text-align: center;
 }
@@ -162,21 +44,27 @@ body {
   color: maroon;
 }
 
-i {
-  color: maroon;
-  font-size: 20px;
-  margin: 24px 8px 0 0;
+/* Registration CSS */
+
+.registration-form {
+  display: flex;
+  justify-content: space-between;
+  width: 65rem;
 }
 
-.register-btn {
-  width: 110px;
-  height: 50px;
-  font-size: 17px;
-  background-color: maroon;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-family: "Montserrat";
+.register {
+  display: flex;
+  justify-content: center;
+}
+
+#login-txt {
+  margin-top: 40px;
+  text-align: center;
+}
+
+#register-btn {
+  text-decoration: none;
+  color: maroon;
 }
 
 @media only screen and (max-width: 600px) {
@@ -185,7 +73,7 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 55rem;
+    width: 1rem;
   }
 
   .registration-form {
@@ -193,7 +81,9 @@ i {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 55rem;
+    margin-bottom: 50px;
+    width: 1rem;
+    height: 1rem;
   }
 
   #logo {
@@ -203,4 +93,103 @@ i {
   .logo {
     margin: 0;
   }
+}
+
+/* Profile Setup CSS */
+
+.info {
+  text-align: center;
+  margin-top: 80px;
+}
+
+.profile-picture {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.form-setup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#avatar {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 1px solid maroon;
+}
+
+#pfp {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+#fileInput {
+  display: none;
+}
+
+.camera-icon-bg {
+  width: 40px;
+  height: 40px;
+  background-color: maroon;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cam {
+  color: white;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.upload-txt {
+  font-size: 35px;
+  font-weight: 500;
+  color: maroon;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.option {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 40px;
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 2px solid gray;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+}
+
+input[type="radio"]:checked {
+  background-color: maroon;
+}
+
+.note {
+  color: #a9a9a9;
+  text-align: center;
+  margin-top: 50px;
+}
+
+.submit-btn {
+  display: flex;
+  justify-content: center;
+}
+
+/* Icons */
+
+i {
+  color: maroon;
+  font-size: 20px;
+  margin: 24px 8px 0 0;
+  cursor: pointer;
 }

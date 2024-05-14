@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -16,6 +17,17 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+
+        if (Schema::hasTable('roles')) {
+            $timestamp = now();
+        
+            DB::table('roles')->insert([
+                ['name' => 'student', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'faculty', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'admin', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'super', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+            ]);
+        }
     }
 
     /**

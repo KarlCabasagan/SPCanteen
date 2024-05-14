@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Middleware\CheckAuth;
+use App\Http\Middleware\CheckIfAdmin;
+use App\Http\Middleware\CheckIfUser;
 use App\Http\Middleware\CheckUserHasRole;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Middleware\LoggedIn;
@@ -17,6 +19,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->appendToGroup('logged-in', [
             CheckAuth::class,
+        ]);
+        $middleware->appendToGroup('admin', [
+            CheckIfAdmin::class,
+        ]);
+        $middleware->appendToGroup('user', [
+            CheckIfUser::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
