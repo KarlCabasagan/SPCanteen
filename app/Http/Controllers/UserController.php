@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -32,6 +33,35 @@ class UserController extends Controller
         $user=User::create($incomingFields);
         auth()->login($user);
         return redirect('/register');
+    }
+
+    public function setup(Request $request)
+    {
+        $userId = auth()->user()->id;
+
+        $incomingFields = $request->validate([
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => ['required', Rule::in([1, 2])] // Validate status as 1 or 2
+        ]);
+
+        $user = User::find($userId);
+
+        // Store profile picture if uploaded
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $filename = time() . '.' . $file->getClientOriginalExtension(); // Unique filename with timestamp
+
+            $file->move(public_path('images/profile'), $filename);
+
+            $user->image = $filename; // Update user's profile_picture field
+        }
+
+        // Update user's status
+        $user->role_id = $request->input('status');
+
+        $user->save();
+
+        return redirect('/')->with('success', 'Profile setup successful!'); // Redirect and success message
     }
 
     public function logout() {

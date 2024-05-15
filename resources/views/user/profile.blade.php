@@ -8,12 +8,12 @@
     <div class="user-container">
         <div class="user-content">
             <div class="user-info">
-                <img id="user-profile" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVnViLbhO-pPdNYHdFv4H_Ljc65gslHL6EbiTAiMGGA&s" alt="Profile Picture">
+                <img id="user-profile" src="{{ asset('images/profile/' . Auth::user()->image) }}" alt="Profile Picture">
                 <iconify-icon id="user-edit" icon="akar-icons:edit"></iconify-icon>
             </div>
         </div>
-        <span id="name-txt">Romarc Bongcaron</span>
-        <span id="role-txt">STUDENT</span>
+        <span id="name-txt">{{Auth::user()->name}}</span>
+        <span id="role-txt">{{Auth::user()->role->name}}</span>
     </div>
     <div class="user-btns">
         <div class="profile-btn">
