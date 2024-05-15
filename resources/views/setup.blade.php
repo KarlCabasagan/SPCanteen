@@ -12,7 +12,7 @@
                 <div class="form-setup">
                     <div class="form">
                         @csrf
-                        <input type="file" id="profilePicture" name="profile_picture" accept="image/*" onchange="previewProfilePicture(this);" style="display: none;">
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/*" onchange="previewProfilePicture(this);" style="display: none;">
                     </div>
                     <div class="profile-picture">
                         <img id="avatar" src="images/default.png">
