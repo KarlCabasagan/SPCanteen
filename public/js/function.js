@@ -18,7 +18,7 @@ function previewProfilePicture(input) {
       var reader = new FileReader();
 
       reader.onload = function (e) {
-          document.getElementById('avatarImage').src = e.target.result;
+          document.getElementById('avatar').src = e.target.result;
       }
 
       reader.readAsDataURL(input.files[0]);

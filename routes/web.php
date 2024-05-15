@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 })->middleware(EnsureUserHasRole::class);
+
 Route::post('/login', [UserController::class, 'login']);
 
 Route::post('/logout', [UserController::class, 'logout']);
@@ -16,6 +17,8 @@ Route::post('/logout', [UserController::class, 'logout']);
 Route::get('/setup', function () {
     return view('setup');
 })->middleware(CheckUserHasRole::class);
+
+Route::post('/setup', [UserController::class, 'setup']);
 
 Route::get('/register', function () {
     return view('register');

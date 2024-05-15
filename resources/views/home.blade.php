@@ -7,7 +7,7 @@
             <div class="dashboard-header">
                 <div class="header">
                     <div class="username">
-                        <h2 id="username">Hello Romarc!</h2>
+                        <h2 id="username">Hello {{Auth::user()->name}}!</h2>
                     </div>
                     <div class="profile">
                         <div class="user-cart">
@@ -17,7 +17,7 @@
                             </a>
                         </div>
                         <div class="user-avatar">
-                            <img id="profile" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDVnViLbhO-pPdNYHdFv4H_Ljc65gslHL6EbiTAiMGGA&s" alt="Profile Picture">
+                            <img id="profile" src="{{ asset('images/profile/' . Auth::user()->image) }}" alt="Profile Picture">
                         </div>
                     </div>
                 </div>

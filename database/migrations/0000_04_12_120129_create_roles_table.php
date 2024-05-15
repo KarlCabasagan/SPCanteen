@@ -22,10 +22,10 @@ return new class extends Migration
             $timestamp = now();
         
             DB::table('roles')->insert([
-                ['name' => 'student', 'created_at' => $timestamp, 'updated_at' => $timestamp],
-                ['name' => 'faculty', 'created_at' => $timestamp, 'updated_at' => $timestamp],
-                ['name' => 'admin', 'created_at' => $timestamp, 'updated_at' => $timestamp],
-                ['name' => 'super', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'STUDENT', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'FACULTY', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'ADMIN', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'SUPER ADMIN', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ]);
         }
     }

@@ -5,7 +5,7 @@
     @section('title', 'SPCanteen - Login')
     <div class="container">
         <div class="setup-form">
-            <form id="profileForm" action="" method="POST" enctype="multipart/form-data">
+            <form id="profileForm" action="/setup" method="POST" enctype="multipart/form-data">
                 <div class="info">
                     <h1>WELCOME</h1>
                 </div>
@@ -27,9 +27,9 @@
                     <p>Upload Your Profile</p>
                 </div>
                 <div class="option">
-                    <input type="radio" id="status_student" name="status" value="Student">
+                    <input type="radio" id="status_student" name="status" value="1">
                     <label for="status_student" style="margin-right:50px;">Student</label>
-                    <input type="radio" id="status_faculty" name="status" value="Faculty">
+                    <input type="radio" id="status_faculty" name="status" value="2">
                     <label for="status_faculty">Faculty</label>
                 </div>
                 <div class="note">
