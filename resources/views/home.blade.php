@@ -17,7 +17,7 @@
                             </a>
                         </div>
                         <div class="user-avatar">
-                            <img id="profile" src="{{ asset('images/profile/' . Auth::user()->image) }}" alt="Profile Picture">
+                            <a href="/profile"><img id="profile" src="{{ asset('images/profile/' . Auth::user()->image) }}" alt="Profile Picture"></a>
                         </div>
                     </div>
                 </div>

@@ -41,27 +41,25 @@ class UserController extends Controller
 
         $incomingFields = $request->validate([
             'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'status' => ['required', Rule::in([1, 2])] // Validate status as 1 or 2
+            'status' => ['required', Rule::in([1, 2])]
         ]);
 
         $user = User::find($userId);
 
-        // Store profile picture if uploaded
         if ($request->hasFile('profile_picture')) {
             $file = $request->file('profile_picture');
-            $filename = time() . '.' . $file->getClientOriginalExtension(); // Unique filename with timestamp
+            $filename = time() . '.' . $file->getClientOriginalExtension();
 
             $file->move(public_path('images/profile'), $filename);
 
-            $user->image = $filename; // Update user's profile_picture field
+            $user->image = $filename;
         }
 
-        // Update user's status
         $user->role_id = $request->input('status');
 
         $user->save();
 
-        return redirect('/')->with('success', 'Profile setup successful!'); // Redirect and success message
+        return redirect('/')->with('success', 'Profile setup successful!');
     }
 
     public function logout() {
