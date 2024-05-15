@@ -40,14 +40,14 @@ class UserController extends Controller
         $userId = auth()->user()->id;
 
         $incomingFields = $request->validate([
-            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profilePicture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'status' => ['required', Rule::in([1, 2])]
         ]);
 
         $user = User::find($userId);
 
-        if ($request->hasFile('profile_picture')) {
-            $file = $request->file('profile_picture');
+        if ($request->hasFile('profilePicture')) {
+            $file = $request->file('profilePicture');
             $filename = time() . '.' . $file->getClientOriginalExtension();
 
             $file->move(public_path('images/profile'), $filename);
