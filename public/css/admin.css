@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 
+body{
+  overflow: hidden;
+}
 /* Navigation Bar CSS */
 
 .admin-navbar {
@@ -235,41 +238,80 @@ h3 {
 
 .product-list {
   display: flex;
-  margin: 50px 0 0 80px;
+  flex-wrap: wrap;
+  margin: 40px 60px;
+  overflow-y: auto;
+  max-height: 70vh;
 }
 
 .product {
   display: grid;
   justify-content: center;
   align-items: center;
+  margin: 11.25px;
+  position: relative; 
+  
 }
 
 #product-img {
-  width: 190px;
+  width: 222px;
   height: 180px;
   border-radius: 10px;
 }
 
 .label {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   position: absolute;
-  width: 190px;
-  height: 58px;
-  margin-top: 122px;
-  border-radius:  0 0 10px 10px;
-  background-color: maroon;
-  opacity: 0.6;
+  width: 203px;
+  height: auto;
+  bottom: 0;
+  margin-top: 100px;
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(to bottom, rgba(128, 0, 0, 0.17), rgba(128, 0, 0, 0.581));
+  color: white;
+  padding: 5px 10px;
+  overflow: hidden;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+.label h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.icon-container {
+  display: flex;
+  gap: 10px;
+  font-size: 32px;
+  color: maroon;
+}
+
+.tabler-edit{           /* iconfit product icon   */
+  background-color: #fff;
+  border-radius: 5px;
+  font-family: "Montserrat";
+  cursor: pointer;
+}
+
+.trash-outline{        /* iconify product icon   */
+  background-color: #fff;
+  border-radius: 5px;
+  font-family: "Montserrat";
+  cursor: pointer;
 }
 
 /* Add Product Modal */
 
 .modal {
-  display: none;
-  width: 350px;
+  display: flex;
+  width: 820px;
+  height: 45vh;
   position: fixed;
-  top: 55%;
-  left: 56%;
+  top: 50%;
+  left: 55%;
   transform: translate(-50%, -50%);
   padding: 2.4rem 2rem 2rem;
   background: #fff;
@@ -277,48 +319,123 @@ h3 {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
+  border-radius: 10px;
 }
 
 .modal.active {
-  display: block;
+  display: flex;
   opacity: 1;
   pointer-events: all;
 }
 
-.modal-content {
-  display: grid;
-  justify-content: center;
+.modal-container {
+  display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
-#product-name {
-  height: 25px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding-left: 4px;
+.modal-icon {
+  font-size: 350px;
+  position: relative;
+  top: 20px;
+}
+
+.add-icon {     /*    iconify icon   */
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  background-color: maroon;
+  border-radius: 60px;
+  cursor: pointer;
+}
+
+.img-box-fill{     /*    iconify icon   */
+  background-color: rgb(216, 215, 215);
+  cursor: pointer;
+  border-radius: 50px;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  flex-grow: 1;
+  margin-left: 120px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.product-name,
+.product-price,
+.product-categories {
+  display: flex;
+  align-items: center;
   margin-bottom: 10px;
+  width: 100%;
 }
 
+.product-name label,
+.product-price label,
+.product-categories label {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+#product-name,
 #product-price {
-  width: 80px;
-  height: 25px;
-  border: 1px solid black;
-  border-radius: 4px;
+  height: 35px; 
+  border: none;
+  border-bottom: 2px solid maroon;
+  border-radius: 0;
   padding-left: 4px;
-  margin-bottom: 10px;
+  flex-grow: 1;
+  color: maroon;
+  font-size: 16px; 
+}
+
+#product-name:focus,
+#product-price:focus {
+  outline: none;
+}
+
+#product-name::placeholder,
+#product-price::placeholder {
+  color: maroon;
 }
 
 #product-categories {
   height: 25px;
   border-radius: 4px;
   cursor: pointer;
+  flex-grow: 1;
+  font-size: 14px;
+}
+
+#product-categories option[label="Select Category"] {
+  color: maroon;
+}
+
+#product-name::placeholder,
+#product-price::placeholder {
+  color: maroon;
+  text-align: center;
 }
 
 .modal-btn {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 25px;
+  width: 100%;
+  margin-top: 10px;
 }
 
 #save {
@@ -348,3 +465,147 @@ h3 {
   font-weight: bold;
   font-family: "Montserrat";
 }
+
+.modal-save-close {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.close-modal {
+  margin-right: 40px;
+}
+
+.save-btn {
+  margin-left: 40px;
+}
+
+/*  Order List  CSS*/
+
+.add-header-orderlist {
+  width: 60rem;
+  margin: 5rem 0 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-container-orderlist {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.search-container-orderlist form {
+  display: flex;
+  align-items: center;
+}
+
+.search-container-orderlist .search-button-orderlist {
+  padding: 6px 10px;
+  font-size: 17px;
+  cursor: pointer;
+  border: none;
+  background-color: #D9D9D9;
+}
+
+.trans-container {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 30px;
+  border-radius: 18px;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 70vh;
+}
+
+
+.header-trans {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.header-trans span:nth-child(1) {
+  color: rgb(165, 163, 163);
+  margin-left: 130px;
+}
+
+.header-trans span:nth-child(2) {
+  color: rgb(165, 163, 163);
+  margin-right: 60px;
+}
+
+.header-trans span:nth-child(3) {
+  color: rgb(165, 163, 163);
+  margin-right: 90px;
+}
+
+.header-trans span:nth-child(4) {
+  color: rgb(165, 163, 163);
+  margin-right: 180px;
+}
+
+.header-trans span {
+  color: rgb(165, 163, 163);
+  font-size: 15px;
+}
+
+.middle-trans {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.middle-trans .trans-info {
+  display: flex;
+  align-items: center;
+  flex-basis: auto; 
+  flex-grow: 1;
+}
+
+.middle-trans .trans-info span {
+  margin: 0 25px;
+  padding: 0 30px;
+  font-weight: bold;
+  font-size: 22px;
+  white-space: nowrap; 
+}
+
+.trans-dot-container {
+  display: flex;
+  align-items: center;
+}
+
+.trans-dot-container .trans-dot {
+  color: rgb(0, 255, 0);
+  font-size: 100px;
+  margin-right: 8px;
+  width: 20px;
+}
+
+.trans-dot-container span {
+  font-weight: bold;
+}
+
+.trans-details-btn button {
+  background-color: maroon;
+  color: white;
+  padding: 8px 22px; 
+  font-size: 15px; 
+  border: none;
+  border-radius: 5px; 
+  cursor: pointer;
+  
+}
+
+.trans-details-btn button:hover {
+  background-color: darkred; 
+}
+
