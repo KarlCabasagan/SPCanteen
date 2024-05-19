@@ -18,227 +18,73 @@
             </div>
         </div>
         <div class="product-list">
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
+            @foreach ($products as $product)
+                <div class="product">
+                    <img id="product-img" src="images/product/{{$product->image}}" alt="{{$product->name}}">
+                    <div class="label">
+                        <h3>{{$product->name}}</h3>
+                        <div class="icon-container">
+                            <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
+                            <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                @csrf 
+                                <button type="submit" class="delete-button">
+                                    <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-
-            <div class="product">
-                <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
-                <div class="label">
-                    <h3>Chicken Burger</h3>
-                    <div class="icon-container">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
-                        <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
-                    </div>
-                </div>
-            </div> 
-        </div>
+            @endforeach
 
         <!--------- Add Product Modal -------->
-        <div class="modal_product-list">
-    <div class="modal-container">
-        <div class="modal-icon">
-            <div class="img-box-fill">
-                <iconify-icon icon="material-symbols:image-outline" id="img-box-fill"></iconify-icon>
-            </div>
-            <div class="add-icon">
-                <iconify-icon icon="material-symbols:add" id="add-icon"></iconify-icon>
-            </div>
-        </div>
-        <div class="modal-content">
-            <div class="product-info">
-                <div class="product-name">
-                    <input id="product-name" type="text" placeholder="Product Name">
+    <div class="modal_product-list">
+        <form action="/addproduct" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-container">
+            <input type="file" id="image" name="image" accept="image/*" onchange="previewProductImage(this);" style="display: none;">
+                <div class="modal-icon">
+                    <div class="img-box-fill">
+                        <img id="img-box-fill" src="images/product/default.jpg">
+                    </div>
+                    <label for="image">
+                        <div class="add-icon">
+                            <iconify-icon icon="material-symbols:add" id="add-icon"></iconify-icon>
+                        </div>
+                    </label>
                 </div>
-                <div class="product-price">
-                    <input id="product-price" type="text" placeholder="₱ 0.00">
-                </div>
-                <div class="product-time">
-                    <input id="product-time" type="text" placeholder="Time">
-                </div>
-                <div class="product-categories">
-                    <label id="select-category">Select Category</label>
-                    <select id="product-categories" name="product" id="product">
-                        <option label="Select Category"></option>
-                        <option value="breakfast">Breakfast</option>
-                        <option value="lunch">Lunch</option>
-                        <option value="snack">Snack</option>
-                        <option value="beverage">Beverage</option>
-                        <option value="dinner">Dinner</option>
-                        <option value="dessert">Dessert</option>
-                        <option value="healthy">Healthy</option>
-                    </select>
+                <div class="modal-content">
+                    <div class="product-info">
+                        <div class="product-name">
+                            <input id="product-name" name="name" type="text" placeholder="Product Name">
+                        </div>
+                        <div class="product-price">
+                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00">
+                        </div>
+                        <div class="product-time">
+                            <input id="product-time" name="time" type="text" placeholder="Time">
+                        </div>
+                        <div class="product-categories">
+                            <label id="select-category">Select Category</label>
+                            <select id="product-categories" name="category_id" id="product">
+                                <option value="1">Breakfast</option>
+                                <option value="2">Lunch</option>
+                                <option value="3">Snack</option>
+                                <option value="4">Beverage</option>
+                                <option value="5">Dinner</option>
+                                <option value="6">Dessert</option>
+                                <option value="7">Healthy</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="save-btn">
+                        <button id="save" type="submit">Save</button>
+                    </div>
+                    <div class="close-modal">
+                        <iconify-icon id="close" icon="material-symbols-light:close"></iconify-icon>
                     </div>
                 </div>
-                <div class="save-btn">
-                    <button id="save" type="submit">Save</button>
-                </div>
-                <div class="close-modal">
-                    <iconify-icon id="close" icon="material-symbols-light:close"></iconify-icon>
-                </div>
             </div>
-        </div>
+        </form>
     </div>
 </div>
 

@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->double('price', 8, 2);
-            $table->string('image');
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('category_id');
+            $table->integer('time');
             $table->timestamps();
+
+            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 
