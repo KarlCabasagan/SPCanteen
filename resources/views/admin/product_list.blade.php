@@ -2,7 +2,7 @@
 
 @section('content1')
     <div class="content">
-        <h1>Add Product</h1>
+        <h1>Product List</h1>
         <div class="add-header">
             <div class="add-product-btn open-modal">
                 <i id="add-btn" class="fa-regular fa-square-plus"></i>

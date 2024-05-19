@@ -11,6 +11,8 @@ function togglePassword(icon, inputId) {
   }
 }
 
+/* Username */
+
 /* Profile Picture (Need pa e fix) */
 
 function previewProfilePicture(input) {
@@ -30,15 +32,33 @@ function previewProfilePicture(input) {
 document.addEventListener("DOMContentLoaded", function() {
   const openModal = document.querySelector(".open-modal");
   const closeModal = document.querySelector(".close-modal");
-  const modal = document.querySelector(".modal_product-list");
+  const productlistModal = document.querySelector(".modal_product-list");
 
-  if (openModal && closeModal && modal) {
+  if (openModal && closeModal && productlistModal) {
     openModal.addEventListener("click", () => {
-      modal.classList.add("active");
+      productlistModal.classList.add("active");
     });
 
     closeModal.addEventListener("click", () => {
-      modal.classList.remove("active");
+      productlistModal.classList.remove("active");
+    });
+  }
+});
+
+/* Admin-Modal */
+
+document.addEventListener("DOMContentLoaded", function() {
+  const openModal = document.querySelector(".open-modal");
+  const closeModal = document.querySelector(".close-modal");
+  const productlistModal = document.querySelector(".modal_product-list");
+
+  if (openModal && closeModal && productlistModal) {
+    openModal.addEventListener("click", () => {
+      productlistModal.classList.add("active");
+    });
+
+    closeModal.addEventListener("click", () => {
+      productlistModal.classList.remove("active");
     });
   }
 });
