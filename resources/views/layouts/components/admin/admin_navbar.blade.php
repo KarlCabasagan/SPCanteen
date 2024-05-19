@@ -6,32 +6,26 @@
     <div class="icon-bar">
       <div class="nav-btns">
         <a class="active" href="admin">
-          <i class="fa-solid fa-gauge btns"></i>
+          <iconify-icon icon="clarity:dashboard-line" style="font-size: 26px;"></iconify-icon>
           <span id="nav-txt">Dashboard</span>
         </a>
       </div>
       <div class="nav-btns">
-        <a class="active" href="add_product">
-          <i class="fa-regular fa-square-plus btns"></i>
-          <span id="nav-txt">Add Products</span>
+        <a class="active" href="product_list">
+          <iconify-icon icon="el:list-alt" style="font-size: 26px;"></iconify-icon>
+          <span id="nav-txt">Product List</span>
         </a>
       </div>
       <div class="nav-btns">
         <a class="active" href="order_list">
-          <i class="far fa-list-alt btns"></i>
+          <iconify-icon icon="ic:baseline-pending-actions" style="font-size: 26px;"></iconify-icon>
           <span id="nav-txt">Order List</span>
         </a>
       </div>
       <div class="nav-btns">
         <a class="active" href="transaction_history">
-          <i class="far fa-address-book btns"></i>
+          <iconify-icon icon="fluent:clipboard-task-list-16-regular" style="font-size: 26px;"></iconify-icon>
           <span id="nav-txt">Transaction History</span>
-        </a>
-      </div>
-      <div class="nav-btns">
-        <a class="active" href="order_scanner">
-          <i class="fa fa-qrcode btns"></i>
-          <span id="nav-txt">Order Scanner</span>
         </a>
       </div>
       <form action="/logout" method="POST">
@@ -39,10 +33,10 @@
         <div class="nav-btns">
           <button id="logout" type="submit">
             <a class="active">
-              <span class="fa fa-sign-out btns">
-                <span id="nav-txt">Logout</span>
-              </a>
-            </button>
+              <iconify-icon icon="humbleicons:logout" style="font-size: 28px;"></iconify-icon>
+              <span id="nav-txt">Logout</span>
+            </a>
+          </button>
         </div>
       </form>
       <div class="copyright">

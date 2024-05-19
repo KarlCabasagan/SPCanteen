@@ -21,7 +21,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -32,7 +32,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -43,7 +43,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -54,7 +54,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -65,7 +65,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -76,7 +76,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -87,7 +87,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -98,7 +98,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -109,7 +109,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -120,7 +120,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -131,7 +131,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -142,7 +142,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -153,7 +153,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -164,7 +164,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -175,7 +175,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -186,7 +186,7 @@
             <div class="product">
                 <img id="product-img" src="https://www.bitesized.ph/wp-content/uploads/2019/08/7A43D94E-488B-4A9C-B9EE-CA0D047C38E4.jpeg" alt="">
                 <div class="label">
-                    <h3>Chicken MInute Burger</h3>
+                    <h3>Chicken Burger</h3>
                     <div class="icon-container">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                         <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
@@ -196,11 +196,15 @@
         </div>
 
         <!--------- Add Product Modal -------->
-        <div class="modal">
+        <div class="modal_product-list">
     <div class="modal-container">
         <div class="modal-icon">
-            <iconify-icon icon="lets-icons:img-box-fill" class="img-box-fill"></iconify-icon>
-            <iconify-icon icon="material-symbols:add" style="color:white" class="add-icon"></iconify-icon>
+            <div class="img-box-fill">
+                <iconify-icon icon="material-symbols:image-outline" id="img-box-fill"></iconify-icon>
+            </div>
+            <div class="add-icon">
+                <iconify-icon icon="material-symbols:add" id="add-icon"></iconify-icon>
+            </div>
         </div>
         <div class="modal-content">
             <div class="product-info">
@@ -210,8 +214,11 @@
                 <div class="product-price">
                     <input id="product-price" type="text" placeholder="₱ 0.00">
                 </div>
+                <div class="product-time">
+                    <input id="product-time" type="text" placeholder="Time">
+                </div>
                 <div class="product-categories">
-                    <label>Select Category</label>
+                    <label id="select-category">Select Category</label>
                     <select id="product-categories" name="product" id="product">
                         <option label="Select Category"></option>
                         <option value="breakfast">Breakfast</option>
@@ -224,13 +231,11 @@
                     </select>
                     </div>
                 </div>
-                <div class="modal-save-close">
-                    <div class="save-btn">
-                         <button id="save" type="submit">Save</button>
-                    </div>
-                    <div class="close-modal">
-                        <button id="close">Close</button>
-                    </div>
+                <div class="save-btn">
+                    <button id="save" type="submit">Save</button>
+                </div>
+                <div class="close-modal">
+                    <iconify-icon id="close" icon="material-symbols-light:close"></iconify-icon>
                 </div>
             </div>
         </div>

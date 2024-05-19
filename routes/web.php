@@ -52,8 +52,8 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/admin', function () {
             return view('admin.admin');
         });
-        Route::get('/add_product', function () {
-            return view('admin.add_product');
+        Route::get('/product_list', function () {
+            return view('admin.product_list');
         });
         Route::get('/order_list', function () {
             return view('admin.order_list');

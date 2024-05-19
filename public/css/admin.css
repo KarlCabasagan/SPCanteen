@@ -23,13 +23,14 @@ body{
 }
 
 .icon-bar a {
-  display: block;
+  display: flex;
+  align-items: center;
   text-align: left;
   padding: 12px;
   transition: all 0.3s ease;
   text-decoration: none;
   color: black;
-  font-size: 17px;
+  font-size: 16px;
 }
 
 .icon-bar a:hover {
@@ -44,12 +45,8 @@ body{
   cursor: pointer;
 }
 
-.btns {
-  margin-left: 6px;
-}
-
 .nav-btns {
-  margin-top: 10px;
+  margin-top: 24px;
 }
 
 #nav-txt {
@@ -239,7 +236,7 @@ h3 {
 .product-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 40px 60px;
+  margin: 30px 60px;
   overflow-y: auto;
   max-height: 70vh;
 }
@@ -289,14 +286,14 @@ h3 {
   color: maroon;
 }
 
-.tabler-edit{           /* iconfit product icon   */
+.tabler-edit {           
   background-color: #fff;
   border-radius: 5px;
   font-family: "Montserrat";
   cursor: pointer;
 }
 
-.trash-outline{        /* iconify product icon   */
+.trash-outline {       
   background-color: #fff;
   border-radius: 5px;
   font-family: "Montserrat";
@@ -305,24 +302,24 @@ h3 {
 
 /* Add Product Modal */
 
-.modal {
+.modal_product-list {
   display: flex;
-  width: 820px;
-  height: 45vh;
+  width: 700px;
+  height: 40vh;
   position: fixed;
-  top: 50%;
-  left: 55%;
+  top: 54%;
+  left: 59%;
   transform: translate(-50%, -50%);
   padding: 2.4rem 2rem 2rem;
   background: #fff;
-  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.5s ease;
   border-radius: 10px;
 }
 
-.modal.active {
+.modal_product-list.active {
   display: flex;
   opacity: 1;
   pointer-events: all;
@@ -330,31 +327,46 @@ h3 {
 
 .modal-container {
   display: flex;
-  align-items: center;
-  flex-shrink: 0;
+  justify-content: center;
 }
 
 .modal-icon {
-  font-size: 350px;
   position: relative;
   top: 20px;
 }
 
-.add-icon {     /*    iconify icon   */
+.img-box-fill {
+  width: 260px;
+  height: 260px;
+  font-size: 260px;
+  background-color: rgb(216, 215, 215);
+  box-shadow: inset 0 1px 10px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-left: 20px;
+}
+
+#img-box-fill {
+  opacity: 0.1;
+}
+
+.add-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 50px;
   background-color: maroon;
-  border-radius: 60px;
+  width: 70px;
+  height: 70px;
+  top: 45%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.img-box-fill{     /*    iconify icon   */
-  background-color: rgb(216, 215, 215);
-  cursor: pointer;
-  border-radius: 50px;
+#add-icon {    
+  font-size: 46px;
+  color:white;
 }
 
 .modal-content {
@@ -362,7 +374,6 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  flex-grow: 1;
   margin-left: 120px;
 }
 
@@ -376,56 +387,69 @@ h3 {
 
 .product-name,
 .product-price,
-.product-categories {
+.product-time {
   display: flex;
   align-items: center;
   margin-bottom: 10px;
+  width: 122%;
+}
+
+.product-categories {
+  margin: 10px 14px 0 10px;
   width: 100%;
 }
 
 .product-name label,
 .product-price label,
-.product-categories label {
+.product-time label {
   margin-right: 10px;
   flex-shrink: 0;
 }
 
+#select-category {
+  font-size: 14px;
+}
+
 #product-name,
-#product-price {
+#product-price,
+#product-time {
   height: 35px; 
   border: none;
   border-bottom: 2px solid maroon;
   border-radius: 0;
   padding-left: 4px;
-  flex-grow: 1;
+  flex-grow: 2;
   color: maroon;
   font-size: 16px; 
-}
-
-#product-name:focus,
-#product-price:focus {
-  outline: none;
-}
-
-#product-name::placeholder,
-#product-price::placeholder {
-  color: maroon;
 }
 
 #product-categories {
   height: 25px;
   border-radius: 4px;
   cursor: pointer;
-  flex-grow: 1;
-  font-size: 14px;
+  flex-grow: 2;
+  font-size: 12px;
 }
 
-#product-categories option[label="Select Category"] {
+#product-name:focus,
+#product-price:focus,
+#product-time:focus {
+  outline: none;
+}
+
+#product-name::placeholder,
+#product-price::placeholder,
+#product-time::placeholder {
+  color: maroon;
+}
+
+#product-categories option {
   color: maroon;
 }
 
 #product-name::placeholder,
-#product-price::placeholder {
+#product-price::placeholder,
+#product-time::placeholder {
   color: maroon;
   text-align: center;
 }
@@ -441,50 +465,34 @@ h3 {
 #save {
   background-color: maroon;
   color: white;
-  padding: 10px 20px 10px 20px;
+  padding: 13px 50px 13px 50px;
   border: none;
-  border-radius: 10px;
-  font-size: 14px;
+  border-radius: 4px;
+  font-size: 16px;
   text-align: center;
   cursor: pointer;
-  margin-right: 4px;
   font-weight: bold;
   font-family: "Montserrat";
 }
 
 #close {
+  position: absolute;
+  top: 0;
+  margin: 14px 0 0 30px;
   background-color: white;
-  border: 1px solid maroon;
   color: maroon;
-  padding: 9px 20px 9px 20px;
-  border-radius: 10px;
-  font-size: 14px;
-  text-align: center;
+  font-size: 34px;
   cursor: pointer;
-  margin-left: 4px;
-  font-weight: bold;
   font-family: "Montserrat";
 }
 
-.modal-save-close {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin-top: 10px;
-}
-
-.close-modal {
-  margin-right: 40px;
-}
-
 .save-btn {
-  margin-left: 40px;
+  margin: 20px 74px 0 0;
 }
 
-/*  Order List  CSS*/
+/* Transaction History CSS*/
 
-.add-header-orderlist {
+.add-header-transaction {
   width: 60rem;
   margin: 5rem 0 0 4rem;
   display: flex;
@@ -492,120 +500,66 @@ h3 {
   align-items: center;
 }
 
-.search-container-orderlist {
+.search-container-transaction {
   display: flex;
   justify-content: flex-end;
   margin-left: auto;
 }
 
-.search-container-orderlist form {
+.search-container-transaction form {
   display: flex;
   align-items: center;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 2px 2px #888888;
 }
 
-.search-container-orderlist .search-button-orderlist {
+.search-container-transaction .search-button-transaction {
   padding: 6px 10px;
   font-size: 17px;
   cursor: pointer;
   border: none;
   background-color: #D9D9D9;
+  border-radius: 0 10px 10px 0;
 }
 
-.trans-container {
+.transcation-container {
+  width: 100%;
+  height: 90px;
+  background-color: white;
+  box-shadow: 1px 1px 4px #888888;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.transaction-details {
   display: flex;
   flex-direction: column;
-  background-color: white;
-  margin-top: 30px;
-  border-radius: 18px;
-  padding: 10px;
-  overflow-y: auto;
-  max-height: 70vh;
-}
-
-
-.header-trans {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0 5px;
-}
-
-.header-trans span:nth-child(1) {
-  color: rgb(165, 163, 163);
-  margin-left: 130px;
-}
-
-.header-trans span:nth-child(2) {
-  color: rgb(165, 163, 163);
-  margin-right: 60px;
-}
-
-.header-trans span:nth-child(3) {
-  color: rgb(165, 163, 163);
-  margin-right: 90px;
-}
-
-.header-trans span:nth-child(4) {
-  color: rgb(165, 163, 163);
-  margin-right: 180px;
-}
-
-.header-trans span {
-  color: rgb(165, 163, 163);
-  font-size: 15px;
-}
-
-.middle-trans {
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-}
-
-.middle-trans .trans-info {
-  display: flex;
-  align-items: center;
-  flex-basis: auto; 
-  flex-grow: 1;
-}
-
-.middle-trans .trans-info span {
-  margin: 0 25px;
-  padding: 0 30px;
-  font-weight: bold;
-  font-size: 22px;
-  white-space: nowrap; 
-}
-
-.trans-dot-container {
-  display: flex;
-  align-items: center;
-}
-
-.trans-dot-container .trans-dot {
-  color: rgb(0, 255, 0);
-  font-size: 100px;
-  margin-right: 8px;
-  width: 20px;
-}
-
-.trans-dot-container span {
+  margin: 2px 30px 0 60px;
   font-weight: bold;
 }
 
-.trans-details-btn button {
+.transaction-detail {
+  position: absolute;
+  margin: 7px 0 0 22px;
+  color: green;
+  font-size: 20px;
+}
+
+#transaction-header {
+  position: absolute;
+  transform: translateY(-160%);
+  font-size: 12px;
+  opacity: 0.55;
+}
+
+#details {
   background-color: maroon;
   color: white;
-  padding: 8px 22px; 
-  font-size: 15px; 
-  border: none;
-  border-radius: 5px; 
-  cursor: pointer;
-  
+  padding: 6px 26px 8px 26px;
+  border-radius: 4px;
+  font-size: 12px;
 }
-
-.trans-details-btn button:hover {
-  background-color: darkred; 
-}
-
