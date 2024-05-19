@@ -30,7 +30,7 @@ function previewProfilePicture(input) {
 document.addEventListener("DOMContentLoaded", function() {
   const openModal = document.querySelector(".open-modal");
   const closeModal = document.querySelector(".close-modal");
-  const modal = document.querySelector(".modal");
+  const modal = document.querySelector(".modal_product-list");
 
   if (openModal && closeModal && modal) {
     openModal.addEventListener("click", () => {
@@ -42,6 +42,18 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   }
 });
+
+function previewProductImage(input) {
+  if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          document.getElementById('img-box-fill').src = e.target.result;
+      }
+
+      reader.readAsDataURL(input.files[0]);
+  }
+}
 
  /* Bottom Sheet Modal */
  document.addEventListener("DOMContentLoaded", function() {
@@ -99,6 +111,16 @@ document.addEventListener("DOMContentLoaded", function() {
   sheetOverlay.addEventListener("click", hideBottomSheet);
   
   showModalBtns.forEach(btn => {
-    btn.addEventListener("click", showBottomSheet);
-  });  
+    btn.addEventListener("click", () => {
+        const productData = JSON.parse(btn.dataset.product);
+
+        document.getElementById("selling-image").src = "images/product/" + productData.image;
+        document.getElementById("heart-icon").classList.remove("active");
+        document.querySelector(".name").textContent = productData.name;
+        document.querySelector(".price").textContent = "₱" + productData.price;
+        
+        showBottomSheet();
+    });
+}); 
 });
+
