@@ -11,8 +11,6 @@ function togglePassword(icon, inputId) {
   }
 }
 
-/* Username */
-
 /* Profile Picture (Need pa e fix) */
 
 function previewProfilePicture(input) {

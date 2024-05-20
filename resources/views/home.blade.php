@@ -74,9 +74,9 @@
                         <div class="product-content">
                             <div class="product-image">
                                 <button class="show-modal" data-product="{{$product}}"><img id="product-image" src="images/product/{{$product->image}}" alt="{{$product->name}}"></button>
-                                <div class="add-cart">
+                                <button class="add-cart">
                                   <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
-                                </div>
+                                </button>
                             </div>
                             <div class="products-info">
                                 <div class="product-info">
