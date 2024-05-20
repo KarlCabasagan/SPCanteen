@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 
 class UserController extends Controller
@@ -38,7 +37,7 @@ class UserController extends Controller
     public function setup(Request $request)
     {
         $userId = auth()->user()->id;
-
+        
         $incomingFields = $request->validate([
             'profilePicture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'status' => ['required', Rule::in([1, 2])]
@@ -53,6 +52,8 @@ class UserController extends Controller
             $file->move(public_path('images/profile'), $filename);
 
             $user->image = $filename;
+        } else {
+            $user->image = 'default.png';
         }
 
         $user->role_id = $request->input('status');

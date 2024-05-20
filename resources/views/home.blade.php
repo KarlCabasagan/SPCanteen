@@ -7,8 +7,9 @@
             <div class="dashboard-header">
                 <div class="header">
                     <div class="username">
-                        <h2 id="username">Hello {{Auth::user()->name}}!</h2>
+                        <h2 id="username">Hello {{Auth::user()->name}}</h2>
                     </div>
+                    <span id="exclamation">!</span>
                     <div class="profile">
                         <div class="user-cart">
                             <a href="cart">
@@ -41,23 +42,23 @@
                             <div class="drag-icon"><span class="header-icon"></span></div>
                         </div>
                         <div class="body">
-                            <img id="selling-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
-                            <div class="heart-icon">
+                            <img id="selling-image" src="images/product/default.jpg" alt="default">
+                            <button class="heart-icon">
                                 <iconify-icon id="heart-icon" icon="material-symbols:favorite"></iconify-icon>
-                            </div>
+                            </button>
                             <div class="product-detail">
-                                <h2 class="name">Chicken Burger</h2>
-                                <p class="price">₱50</p>
+                                <h2 class="name">No Product</h2>
+                                <p class="price">₱0</p>
                             </div>
                             <div class="modal-btns">
                                 <div class="quantity-btns">
-                                    <div class="quantity-minus">
+                                    <button class="quantity-minus">
                                         <iconify-icon icon="ph:minus"></iconify-icon>
-                                    </div>
+                                    </button>
                                     <span>1</span>
-                                    <div class="quantity-plus">
+                                    <button class="quantity-plus">
                                         <iconify-icon icon="ph:plus"></iconify-icon>
-                                    </div>
+                                    </button>
                                 </div>
                                 <div class="add-to-cart">
                                     <button id="add-to-cart">Add to cart</button>
@@ -68,102 +69,30 @@
                 </div> 
             </div>
             <div class="products">
-                <div class="product-container">
-                    <div class="product-content">
-                        <div class="product-image">
-                            <button class="show-modal"><img id="product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt=""></button>
-                            <div class="add-cart">
-                            <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
-                            </div>
-                        </div>
-                        <div class="products-info">
-                            <div class="product-info">
-                                <div class="product-time">
-                                    <iconify-icon id="timer-icon" icon="svg-spinners:clock"></iconify-icon>
-                                    <span id="product-time">40 mins</span>
-                                </div>
-                                <div class="product-name">
-                                    <h1 id="product-name">Chicken Burger</h1>
+                @foreach ($products as $product)
+                    <div class="product-container">
+                        <div class="product-content">
+                            <div class="product-image">
+                                <button class="show-modal" data-product="{{$product}}"><img id="product-image" src="images/product/{{$product->image}}" alt="{{$product->name}}"></button>
+                                <div class="add-cart">
+                                  <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
                                 </div>
                             </div>
-                            <div class="product-price">
-                                <span id="products-price">₱50</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-container">
-                <div class="product-content">
-                        <div class="product-image">
-                            <button class="show-modal"><img id="product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt=""></button>
-                            <div class="add-cart">
-                            <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
-                            </div>
-                        </div>
-                        <div class="products-info">
-                            <div class="product-info">
-                                <div class="product-time">
-                                    <iconify-icon id="timer-icon" icon="svg-spinners:clock"></iconify-icon>
-                                    <span id="product-time">40 mins</span>
+                            <div class="products-info">
+                                <div class="product-info">
+                                    <div class="product-time">
+                                        <iconify-icon id="timer-icon" icon="svg-spinners:clock"></iconify-icon>
+                                        <span id="product-time">{{$product->time}} mins</span>
+                                    </div>
+                                    <div class="product-name-price">
+                                        <h1 id="product-name">{{$product->name}}</h1>
+                                        <span id="products-price">₱{{$product->price}}</span>
+                                    </div>
                                 </div>
-                                <div class="product-name">
-                                    <h1 id="product-name">Chicken Burger</h1>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <span id="products-price">₱50</span>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="product-container">
-                <div class="product-content">
-                        <div class="product-image">
-                            <button class="show-modal"><img id="product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt=""></button>
-                            <div class="add-cart">
-                            <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
-                            </div>
-                        </div>
-                        <div class="products-info">
-                            <div class="product-info">
-                                <div class="product-time">
-                                    <iconify-icon id="timer-icon" icon="svg-spinners:clock"></iconify-icon>
-                                    <span id="product-time">40 mins</span>
-                                </div>
-                                <div class="product-name">
-                                    <h1 id="product-name">Chicken Burger</h1>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <span id="products-price">₱50</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-container">
-                <div class="product-content">
-                        <div class="product-image">
-                            <button class="show-modal"><img id="product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt=""></button>
-                            <div class="add-cart">
-                            <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
-                            </div>
-                        </div>
-                        <div class="products-info">
-                            <div class="product-info">
-                                <div class="product-time">
-                                    <iconify-icon id="timer-icon" icon="svg-spinners:clock"></iconify-icon>
-                                    <span id="product-time">40 mins</span>
-                                </div>
-                                <div class="product-name">
-                                    <h1 id="product-name">Chicken Burger</h1>
-                                </div>
-                            </div>
-                            <div class="product-price">
-                                <span id="products-price">₱50</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             @include('layouts.components.user.user_navbar') 
         </div>

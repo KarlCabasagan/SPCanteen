@@ -13,7 +13,7 @@
             </a>
         </div>
         <div class="code-content">
-            <img id="code-profile" src="https://encrypted-tbn0.gstc.com/images?q=tbn:ANd9GcQDVnViLbhO-pPdNYHdFv4H_Ljc65gslHL6EbiTAiMGGA&s" alt="">
+            <img id="code-profile" src="images/profile/{{Auth::user()->image}}" alt="{{Auth::user()->name}}.jpg">
             <span id="code-name">{{Auth::user()->name}}</span>
             <div class="code-container">
                 <img id="code-img" src="https://www.pngall.com/wp-content/uploads/2/QR-Code-PNG-Picture.png" alt="">

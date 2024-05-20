@@ -4,104 +4,139 @@
 <div class="content">
     <div class="history-content">
         <div class="history-header">
-            <span id="history-header-txt">HISTORY</span>
-            <select id="history-options" name="options">
-                <option value="pending">Pending</option>
-                <option value="completed">Completed</option>
-                <option value="cancelled">Cancelled</option>
-            </select>
+            <span id="history-header-txt">MY HISTORY</span>
         </div>
         <div class="history">
-        <div class="history-container">
-            <div class="history-row">
-            <div class="history-details">
-                <span id="history-txt">Order Date: May 10, 2024</span>
-                <span id="history-txt">Total Price: ₱50</span>
-                <span id="history-txt">Payment Method: GCASH</span>
-                <span id="history-txt" style="color: red;">Status: Pending</span>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
-            <div class="history-btns">
-                <span id="history-btns">View Order</span>
-                <span id="history-btns">Re-Order</span>
-                <span id="history-btns">Cancel</span>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="history-container">
-            <div class="history-row">
-            <div class="history-details">
-                <span id="history-txt">Order Date: May 10, 2024</span>
-                <span id="history-txt">Total Price: ₱50</span>
-                <span id="history-txt">Payment Method: GCASH</span>
-                <span id="history-txt" style="color: red;">Status: Pending</span>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
-            <div class="history-btns">
-                <span id="history-btns">View Order</span>
-                <span id="history-btns">Re-Order</span>
-                <span id="history-btns">Cancel</span>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="history-container">
-            <div class="history-row">
-            <div class="history-details">
-                <span id="history-txt">Order Date: May 10, 2024</span>
-                <span id="history-txt">Total Price: ₱50</span>
-                <span id="history-txt">Payment Method: GCASH</span>
-                <span id="history-txt" style="color: red;">Status: Pending</span>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
-            <div class="history-btns">
-                <span id="history-btns">View Order</span>
-                <span id="history-btns">Re-Order</span>
-                <span id="history-btns">Cancel</span>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="history-container">
-            <div class="history-row">
-            <div class="history-details">
-                <span id="history-txt">Order Date: May 10, 2024</span>
-                <span id="history-txt">Total Price: ₱50</span>
-                <span id="history-txt">Payment Method: GCASH</span>
-                <span id="history-txt" style="color: red;">Status: Pending</span>
+            <div class="history-container">
+                <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
+                <div class="history-details">
+                    <div class="history-name-date">
+                        <span id="history-product-name">Chicken Burger</span>
+                        <span id="history-product-item">6 Items</span>
+                    </div>
+                    <div class="history-item-price">
+                        <span id="history-product-date">May 20, 2024</span>
+                        <span id="history-product-price">₱50</span>
+                    </div>
+                </div>
             </div>
-            <div class="history-btns">
-                <span id="history-btns">View Order</span>
-                <span id="history-btns">Re-Order</span>
-                <span id="history-btns">Cancel</span>
-            </div>
-            </div>
-        </div>
-        <div class="history-container">
-            <div class="history-row">
-            <div class="history-details">
-                <span id="history-txt">Order Date: May 10, 2024</span>
-                <span id="history-txt">Total Price: ₱50</span>
-                <span id="history-txt">Payment Method: GCASH</span>
-                <span id="history-txt" style="color: red;">Status: Pending</span>
-            </div>
-            <div class="history-btns">
-                <span id="history-btns">View Order</span>
-                <span id="history-btns">Re-Order</span>
-                <span id="history-btns">Cancel</span>
-            </div>
-            </div>
-        </div>
-        <div class="history-container">
-            <div class="history-row">
-            <div class="history-details">
-                <span id="history-txt">Order Date: May 10, 2024</span>
-                <span id="history-txt">Total Price: ₱50</span>
-                <span id="history-txt">Payment Method: GCASH</span>
-                <span id="history-txt" style="color: red;">Status: Pending</span>
-            </div>
-            <div class="history-btns">
-                <span id="history-btns">View Order</span>
-                <span id="history-btns">Re-Order</span>
-                <span id="history-btns">Cancel</span>
-            </div>
-            </div>
-        </div>
         </div>
     </div>
 </div>

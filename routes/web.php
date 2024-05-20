@@ -1,14 +1,13 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Middleware\CheckUserHasRole;
 use App\Http\Middleware\PreventRegister;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->middleware(EnsureUserHasRole::class);
+Route::get('/', [ProductController::class, 'index'])->middleware(EnsureUserHasRole::class);
 
 Route::post('/login', [UserController::class, 'login']);
 
@@ -52,9 +51,10 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/admin', function () {
             return view('admin.admin');
         });
-        Route::get('/product_list', function () {
-            return view('admin.product_list');
-        });
+        Route::get('/product_list', [ProductController::class, 'adminIndex']);
+            Route::post('/addproduct', [ProductController::class, 'store']);
+            Route::post('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+
         Route::get('/order_list', function () {
             return view('admin.order_list');
         });
