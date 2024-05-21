@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -22,6 +23,18 @@ class ProductController extends Controller
         $products = Product::all();
 
         return view('admin.product_list', compact('products'));
+    }
+
+    public function getProductsByCategory($id)
+    {
+        if($id == 0) {
+            $products = Product::all();
+            return response()->json($products);
+        }
+        
+        $products = Product::where('category_id', $id)->get(); // Fetch products
+
+        return response()->json($products); // Return JSON response
     }
 
     /**
