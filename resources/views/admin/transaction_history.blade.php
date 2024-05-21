@@ -36,7 +36,7 @@
                         <span>SPC2024-69</span>
                     </div>
                     <div class="transaction-details">
-                        <span id="details">Details</span>
+                        <span id="transaction-details">Details</span>
                     </div>
                 </div>
                 <div class="transcation-container">
@@ -60,7 +60,7 @@
                         <span>SPC2024-69</span>
                     </div>
                     <div class="transaction-details">
-                        <span id="details">Details</span>
+                        <span id="transaction-details">Details</span>
                     </div>
                 </div>
             </div>         

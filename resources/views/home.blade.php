@@ -7,8 +7,9 @@
             <div class="dashboard-header">
                 <div class="header">
                     <div class="username">
-                        <h2 id="username">Hello {{Auth::user()->name}}!</h2>
+                        <h2 id="username">Hello {{Auth::user()->name}}</h2>
                     </div>
+                    <span id="exclamation">!</span>
                     <div class="profile">
                         <div class="user-cart">
                             <a href="cart">
@@ -42,22 +43,22 @@
                         </div>
                         <div class="body">
                             <img id="selling-image" src="images/product/default.jpg" alt="default">
-                            <div class="heart-icon">
+                            <button class="heart-icon">
                                 <iconify-icon id="heart-icon" icon="material-symbols:favorite"></iconify-icon>
-                            </div>
+                            </button>
                             <div class="product-detail">
                                 <h2 class="name">No Product</h2>
                                 <p class="price">₱0</p>
                             </div>
                             <div class="modal-btns">
                                 <div class="quantity-btns">
-                                    <div class="quantity-minus">
+                                    <button class="quantity-minus">
                                         <iconify-icon icon="ph:minus"></iconify-icon>
-                                    </div>
+                                    </button>
                                     <span>1</span>
-                                    <div class="quantity-plus">
+                                    <button class="quantity-plus">
                                         <iconify-icon icon="ph:plus"></iconify-icon>
-                                    </div>
+                                    </button>
                                 </div>
                                 <div class="add-to-cart">
                                     <button id="add-to-cart">Add to cart</button>
@@ -73,9 +74,9 @@
                         <div class="product-content">
                             <div class="product-image">
                                 <button class="show-modal" data-product="{{$product}}"><img id="product-image" src="images/product/{{$product->image}}" alt="{{$product->name}}"></button>
-                                <div class="add-cart">
-                                <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
-                                </div>
+                                <button class="add-cart">
+                                  <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
+                                </button>
                             </div>
                             <div class="products-info">
                                 <div class="product-info">
@@ -83,12 +84,10 @@
                                         <iconify-icon id="timer-icon" icon="svg-spinners:clock"></iconify-icon>
                                         <span id="product-time">{{$product->time}} mins</span>
                                     </div>
-                                    <div class="product-name">
+                                    <div class="product-name-price">
                                         <h1 id="product-name">{{$product->name}}</h1>
+                                        <span id="products-price">₱{{$product->price}}</span>
                                     </div>
-                                </div>
-                                <div class="product-price">
-                                    <span id="products-price">₱{{$product->price}}</span>
                                 </div>
                             </div>
                         </div>
