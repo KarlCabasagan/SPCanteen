@@ -2,7 +2,7 @@
 
 @section('content1')
     <div class="content">
-        <h1>Add Product</h1>
+        <h1>Product List</h1>
         <div class="add-header">
             <div class="add-product-btn open-modal">
                 <i id="add-btn" class="fa-regular fa-square-plus"></i>
@@ -61,7 +61,7 @@
                             <input id="product-price" name="price" type="text" placeholder="₱ 0.00">
                         </div>
                         <div class="product-time">
-                            <input id="product-time" name="time" type="text" placeholder="Time">
+                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)">
                         </div>
                         <div class="product-categories">
                             <label id="select-category">Select Category</label>

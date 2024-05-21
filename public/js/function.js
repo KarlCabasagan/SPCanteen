@@ -30,15 +30,33 @@ function previewProfilePicture(input) {
 document.addEventListener("DOMContentLoaded", function() {
   const openModal = document.querySelector(".open-modal");
   const closeModal = document.querySelector(".close-modal");
-  const modal = document.querySelector(".modal_product-list");
+  const productlistModal = document.querySelector(".modal_product-list");
 
-  if (openModal && closeModal && modal) {
+  if (openModal && closeModal && productlistModal) {
     openModal.addEventListener("click", () => {
-      modal.classList.add("active");
+      productlistModal.classList.add("active");
     });
 
     closeModal.addEventListener("click", () => {
-      modal.classList.remove("active");
+      productlistModal.classList.remove("active");
+    });
+  }
+});
+
+/* Admin-Modal */
+
+document.addEventListener("DOMContentLoaded", function() {
+  const openModal = document.querySelector(".open-modal");
+  const closeModal = document.querySelector(".close-modal");
+  const productlistModal = document.querySelector(".modal_product-list");
+
+  if (openModal && closeModal && productlistModal) {
+    openModal.addEventListener("click", () => {
+      productlistModal.classList.add("active");
+    });
+
+    closeModal.addEventListener("click", () => {
+      productlistModal.classList.remove("active");
     });
   }
 });
@@ -55,7 +73,10 @@ function previewProductImage(input) {
   }
 }
 
+ /* Add To Cart */
+
  /* Bottom Sheet Modal */
+
  document.addEventListener("DOMContentLoaded", function() {
   const showModalBtns = document.querySelectorAll(".show-modal");
   const bottomSheet = document.querySelector(".bottom-sheet");
@@ -194,29 +215,31 @@ document.addEventListener("DOMContentLoaded", function() {
           productTime.appendChild(timerIcon);
           productTime.appendChild(productTimeElement);
 
-          const productName = document.createElement('div');
-          productName.classList.add('product-name');
+          const productNamePrice = document.createElement('div');
+          productNamePrice.classList.add('product-name-price');
 
           const productNameElement = document.createElement('h1');
           productNameElement.id = 'product-name';
           productNameElement.textContent = product.name;
 
-          productName.appendChild(productNameElement);
-
-          productInfo.appendChild(productTime);
-          productInfo.appendChild(productName);
-
-          const productPrice = document.createElement('div');
-          productPrice.classList.add('product-price');
-
+          productNamePrice.appendChild(productNameElement);
+          
           const productPriceElement = document.createElement('span');
           productPriceElement.id = 'products-price';
           productPriceElement.textContent = `₱${product.price}`;
 
-          productPrice.appendChild(productPriceElement);
+          productNamePrice.appendChild(productPriceElement);
+
+          productInfo.appendChild(productTime);
+          productInfo.appendChild(productNamePrice);
+          
+          // const productPrice = document.createElement('div');
+          // productPrice.classList.add('product-price');
+
+          
 
           productsInfo.appendChild(productInfo);
-          productsInfo.appendChild(productPrice);
+          // productsInfo.appendChild(productPrice);
 
           productContent.appendChild(productImage);
           productContent.appendChild(productsInfo);
@@ -295,4 +318,5 @@ document.addEventListener("DOMContentLoaded", function() {
       });
     });
   });
+
 });
