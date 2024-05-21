@@ -67,7 +67,7 @@
                     </div>
                 </div> 
             </div>
-            <div class="products">
+            <div class="products" id="products">
                 @foreach ($products as $product)
                     <div class="product-container">
                         <div class="product-content">

@@ -27,6 +27,8 @@ Route::post('/register', [UserController::class, 'register']);
 
 Route::middleware(['logged-in'])->group(function () {
     Route::middleware(['user'])->group(function () {
+        Route::get('/products/category/{categoryId}', [ProductController::class, 'getProductsByCategory']);
+        
         Route::get('/favorite', function () {
             return view('user.favorite');
         });
