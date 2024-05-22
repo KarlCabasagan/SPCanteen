@@ -7,9 +7,8 @@
             <div class="dashboard-header">
                 <div class="header">
                     <div class="username">
-                        <h2 id="username">Hello {{Auth::user()->name}}</h2>
+                        <h2 id="username">Hello {{Auth::user()->name}}!</h2>
                     </div>
-                    <span id="exclamation">!</span>
                     <div class="profile">
                         <div class="user-cart">
                             <a href="cart">
