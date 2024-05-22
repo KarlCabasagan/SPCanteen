@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Favorite;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -35,6 +36,18 @@ class ProductController extends Controller
         $products = Product::where('category_id', $id)->get();
 
         return response()->json($products);
+    }
+
+    public function getCategoryName($id) 
+    {
+        $category = Category::find($id);
+
+        if ($category) {
+            $categoryName = $category->name;
+            return response()->json($categoryName);
+          } else {
+            return response()->json("All");
+          }
     }
 
     /**
@@ -77,6 +90,47 @@ class ProductController extends Controller
 
         $product = Product::create($validatedData);
         return redirect('/product_list');
+    }
+
+    public function addDeleteFavorite($productId)
+    {
+        $product = Product::find($productId);
+        $userId = auth()->user()->id;
+
+        $checkFavorite = Favorite::where('user_id', $userId)->where('product_id', $productId)->first();
+        
+        if ($checkFavorite) {
+            $checkFavorite->delete();
+            return response()->json(false);
+        } else {
+            if (!$product) {
+                return response()->json(['error' => 'Invalid product ID'], 400);
+            } else {
+    
+                $favorite = new Favorite();
+    
+                $favorite->user_id = $userId;
+                $favorite->product_id = $productId;
+    
+                $favorite->save();
+    
+                return response()->json(true);
+    
+            }
+        }
+    }
+
+    public function showFavorite($productId) {
+
+        $userId = auth()->user()->id;
+
+        $checkFavorite = Favorite::where('user_id', $userId)->where('product_id', $productId)->first();
+        
+        if ($checkFavorite) {
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        }
     }
 
     /**

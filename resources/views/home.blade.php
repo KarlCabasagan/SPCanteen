@@ -34,7 +34,7 @@
                     <span id="recommended">Recommended</span>
                     <span id="categories">All</span>
                 </div>
-                <form class="bottom-sheet">
+                <form class="bottom-sheet" id="bottom-sheet">
                     <div class="sheet-overlay"></div>
                     <div class="content">
                         <div class="header">
@@ -42,7 +42,7 @@
                         </div>
                         <div class="body">
                         <img id="selling-image" src="images/product/default.jpg" alt="default">
-                        <button class="heart-icon">
+                        <button class="heart-button" id="heart-button">
                             <iconify-icon id="heart-icon" icon="material-symbols:favorite"></iconify-icon>
                         </button>
                         <div class="product-detail">
@@ -74,7 +74,7 @@
                         <div class="product-content">
                             <div class="product-image">
                                 <button class="show-modal" data-product="{{$product}}"><img id="product-image" src="images/product/{{$product->image}}" alt="{{$product->name}}"></button>
-                                <button class="add-cart">
+                                <button class="add-cart" id="add-cart" data-product="{{$product}}">
                                   <iconify-icon id="add-icon" icon="ph:plus"></iconify-icon>
                                 </button>
                             </div>

@@ -51,6 +51,43 @@ class CartController extends Controller
           }
     }
 
+    public function SingleStoreToCart($productId)
+    {
+        $userId = auth()->user()->id;
+
+        $checkCart = Cart::where('user_id', $userId)->where('product_id', $productId)->first();
+
+        if ($checkCart) {
+
+            $checkCart->quantity++;
+            $checkCart->save();
+
+            $cartData = Cart::where('user_id', $userId)->get();
+
+            $productCount = $cartData->count();
+            return response()->json($productCount);
+
+        } else {
+
+            $userId = auth()->user()->id;
+
+            $cart = new Cart();
+
+            $cart->user_id = $userId;
+            $cart->product_id = $productId;
+            $cart->quantity = 1;
+
+            $cart->save();
+
+            $cartData = Cart::where('user_id', $userId)->get();
+
+            $productCount = $cartData->count();
+            return response()->json($productCount);
+        }
+
+    }
+
+
     /**
      * Display the specified resource.
      */

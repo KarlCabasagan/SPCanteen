@@ -1236,7 +1236,7 @@
   font-size: 16px;
 }
 
-.heart-icon {
+.heart-button {
   position: absolute;
   background-color: white;
   border: none;
@@ -1244,6 +1244,7 @@
   height: 46px;
   border-radius: 50%;
   margin: 10px 0 0 295px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 } 
 
 #heart-icon {
