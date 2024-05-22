@@ -3,7 +3,22 @@
 @section('content1')
 <div class="content">
     <div class="favorites-header">
-        <span id="favorites-header-txt">MY FAVORITE</span>
+        <div class="header">
+                    <div class="favorites-header-txt">
+                      <span id="favorites-header-txt">MY FAVORITE</span>
+                    </div>
+                    <div class="profile">
+                        <div class="user-cart">
+                            <a href="cart">
+                                <iconify-icon id="cart" icon="uil:cart"></iconify-icon>
+                                <span class="quantity">0</span>
+                            </a>
+                        </div>
+                        <div class="user-avatar">
+                            <a href="/profile"><img id="profile" src="{{ asset('images/profile/' . Auth::user()->image) }}" alt="Profile Picture"></a>
+                        </div>
+                    </div>
+                </div>
         <div class="search-bar">
             <form action="" class="search-form">
                 <input type="text" id="searchInput" placeholder="Search product . . . ." name="search">
