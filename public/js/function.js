@@ -86,6 +86,7 @@ function previewProductImage(input) {
 
   let currentQuantity = 1;
   let productId = undefined;
+  let Favorite = false;
 
   let isDragging = false, startY, startHeight;
   
@@ -220,13 +221,28 @@ function previewProductImage(input) {
     fetch(`/cart/store/product/${productId}?quantity=${currentQuantity}`)
     .then(response => response.json())
     .then(data => {
-      updateInCart(data);
+
+      fetch(`/cart/show/product/inside`)
+      .then(response => response.json())
+      .then(data => {
+        updateInCart(data);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
       hideBottomSheet();
     })
     .catch(error => {
       console.error('Error:', error);
     });
   });
+
+  //Favorite
+  function modifyFavButton() {
+    
+  }
+
 });
 
 
@@ -267,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
           showModalButton.appendChild(productImageElement);
 
-          const addCart = document.createElement('div');
+          const addCart = document.createElement('button');
           addCart.classList.add('add-cart');
 
           const addIcon = document.createElement('iconify-icon');
@@ -337,13 +353,17 @@ document.addEventListener("DOMContentLoaded", function() {
         const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
         const sheetContent = bottomSheet.querySelector(".content");
         const dragIcon = bottomSheet.querySelector(".drag-icon");
-        
+
+        let currentQuantity = 1;
+        let productId = undefined;
+
         let isDragging = false, startY, startHeight;
         
         const showBottomSheet = () => {
           bottomSheet.classList.add("show");
           document.body.style.overflowY = "hidden";
           updateSheetHeight(50);
+          minusButtonColor(currentQuantity);
         }
         
         const updateSheetHeight = (height) => {
@@ -354,8 +374,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const hideBottomSheet = () => {
           bottomSheet.classList.remove("show");
           document.body.style.overflowY = "auto";
-          document.getElementById("modal-quantity").innerHTML = 0;
-
+          document.getElementById("modal-quantity").innerHTML = 1;
+          currentQuantity = 1;
+          productId = undefined;
         }
         
         const dragStart = (e) => {
@@ -389,52 +410,100 @@ document.addEventListener("DOMContentLoaded", function() {
         
         showModalBtns.forEach(btn => {
           btn.addEventListener("click", () => {
-            const product = JSON.parse(btn.dataset.product);
+              const product = JSON.parse(btn.dataset.product);
 
-            document.getElementById("selling-image").src = "images/product/" + product.image;
-            document.getElementById("heart-icon").classList.remove("active");
-            document.querySelector(".name").textContent = product.name;
-            document.querySelector(".price").textContent = "₱" + product.price;
-            document.getElementById("modal-quantity").innerHTML = 1;
+              document.getElementById("selling-image").src = "images/product/" + product.image;
+              document.getElementById("heart-icon").classList.remove("active");
+              document.querySelector(".name").textContent = product.name;
+              document.querySelector(".price").textContent = "₱" + product.price;
+              document.getElementById("modal-quantity").innerHTML = 1;
+              productId = product.id;
 
-            showBottomSheet();
+              showBottomSheet();
+          });
+        });
+
+        //quantity Plus and Minus Function
+        const minusButton = document.getElementById("quantity-minus");
+        const addButton = document.getElementById("quantity-plus");
+        const quantitySpan = document.getElementById("modal-quantity");
+
+        currentQuantity = parseInt(quantitySpan.textContent, 10);
+
+        function minusButtonColor(currentQuantity) {
+          if (currentQuantity > 1) {
+            minusButton.style.backgroundColor = "maroon";
+            minusButton.style.cursor = "pointer";
+          } else {
+            minusButton.style.backgroundColor = "#D3D3D3";
+            minusButton.style.cursor = "default";
+          }
+        }
+
+        function updateInputQuanity(currentQuantity) {
+          const quantityInput = document.getElementById("input-quantity");
+          quantityInput.value = currentQuantity;
+
+          const newQuantity = quantityInput.value;
+        }
+
+        minusButtonColor(currentQuantity);
+        addButton.addEventListener('click', function(e) {
+          e.preventDefault(e);
+          currentQuantity++;
+          quantitySpan.textContent = currentQuantity;
+          minusButtonColor(currentQuantity);
+          updateInputQuanity(currentQuantity)
+        });
+
+        minusButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          if (currentQuantity > 1) {
+            currentQuantity--;
+            quantitySpan.textContent = currentQuantity;
+            minusButtonColor(currentQuantity);
+            updateInputQuanity(currentQuantity)
+          }
+        });
+
+        //Update header quantity(Inside cart Icon)
+        function updateInCart(value) {
+          document.getElementById("in-cart").innerHTML = value;
+        }
+
+        //Show header quantity(Inside cart Icon)
+        fetch(`/cart/show/product/inside`)
+          .then(response => response.json())
+          .then(data => {
+            updateInCart(data);
+          })
+          .catch(error => {
+            console.error('Error:', error);
+          });
+
+
+        //Add to cart function
+        const addCartButton = document.getElementById("add-2-cart");
+        addCartButton.addEventListener("click", (e) => {
+          e.preventDefault();
+
+          fetch(`/cart/store/product/${productId}?quantity=${currentQuantity}`)
+          .then(response => response.json())
+          .then(data => {
             
-            //quantity Plus and Minus Function
-            const minusButton = document.getElementById("quantity-minus");
-            const addButton = document.getElementById("quantity-plus");
-            const quantitySpan = document.getElementById("modal-quantity");
-
-            let currentQuantity = parseInt(quantitySpan.textContent, 10);
-
-            function minusButtonColor(currentQuantity) {
-              if (currentQuantity > 1) {
-                minusButton.style.backgroundColor = "maroon";
-                minusButton.style.cursor = "pointer";
-              } else {
-                minusButton.style.backgroundColor = "#D3D3D3";
-                minusButton.style.cursor = "default";
-              }
-            }
-
-            addButton.addEventListener('click', function() {
-              currentQuantity++;
-              quantitySpan.textContent = currentQuantity;
-              minusButtonColor(currentQuantity);
+            fetch(`/cart/show/product/inside`)
+            .then(response => response.json())
+            .then(data => {
+              updateInCart(data);
+            })
+            .catch(error => {
+              console.error('Error:', error);
             });
 
-            minusButton.addEventListener('click', function() {
-              if (currentQuantity > 1) {
-                currentQuantity--;
-                quantitySpan.textContent = currentQuantity;
-                minusButtonColor(currentQuantity);
-              }
-            });
-
-            //Add to cart function
-            const addCartButton = document.getElementById("add-to-cart");
-            addCartButton.addEventListener("click", () => {
-              
-            });
+            hideBottomSheet();
+          })
+          .catch(error => {
+            console.error('Error:', error);
           });
         });
 
