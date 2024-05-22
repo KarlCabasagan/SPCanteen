@@ -32,9 +32,9 @@ class ProductController extends Controller
             return response()->json($products);
         }
         
-        $products = Product::where('category_id', $id)->get(); // Fetch products
+        $products = Product::where('category_id', $id)->get();
 
-        return response()->json($products); // Return JSON response
+        return response()->json($products);
     }
 
     /**

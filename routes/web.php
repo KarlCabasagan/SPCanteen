@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureUserHasRole;
@@ -28,7 +29,9 @@ Route::post('/register', [UserController::class, 'register']);
 Route::middleware(['logged-in'])->group(function () {
     Route::middleware(['user'])->group(function () {
         Route::get('/products/category/{categoryId}', [ProductController::class, 'getProductsByCategory']);
-        
+        Route::get('/cart/store/product/{product}', [CartController::class, 'store']);
+        Route::get('/cart/show/product/inside', [CartController::class, 'show']);
+
         Route::get('/favorite', function () {
             return view('user.favorite');
         });

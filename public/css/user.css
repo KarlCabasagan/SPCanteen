@@ -1020,6 +1020,7 @@
   color: white;
   font-size: 20px;
   margin-right: 20px;
+  cursor: default;
 }
 
 .quantity-plus {
@@ -1040,6 +1041,9 @@
   background-color: maroon;
   padding: 14px 40px 14px 40px;
   border-radius: 4px;
+  border: none;
+  color: white;
+  font-size: 16px;
 }
 
 #add-to-cart {

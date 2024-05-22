@@ -14,7 +14,7 @@
                         <div class="user-cart">
                             <a href="cart">
                                 <iconify-icon id="cart" icon="uil:cart"></iconify-icon>
-                                <span class="quantity">0</span>
+                                <span class="quantity" id="in-cart">0</span>
                             </a>
                         </div>
                         <div class="user-avatar">
@@ -35,38 +35,39 @@
                     <span id="recommended">Recommended</span>
                     <span id="categories">All</span>
                 </div>
-                <div class="bottom-sheet">
+                <form class="bottom-sheet">
                     <div class="sheet-overlay"></div>
                     <div class="content">
                         <div class="header">
-                            <div class="drag-icon"><span class="header-icon"></span></div>
+                        <div class="drag-icon"><span class="header-icon"></span></div>
                         </div>
                         <div class="body">
-                            <img id="selling-image" src="images/product/default.jpg" alt="default">
-                            <button class="heart-icon">
-                                <iconify-icon id="heart-icon" icon="material-symbols:favorite"></iconify-icon>
+                        <img id="selling-image" src="images/product/default.jpg" alt="default">
+                        <button class="heart-icon">
+                            <iconify-icon id="heart-icon" icon="material-symbols:favorite"></iconify-icon>
+                        </button>
+                        <div class="product-detail">
+                            <h2 class="name">No Product</h2>
+                            <p class="price">₱0</p>
+                        </div>
+                        <div class="modal-btns">
+                            <div class="quantity-btns">
+                            <button class="quantity-minus" id="quantity-minus">
+                                <iconify-icon icon="ph:minus"></iconify-icon>
                             </button>
-                            <div class="product-detail">
-                                <h2 class="name">No Product</h2>
-                                <p class="price">₱0</p>
+                            <input type="number" id="input-quantity" min="1" value="1" style="display: none;">
+                            <span id="modal-quantity">1</span>
+                            <button class="quantity-plus" id="quantity-plus">
+                                <iconify-icon icon="ph:plus"></iconify-icon>
+                            </button>
                             </div>
-                            <div class="modal-btns">
-                                <div class="quantity-btns">
-                                    <button class="quantity-minus">
-                                        <iconify-icon icon="ph:minus"></iconify-icon>
-                                    </button>
-                                    <span>1</span>
-                                    <button class="quantity-plus">
-                                        <iconify-icon icon="ph:plus"></iconify-icon>
-                                    </button>
-                                </div>
-                                <div class="add-to-cart">
-                                    <button id="add-to-cart">Add to cart</button>
-                                </div>
-                            </div>
+                            <button type="submit" class="add-to-cart" id="add-2-cart" data-product="">
+                            Add to cart
+                            </button>
+                        </div>
                         </div>
                     </div>
-                </div> 
+                </form>
             </div>
             <div class="products" id="products">
                 @foreach ($products as $product)
