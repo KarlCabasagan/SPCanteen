@@ -355,6 +355,8 @@ function previewProductImage(input) {
 
             const addCart = document.createElement('button');
             addCart.classList.add('add-cart');
+            addCart.id = 'add-cart';
+            addCart.dataset.product = JSON.stringify(product);
 
             const addIcon = document.createElement('iconify-icon');
             addIcon.id = 'add-icon';
@@ -420,6 +422,7 @@ function previewProductImage(input) {
 
           const showModalBtns = document.querySelectorAll(".show-modal");
           const bottomSheet = document.querySelector(".bottom-sheet");
+          const addCartBtn = document.querySelectorAll(".add-cart");
           const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
           const sheetContent = bottomSheet.querySelector(".content");
           const dragIcon = bottomSheet.querySelector(".drag-icon");
@@ -435,6 +438,7 @@ function previewProductImage(input) {
             document.body.style.overflowY = "hidden";
             updateSheetHeight(50);
             minusButtonColor(currentQuantity);
+            modifyFavButton(favorite);
           }
           
           const updateSheetHeight = (height) => {
@@ -490,10 +494,40 @@ function previewProductImage(input) {
                 document.querySelector(".price").textContent = "₱" + product.price;
                 document.getElementById("modal-quantity").innerHTML = 1;
                 productId = product.id;
+                fetch(`/favorite/show/${productId}`)
+                .then(response => response.json())
+                .then(data => {
+                  favorite = data;
+                  modifyFavButton(favorite);
+                })
+                .catch(error => {
+                  console.error('Error:', error);
+                });
+
 
                 showBottomSheet();
             });
           });
+
+          addCartBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+              const product = JSON.parse(btn.dataset.product);
+              productId = product.id;
+
+              fetch(`/cart/store/single/product/${productId}`)
+              .then(response => response.json())
+              .then(data => {
+                updateInCart(data)
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+
+            });
+          });
+
+
+
           //quantity Plus and Minus Function
           const minusButton = document.getElementById("quantity-minus");
           const addButton = document.getElementById("quantity-plus");
@@ -578,9 +612,30 @@ function previewProductImage(input) {
             });
           });
 
-          //Favorite
-          function modifyFavButton() {
-            
+
+          //Add Favorite Function 
+
+          const favButton = document.getElementById("heart-button");
+          favButton.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            fetch(`/favorite/add/${productId}`)
+            .then(response => response.json())
+            .then(data => {
+              modifyFavButton(data);
+            })
+            .catch(error => {
+              console.error('Error:', error);
+            });
+          });
+
+          //Favorite Color Function
+          function modifyFavButton(fav) {
+            if (fav == true) {
+              document.getElementById("heart-icon").style.color = "#D00000";
+            } else {
+              document.getElementById("heart-icon").style.color = "lightgray";
+            }
           }
         })
         .catch(error => {
@@ -619,7 +674,8 @@ function previewProductImage(input) {
         sellingImage.alt = 'default';
 
         const heartIcon = document.createElement('button');
-        heartIcon.classList.add('heart-icon');
+        heartIcon.classList.add('heart-button');
+        heartIcon.id = 'heart-button';
 
         const heartIconify = document.createElement('iconify-icon');
         heartIconify.id = 'heart-icon';
