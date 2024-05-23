@@ -46,9 +46,9 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/profile', function () {
             return view('user.profile');
         });
-        Route::get('/cart', function () {
-            return view('user.cart');
-        });
+        
+        Route::get('/cart', [CartController::class, 'index']);
+
         Route::get('/payment', function () {
             return view('user.payment');
         });

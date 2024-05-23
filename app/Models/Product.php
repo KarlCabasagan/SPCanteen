@@ -31,7 +31,7 @@ class Product extends Model
         return $this->belongsTo(Category::class,'category_id');
     }
 
-    public function orders(){
+    public function cart(){
         return $this->belongsToMany(Cart::class);
     }
 }
