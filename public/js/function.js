@@ -81,9 +81,6 @@ function previewProductImage(input) {
 
  if (currentUrl == "http://127.0.0.1:8000/" || currentUrl == "http://127.0.0.1:8000/?" || currentUrl == "http://127.0.0.1:8000/#") {
   let categoryId = 0;
-  let currentQuantity = 1;
-  let productId = undefined;
-  let favorite = false;
 
   document.addEventListener("DOMContentLoaded", function() {
     const showModalBtns = document.querySelectorAll(".show-modal");
@@ -92,6 +89,10 @@ function previewProductImage(input) {
     const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
     const sheetContent = bottomSheet.querySelector(".content");
     const dragIcon = bottomSheet.querySelector(".drag-icon");
+
+    let currentQuantity = 1;
+    let productId = undefined;
+    let favorite = false;
 
     let isDragging = false, startY, startHeight;
     
@@ -477,6 +478,10 @@ function previewProductImage(input) {
     const sheetOverlay = bottomSheet.querySelector(".sheet-overlay");
     const sheetContent = bottomSheet.querySelector(".content");
     const dragIcon = bottomSheet.querySelector(".drag-icon");
+
+    let currentQuantity = 1;
+    let productId = undefined;
+    let favorite = false;
 
     let isDragging = false, startY, startHeight;
     
