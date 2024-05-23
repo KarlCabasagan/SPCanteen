@@ -17,13 +17,11 @@ return new class extends Migration
             $table->double('amount');
             $table->string('qr');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('cart_id');
             $table->unsignedBigInteger('payment_id');
             $table->timestamps();
 
             $table->foreign('status_id')->references('id')->on('statuses');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('cart_id')->references('id')->on('carts');
             $table->foreign('payment_id')->references('id')->on('payments');
         });
     }
