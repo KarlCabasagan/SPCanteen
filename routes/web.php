@@ -35,6 +35,7 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/favorite/add/{product}', [ProductController::class, 'addDeleteFavorite']);
         Route::get('/favorite/show/{product}', [ProductController::class, 'showFavorite']);
         Route::get('/cart/store/single/product/{product}', [CartController::class, 'SingleStoreToCart']);
+        Route::get('/product/search/{product}', [ProductController::class, 'searchProduct']);
 
         Route::get('/favorite', function () {
             return view('user.favorite');

@@ -23,7 +23,7 @@
                 </div>
                 @include('layouts.components.user.categories')
                 <div class="search-bar">
-                    <form action="" class="search-form">
+                    <form class="search-form" id="search-form">
                         <input type="text" id="searchInput" placeholder="Search product . . . ." name="search">
                         <button id="search-btn" type="submit">
                             <iconify-icon id="search-icon" icon="iconamoon:search-thin"></iconify-icon>

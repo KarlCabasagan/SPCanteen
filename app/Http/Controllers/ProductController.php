@@ -57,6 +57,26 @@ class ProductController extends Controller
           }
     }
 
+    public function searchProduct(Request $request, $productName)
+    {
+        $categoryId = $request->query('categoryId');
+
+        $products = Product::where('name', 'like', '%'. $productName. '%')->get();
+
+        if ($categoryId >= 1 && $categoryId <= 7) {
+            $products = Product::where('name', 'like', '%'. $productName. '%')->where('category_id', $categoryId)->get();
+            
+            return response()->json($products);
+        }
+
+        if ($products->count() > 0 ) {
+            return response()->json($products);
+        } else {
+            $products = Product::all();
+            return response()->json($products);
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      */

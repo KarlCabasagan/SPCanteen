@@ -31,14 +31,16 @@ class CartController extends Controller
     public function store(Request $request, $productId)
     {
         $quantity = $request->query('quantity');
+        $userId = auth()->user()->id;
 
-        $product = Product::find($productId);
+        $checkCart = Cart::where('user_id', $userId)->where('product_id', $productId)->first();
 
-        if (!$product) {
-            return response()->json(['error' => 'Invalid product ID'], 400);
-          } else {
-            $userId = auth()->user()->id;
+        if ($checkCart) {
+            $checkCart->quantity += $quantity;
+            $checkCart->save();
 
+            return response()->json($productId);
+        } else {
             $cart = new Cart();
 
             $cart->user_id = $userId;
@@ -48,7 +50,8 @@ class CartController extends Controller
             $cart->save();
 
             return response()->json($productId);
-          }
+        }
+
     }
 
     public function SingleStoreToCart($productId)
