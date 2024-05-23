@@ -344,7 +344,7 @@ function previewProductImage(input) {
         categoryId = this.dataset.categoryId;
         //console.log(categoryId);
 
-        fetch(`/products/category/${categoryId}`)
+        fetch(`/product/category/${categoryId}`)
         .then(response => response.json())
         .then(data => {
           
@@ -357,7 +357,7 @@ function previewProductImage(input) {
             console.error('Error:', error);
           });
           
-          productsContainer.innerHTML = ""; 
+          productsContainer.innerHTML = "";
 
           data.forEach(product => {
             updateProductList(product);
@@ -853,7 +853,7 @@ function previewProductImage(input) {
         fetch(`/product/search/${searchInput.value}?categoryId=${categoryId}`)
         .then(response => response.json())
         .then(data => {
-          //console.log(data);
+          console.log(data);
           productsContainer.innerHTML = "";
 
           data.forEach(product => {
@@ -867,7 +867,7 @@ function previewProductImage(input) {
           console.error('Error:', error);
         });
       } else {
-        fetch(`/products/category/${categoryId}`)
+        fetch(`/product/category/${categoryId}`)
         .then(response => response.json())
         .then(data => {
           //console.log("without value:" + categoryId);

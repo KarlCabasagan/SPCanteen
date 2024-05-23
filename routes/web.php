@@ -28,7 +28,7 @@ Route::post('/register', [UserController::class, 'register']);
 
 Route::middleware(['logged-in'])->group(function () {
     Route::middleware(['user'])->group(function () {
-        Route::get('/products/category/{categoryId}', [ProductController::class, 'getProductsByCategory']);
+        Route::get('/product/category/{categoryId}', [ProductController::class, 'getProductsByCategory']);
         Route::get('/product/category/name/{categoryId}', [ProductController::class, 'getCategoryName']);
         Route::get('/cart/store/product/{product}', [CartController::class, 'store']);
         Route::get('/cart/show/product/inside', [CartController::class, 'show']);
