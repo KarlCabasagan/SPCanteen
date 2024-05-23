@@ -862,10 +862,10 @@ function previewProductImage(input) {
           console.error('Error:', error);
         });
       } else {
-        fetch(`/product/search/azzzz?categoryId=${categoryId}`)
+        fetch(`/products/category/${categoryId}`)
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+          //console.log("without value:" + categoryId);
           productsContainer.innerHTML = "";
           
           data.forEach(product => {
