@@ -17,6 +17,16 @@ class Product extends Model
         'category_id',
     ];
 
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtolower($value);
+    }
+
+    public function getNameAttribute($value)
+    {
+        return ucwords($value);
+    }
+
     public function category() {
         return $this->belongsTo(Category::class,'category_id');
     }

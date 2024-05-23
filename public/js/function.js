@@ -298,6 +298,10 @@ function previewProductImage(input) {
         document.getElementById("heart-icon").style.color = "lightgray";
       }
     }
+
+    
+
+
   });
 
 

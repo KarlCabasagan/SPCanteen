@@ -16,12 +16,19 @@ class ProductController extends Controller
     public function index() {
         $products = Product::all();
 
+        foreach ($products as $product) {
+            $product->name = ucwords($product->name);
+        }
+
         return view('home', compact('products'));
     }
     
     public function adminIndex()
     {
         $products = Product::all();
+        foreach ($products as $product) {
+            $product->name = ucwords($product->name);
+        }
 
         return view('admin.product_list', compact('products'));
     }
