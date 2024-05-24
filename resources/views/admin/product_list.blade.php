@@ -24,7 +24,7 @@
                     <div class="label">
                         <h3>{{$product->name}}</h3>
                         <div class="icon-container">
-                            <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
+                            <iconify-icon icon="tabler:edit" class="tabler-edit open-modal"></iconify-icon>
                             <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                                 @csrf 
                                 <button type="submit" class="delete-button">
@@ -35,7 +35,7 @@
                     </div>
                 </div>
             @endforeach
-
+        </div>
         <!--------- Add Product Modal -------->
     <div class="modal_product-list">
         <form action="/addproduct" method="POST" enctype="multipart/form-data">

@@ -73,8 +73,6 @@ function previewProductImage(input) {
   }
 }
 
- /* Add To Cart */
-
  /* Bottom Sheet Modal */
 
  document.addEventListener("DOMContentLoaded", function() {

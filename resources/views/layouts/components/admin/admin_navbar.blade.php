@@ -5,25 +5,25 @@
     </div>
     <div class="icon-bar">
       <div class="nav-btns">
-        <a class="active" href="admin">
+        <a href="admin">
           <iconify-icon icon="clarity:dashboard-line" style="font-size: 26px;"></iconify-icon>
           <span id="nav-txt">Dashboard</span>
         </a>
       </div>
       <div class="nav-btns">
-        <a class="active" href="product_list">
+        <a  href="product_list">
           <iconify-icon icon="el:list-alt" style="font-size: 26px;"></iconify-icon>
           <span id="nav-txt">Product List</span>
         </a>
       </div>
       <div class="nav-btns">
-        <a class="active" href="order_list">
+        <a href="order_list">
           <iconify-icon icon="ic:baseline-pending-actions" style="font-size: 26px;"></iconify-icon>
           <span id="nav-txt">Order List</span>
         </a>
       </div>
       <div class="nav-btns">
-        <a class="active" href="transaction_history">
+        <a href="transaction_history">
           <iconify-icon icon="fluent:clipboard-task-list-16-regular" style="font-size: 26px;"></iconify-icon>
           <span id="nav-txt">Transaction History</span>
         </a>
@@ -32,7 +32,7 @@
         @csrf
         <div class="nav-btns">
           <button id="logout" type="submit">
-            <a class="active">
+            <a >
               <iconify-icon icon="humbleicons:logout" style="font-size: 28px;"></iconify-icon>
               <span id="nav-txt">Logout</span>
             </a>
@@ -46,5 +46,5 @@
         </p>
       </div>
     </div>
-  </div>
+  </div> 
 </div>

@@ -22,7 +22,7 @@ body{
   margin-top: 30px;
 }
 
-.icon-bar a {
+a {
   display: flex;
   align-items: center;
   text-align: left;
@@ -33,7 +33,7 @@ body{
   font-size: 16px;
 }
 
-.icon-bar a:hover {
+.active, a:hover {
   background-color: maroon;
   color: white;
   border-radius: 10px;
@@ -236,7 +236,7 @@ h3 {
 .product-list {
   display: flex;
   flex-wrap: wrap;
-  margin: 30px 60px;
+  margin: 30px 54px;
   overflow-y: auto;
   max-height: 70vh;
 }
@@ -247,7 +247,6 @@ h3 {
   align-items: center;
   margin: 11.25px;
   position: relative; 
-  
 }
 
 #product-img {
@@ -261,7 +260,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  width: 203px;
+  width: 202px;
   height: auto;
   bottom: 0;
   margin-top: 100px;

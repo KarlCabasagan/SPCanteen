@@ -34,6 +34,7 @@
                     <span id="recommended">Recommended</span>
                     <span id="categories">All</span>
                 </div>
+                <!-- Bottom Sheet Modal -->
                 <div class="bottom-sheet">
                     <div class="sheet-overlay"></div>
                     <div class="content">
@@ -67,6 +68,7 @@
                     </div>
                 </div> 
             </div>
+            <!-- Product-List -->
             <div class="products" id="products">
                 @foreach ($products as $product)
                     <div class="product-container">
