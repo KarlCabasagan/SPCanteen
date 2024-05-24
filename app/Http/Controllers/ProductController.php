@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Favorite;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -15,12 +16,19 @@ class ProductController extends Controller
     public function index() {
         $products = Product::all();
 
+        foreach ($products as $product) {
+            $product->name = ucwords($product->name);
+        }
+
         return view('home', compact('products'));
     }
     
     public function adminIndex()
     {
         $products = Product::all();
+        foreach ($products as $product) {
+            $product->name = ucwords($product->name);
+        }
 
         return view('admin.product_list', compact('products'));
     }
@@ -32,9 +40,41 @@ class ProductController extends Controller
             return response()->json($products);
         }
         
-        $products = Product::where('category_id', $id)->get(); // Fetch products
+        $products = Product::where('category_id', $id)->get();
 
-        return response()->json($products); // Return JSON response
+        return response()->json($products);
+    }
+
+    public function getCategoryName($id) 
+    {
+        $category = Category::find($id);
+
+        if ($category) {
+            $categoryName = $category->name;
+            return response()->json($categoryName);
+          } else {
+            return response()->json("All");
+          }
+    }
+
+    public function searchProduct(Request $request, $productName)
+    {
+        $categoryId = $request->query('categoryId');
+
+        $products = Product::where('name', 'like', '%'. $productName. '%')->get();
+
+        if ($categoryId >= 1 && $categoryId <= 7) {
+            $products = Product::where('name', 'like', '%'. $productName. '%')->where('category_id', $categoryId)->get();
+            
+            return response()->json($products);
+        }
+
+        if ($products->count() > 0 ) {
+            return response()->json($products);
+        } else {
+            $products = Product::all();
+            return response()->json($products);
+        }
     }
 
     /**
@@ -77,6 +117,47 @@ class ProductController extends Controller
 
         $product = Product::create($validatedData);
         return redirect('/product_list');
+    }
+
+    public function addDeleteFavorite($productId)
+    {
+        $product = Product::find($productId);
+        $userId = auth()->user()->id;
+
+        $checkFavorite = Favorite::where('user_id', $userId)->where('product_id', $productId)->first();
+        
+        if ($checkFavorite) {
+            $checkFavorite->delete();
+            return response()->json(false);
+        } else {
+            if (!$product) {
+                return response()->json(['error' => 'Invalid product ID'], 400);
+            } else {
+    
+                $favorite = new Favorite();
+    
+                $favorite->user_id = $userId;
+                $favorite->product_id = $productId;
+    
+                $favorite->save();
+    
+                return response()->json(true);
+    
+            }
+        }
+    }
+
+    public function showFavorite($productId) {
+
+        $userId = auth()->user()->id;
+
+        $checkFavorite = Favorite::where('user_id', $userId)->where('product_id', $productId)->first();
+        
+        if ($checkFavorite) {
+            return response()->json(true);
+        } else {
+            return response()->json(false);
+        }
     }
 
     /**
