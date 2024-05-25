@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\EnsureUserHasRole;
@@ -32,14 +33,14 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/product/category/name/{categoryId}', [ProductController::class, 'getCategoryName']);
         Route::get('/cart/store/product/{product}', [CartController::class, 'store']);
         Route::get('/cart/show/product/inside', [CartController::class, 'show']);
-        Route::get('/favorite/add/{product}', [ProductController::class, 'addDeleteFavorite']);
-        Route::get('/favorite/show/{product}', [ProductController::class, 'showFavorite']);
+        Route::get('/favorite/add/{product}', [FavoriteController::class, 'addDeleteFavorite']);
+        Route::get('/favorite/show/{product}', [FavoriteController::class, 'showFavorite']);
         Route::get('/cart/store/single/product/{product}', [CartController::class, 'SingleStoreToCart']);
         Route::get('/product/search/{product}', [ProductController::class, 'searchProduct']);
 
-        Route::get('/favorite', function () {
-            return view('user.favorite');
-        });
+        Route::get('/favorite', [FavoriteController::class, 'index']);
+        Route::get('/favorite/remove/{productId}', [FavoriteController::class, 'removeFavorite']);
+
         Route::get('/history', function () {
             return view('user.history');
         });

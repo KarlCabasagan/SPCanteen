@@ -15,6 +15,6 @@ class Favorite extends Model
     ];
 
     public function product() {
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }
