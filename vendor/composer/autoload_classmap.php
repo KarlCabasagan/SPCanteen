@@ -6,7 +6,9 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Http\\Controllers\\CartController' => $baseDir . '/app/Http/Controllers/CartController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\ProductController' => $baseDir . '/app/Http/Controllers/ProductController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',
     'App\\Http\\Middleware\\CheckAuth' => $baseDir . '/app/Http/Middleware/CheckAuth.php',
     'App\\Http\\Middleware\\CheckIfAdmin' => $baseDir . '/app/Http/Middleware/CheckIfAdmin.php',
@@ -14,6 +16,11 @@ return array(
     'App\\Http\\Middleware\\CheckUserHasRole' => $baseDir . '/app/Http/Middleware/CheckUserHasRole.php',
     'App\\Http\\Middleware\\EnsureUserHasRole' => $baseDir . '/app/Http/Middleware/EnsureUserHasRole.php',
     'App\\Http\\Middleware\\PreventRegister' => $baseDir . '/app/Http/Middleware/PreventRegister.php',
+    'App\\Models\\Cart' => $baseDir . '/app/Models/Cart.php',
+    'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
+    'App\\Models\\Favorite' => $baseDir . '/app/Models/Favorite.php',
+    'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
+    'App\\Models\\Product' => $baseDir . '/app/Models/Product.php',
     'App\\Models\\Role' => $baseDir . '/app/Models/Role.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
