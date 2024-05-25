@@ -11,7 +11,7 @@
                 <div class="user-cart">
                     <a href="cart">
                         <iconify-icon id="cart" icon="uil:cart"></iconify-icon>
-                        <span class="quantity">{{$productCount}}</span>
+                        <span class="quantity" id="in-cart">{{$productCount}}</span>
                     </a>
                 </div>
                 <div class="user-avatar">
@@ -83,7 +83,7 @@
                             <iconify-icon icon="ph:plus"></iconify-icon>
                         </button>
                     </div>
-                    <button type="submit" class="add-to-cart" id="add-2-cart" data-product="">
+                    <button type="submit" class="add-to-cart" id="add-2-cart" data-product-id="">
                         Add to cart
                     </button>
                 </div>
@@ -117,6 +117,7 @@
     const hideBottomSheet = () => {
     bottomSheet.classList.remove("show");
     document.body.style.overflowY = "auto";
+    document.getElementById("add-2-cart").setAttribute('data-product-id', '');
     currentQuantity = 1;
     };
 
@@ -161,6 +162,7 @@
             document.querySelector(".name").textContent = product.name;
             document.querySelector(".price").textContent = "₱" + product.price;
             document.getElementById("modal-quantity").innerHTML = 1;
+            document.getElementById("add-2-cart").setAttribute('data-product-id', product.id);
 
             showBottomSheet();
         });
@@ -188,6 +190,10 @@
       quantityInput.value = currentQuantity;
 
       const newQuantity = quantityInput.value;
+    }
+
+    function updateInCart(value) {
+      document.getElementById("in-cart").innerHTML = value;
     }
 
     minusButtonColor(currentQuantity);
@@ -228,6 +234,29 @@
 
       });
     });
-    
+
+    //Add product
+    const addToCart = document.getElementById("add-2-cart");
+    addToCart.addEventListener('click', function(e) {
+        e.preventDefault();
+        const productId = this.dataset.productId;
+
+        fetch(`/cart/store/product/${productId}?quantity=${currentQuantity}`)
+        .then(response => response.json())
+        .then(data => {
+            fetch(`/cart/show/product/inside`)
+            .then(response => response.json())
+            .then(data => {
+            updateInCart(data);
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        hideBottomSheet();
+    });
 </script>
 @endsection
