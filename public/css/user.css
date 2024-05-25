@@ -57,7 +57,7 @@
 
 .username {
   display: flex;
-  max-width: 260px; 
+  max-width: 268px; 
   min-width: 100px; 
   white-space: nowrap; 
   overflow: hidden; 

@@ -27,56 +27,6 @@ function previewProfilePicture(input) {
   }
 }
 
-/* Admin-Modal */
-
-document.addEventListener("DOMContentLoaded", function() {
-  const openModal = document.querySelector(".open-modal");
-  const closeModal = document.querySelector(".close-modal");
-  const productlistModal = document.querySelector(".modal_product-list");
-
-  if (openModal && closeModal && productlistModal) {
-    openModal.addEventListener("click", () => {
-      productlistModal.classList.add("active");
-    });
-
-    closeModal.addEventListener("click", () => {
-      productlistModal.classList.remove("active");
-    });
-  }
-});
-
-/* Admin-Modal */
-
-document.addEventListener("DOMContentLoaded", function() {
-  const openModal = document.querySelector(".open-modal");
-  const closeModal = document.querySelector(".close-modal");
-  const productlistModal = document.querySelector(".modal_product-list");
-
-  if (openModal && closeModal && productlistModal) {
-    openModal.addEventListener("click", () => {
-      productlistModal.classList.add("active");
-    });
-
-    closeModal.addEventListener("click", () => {
-      productlistModal.classList.remove("active");
-    });
-  }
-});
-
-function previewProductImage(input) {
-  if (input.files && input.files[0]) {
-      var reader = new FileReader();
-
-      reader.onload = function (e) {
-          document.getElementById('img-box-fill').src = e.target.result;
-      }
-
-      reader.readAsDataURL(input.files[0]);
-  }
-}
-
- /* Add To Cart */
-
  /* Bottom Sheet Modal */
 
  if (currentUrl == "http://127.0.0.1:8000/" || currentUrl == "http://127.0.0.1:8000/?" || currentUrl == "http://127.0.0.1:8000/#") {
