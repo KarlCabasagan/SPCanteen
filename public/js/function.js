@@ -297,7 +297,7 @@ function previewProductImage(input) {
     //Favorite Color Function
     function modifyFavButton(fav) {
       if (fav == true) {
-        document.getElementById("heart-icon").style.color = "#D00000";
+        document.getElementById("heart-icon").style.color = "maroon";
       } else {
         document.getElementById("heart-icon").style.color = "lightgray";
       }
@@ -686,7 +686,7 @@ function previewProductImage(input) {
     //Favorite Color Function
     function modifyFavButton(fav) {
       if (fav == true) {
-        document.getElementById("heart-icon").style.color = "#D00000";
+        document.getElementById("heart-icon").style.color = "maroon";
       } else {
         document.getElementById("heart-icon").style.color = "lightgray";
       }
