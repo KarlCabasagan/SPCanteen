@@ -16,7 +16,7 @@
             <div class="cart-info">
                 <div class="cart-row">
                 @foreach ($carts as $cart)
-                    <button class="cart-container">
+                    <div class="cart-container">
                         <div class="cart-contents">
                             <div class="cart-infos">
                                 <div class="cart-image">
@@ -28,28 +28,28 @@
                                             <h1 id="cart-name">{{$cart->product->name}}</h1>
                                             <span id="cart-time">{{$cart->product->time}} min</span>
                                         </div>
-                                        <div class="cart-delete">
+                                        <button class="cart-delete">
                                             <iconify-icon icon="ion:trash-sharp"></iconify-icon>
-                                        </div>
+                                        </button>
                                     </div>
                                     <div class="content-button">
                                         <div class="cart-price">
                                             <h3 id="cart-price">₱{{$cart->sum}}</h3>
                                         </div>
                                         <div class="quantity-button">
-                                            <div class="plus-icon">
+                                            <button class="plus-icon">
                                                 <iconify-icon id="quantity-icons" icon="mdi:plus"></iconify-icon>
-                                            </div>
+                                            </button>
                                             <span>{{$cart->quantity}}</span>
-                                            <div class="minus-icon">
+                                            <button class="minus-icon">
                                                 <iconify-icon id="quantity-icons" icon="mdi:minus"></iconify-icon>
-                                            </div>
+                                            </button>
                                         </div>
                                     </div>
-                                </div>
+                                </div> 
                             </div>
                         </div>
-                    </button>
+                    </div>
                 @endforeach
                 </div>
             </div>
@@ -57,11 +57,11 @@
             <div class="price-container">
                 <div class="price-txt">
                     <div class="products-selected">
-                        <span>Selected</span>
+                        <span>Total Quantity</span>
                         <span>1</span>
                     </div>
                     <div class="products-total">
-                        <span id="total-txt">Total</span>
+                        <span id="total-txt">Total Price</span>
                         <h2>₱{{$total}}</h2>
                     </div>
                 </div>

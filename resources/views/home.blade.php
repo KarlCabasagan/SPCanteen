@@ -64,7 +64,7 @@
                             Add to cart
                             </button>
                         </div>
-                        </div>
+                        </div> 
                     </div>
                 </form>
             </div>
