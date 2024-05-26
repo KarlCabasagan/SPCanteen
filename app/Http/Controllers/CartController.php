@@ -18,14 +18,16 @@ class CartController extends Controller
 
         $carts = Cart::where('user_id', $userId)->get();
 
-        $total = 0;
+        $totalQuantity = 0;
+        $totalPrice = 0;
 
         foreach($carts as $cart) {
             $cart['sum'] = $cart->product->price * $cart->quantity;
-            $total += $cart['sum'];
+            $totalQuantity += $cart->quantity;
+            $totalPrice += $cart['sum'];
         }
 
-        return view('user.cart', compact('carts', 'total'));
+        return view('user.cart', compact('carts', 'totalPrice', 'totalQuantity'));
     }
 
     /**
@@ -115,6 +117,34 @@ class CartController extends Controller
         return response()->json($productCount);
     }
 
+    public function getTotalQuantity()
+    {
+        $userId = auth()->user()->id;
+
+        $carts = Cart::where('user_id', $userId)->get();
+        $totalQuantity = 0;
+
+        foreach ($carts as $cart) {
+            $totalQuantity += $cart->quantity;
+        }
+
+        return response()->json($totalQuantity);
+    }
+
+    public function getTotalPrice()
+    {
+        $userId = auth()->user()->id;
+
+        $carts = Cart::where('user_id', $userId)->get();
+        $totalPrice = 0;
+
+        foreach ($carts as $cart) {
+            $totalPrice += $cart->product->price * $cart->quantity;
+        }
+
+        return response()->json($totalPrice);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -134,8 +164,16 @@ class CartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy($cartId)
+    {   
+        $userId = auth()->user()->id;
+        $cart = Cart::where('id', $cartId)->first();
+
+        $cart->delete();
+
+        $carts = Cart::where('user_id', $userId)->get();
+        $carts['deletedCartId'] = $cartId;
+
+        return response()->json($carts);
     }
 }

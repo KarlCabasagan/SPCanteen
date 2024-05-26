@@ -49,6 +49,9 @@ Route::middleware(['logged-in'])->group(function () {
         });
         
         Route::get('/cart', [CartController::class, 'index']);
+        Route::get('/cart/delete/{cartId}', [CartController::class, 'destroy']);
+        Route::get('/cart/get/total/quantity', [CartController::class, 'getTotalQuantity']);
+        Route::get('/cart/get/total/price', [CartController::class, 'getTotalPrice']);
 
         Route::get('/payment', function () {
             return view('user.payment');
