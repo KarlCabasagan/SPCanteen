@@ -52,6 +52,8 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/cart/delete/{cartId}', [CartController::class, 'destroy']);
         Route::get('/cart/get/total/quantity', [CartController::class, 'getTotalQuantity']);
         Route::get('/cart/get/total/price', [CartController::class, 'getTotalPrice']);
+        Route::get('/cart/quantity/add/{cartId}', [CartController::class, 'addQuantity']);
+        Route::get('/cart/quantity/minus/{cartId}', [CartController::class, 'minusQuantity']);
 
         Route::get('/payment', function () {
             return view('user.payment');
