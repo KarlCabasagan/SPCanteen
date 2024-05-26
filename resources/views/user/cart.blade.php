@@ -34,14 +34,14 @@
                                     </div>
                                     <div class="content-button">
                                         <div class="cart-price">
-                                            <h3 id="cart-price">₱{{$cart->sum}}</h3>
+                                            <h3 id="cart-price-{{$cart->id}}">₱{{$cart->sum}}</h3>
                                         </div>
                                         <div class="quantity-button">
-                                            <button class="plus-icon">
+                                            <button class="plus-icon" id="plus-icon-{{$cart->id}}" data-cart-id="{{$cart->id}}">
                                                 <iconify-icon id="quantity-icons" icon="mdi:plus"></iconify-icon>
                                             </button>
-                                            <span id="quantity-{{$cart->product->id}}">{{$cart->quantity}}</span>
-                                            <button class="minus-icon">
+                                            <span class="cart-quantity" id="cart-quantity-{{$cart->id}}">{{$cart->quantity}}</span>
+                                            <button class="minus-icon" id="minus-icon-{{$cart->id}}" data-cart-id="{{$cart->id}}">
                                                 <iconify-icon id="quantity-icons" icon="mdi:minus"></iconify-icon>
                                             </button>
                                         </div>
@@ -81,6 +81,41 @@
 
     //Modify Cart
     document.addEventListener('DOMContentLoaded', function() {
+        //Modify Minus Button
+        function disableMinusButton(cartId) {
+            const minusButton = document.getElementById(`minus-icon-${cartId}`);
+            minusButton.style.cursor = "default";
+        }
+
+        function enableMinusButton(cartId) {
+            const minusButton = document.getElementById(`minus-icon-${cartId}`);
+            minusButton.style.cursor = "pointer";
+        }
+
+        //update total quantity
+        function getTotalQuantity() {
+            fetch(`/cart/get/total/quantity`)
+            .then(response => response.json())
+            .then(data => {
+                const quantitySpan = document.getElementById("total-quantity").innerHTML = data;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+
+        //update total price
+        function getTotalPrice() {
+            fetch(`/cart/get/total/price`)
+            .then(response => response.json())
+            .then(data => {
+                const quantitySpan = document.getElementById("total-price").innerHTML = `₱${data}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+        
         //Delete Cart
         const deleteButtons = document.querySelectorAll(".cart-delete");
         deleteButtons.forEach(btn => {
@@ -94,32 +129,69 @@
                     const container = document.getElementById(`cart-container-${data.deletedCartId}`);
                     container.remove();
                     console.log(data);
-
-                    //update total quantity
-                    fetch(`/cart/get/total/quantity`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const quantitySpan = document.getElementById("total-quantity").innerHTML = data;
-                    })
-                    .catch(error => {
-                    console.error('Error:', error);
-                    });
-
-                    //update total price
-                    fetch(`/cart/get/total/price`)
-                    .then(response => response.json())
-                    .then(data => {
-                        const quantitySpan = document.getElementById("total-price").innerHTML = data;
-                    })
-                    .catch(error => {
-                    console.error('Error:', error);
-                    });
                     
+                    getTotalQuantity();
+                    getTotalPrice();
 
                 })
                 .catch(error => {
                 console.error('Error:', error);
                 });
+            });
+        });
+        
+        //Plus Quantity
+        const plusButton = document.querySelectorAll(".plus-icon");
+        plusButton.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const cartId = btn.dataset.cartId;
+                // console.log(cartId);
+                const cartQuantity = document.getElementById(`cart-quantity-${cartId}`);
+                let quantity = parseInt(cartQuantity.textContent, 10)
+                quantity++;
+
+                cartQuantity.innerHTML = quantity;
+                enableMinusButton(cartId);
+
+                fetch(`/cart/quantity/add/${cartId}?quantity=${quantity}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById(`cart-price-${cartId}`).innerHTML = `₱${data}`;
+                    getTotalQuantity();
+                    getTotalPrice();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+
+        //Minus Quantity
+        const minusButton = document.querySelectorAll(".minus-icon");
+        minusButton.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const cartId = btn.dataset.cartId;
+                // console.log(cartId);
+                const cartQuantity = document.getElementById(`cart-quantity-${cartId}`);
+                let quantity = parseInt(cartQuantity.textContent, 10);
+                if (quantity > 1) {
+                    quantity--;
+
+                    cartQuantity.innerHTML = quantity;
+                
+                    fetch(`/cart/quantity/minus/${cartId}?quantity=${quantity}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById(`cart-price-${cartId}`).innerHTML = `₱${data}`;
+                        getTotalQuantity();
+                        getTotalPrice();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                } else {
+                    disableMinusButton(cartId);
+                }
             });
         });
     });

@@ -145,6 +145,32 @@ class CartController extends Controller
         return response()->json($totalPrice);
     }
 
+    public function addQuantity(Request $request, $cartId) 
+    {
+        $quantity = $request->query('quantity');
+        $cart = Cart::where('id', $cartId)->first();
+
+        $cart->quantity = $quantity;
+        $cart->save();
+
+        $sum = $cart->product->price * $cart->quantity;
+
+        return response()->json($sum);
+    }
+
+    public function minusQuantity(Request $request, $cartId) 
+    {
+        $quantity = $request->query('quantity');
+        $cart = Cart::where('id', $cartId)->first();
+
+        $cart->quantity = $quantity;
+        $cart->save();
+
+        $sum = $cart->product->price * $cart->quantity;
+
+        return response()->json($sum);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
