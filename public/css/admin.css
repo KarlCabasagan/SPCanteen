@@ -300,7 +300,7 @@ h3 {
   cursor: pointer;
 }
 
-/* Add Product Modal */
+/* Add Product Modal CSS*/
 
 .modal_product-list {
   display: flex;
@@ -491,6 +491,156 @@ h3 {
   margin: 20px 74px 0 0;
 }
 
+/* Edit Product Modal CSS */
+
+.modal_edit-list {
+  display: flex;
+  width: 700px;
+  height: 40vh;
+  position: fixed;
+  top: 54%;
+  left: 59%;
+  transform: translate(-50%, -50%);
+  padding: 2.4rem 2rem 2rem;
+  background: #fff;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  border-radius: 10px;
+}
+
+.modal_edit-list.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* QR Scanner Modal CSS */
+
+.modal_qr-scanner {
+  display: flex;
+  width: 700px;
+  height: 40vh;
+  position: fixed;
+  top: 54%;
+  left: 59%;
+  transform: translate(-50%, -50%);
+  padding: 2.4rem 2rem 2rem;
+  background: #fff;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  border-radius: 10px;
+}
+
+.modal_qr-scanner.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Order Details Modal CSS */
+
+.modal_orders-list {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 70vh;
+  position: fixed;
+  top: 54%;
+  left: 59%;
+  transform: translate(-50%, -50%);
+  padding: 2.4rem 2rem 2rem;
+  background: #fff;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  border-radius: 10px;
+}
+
+.modal_orders-list.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.order-transaction-details {
+  border-bottom: 1px solid black;
+  padding-bottom: 2px;
+}
+
+.orders-date-payment {
+  display: flex;
+}
+
+.orders-transaction-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.orders-transaction-payment {
+  display: flex;
+  flex-direction: column;
+}
+
+.close-modal4 {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Transaction Details Modal CSS */
+
+.modal_transactions-history {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 70vh;
+  position: fixed;
+  top: 54%;
+  left: 59%;
+  transform: translate(-50%, -50%);
+  padding: 2.4rem 2rem 2rem;
+  background: #fff;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  border-radius: 10px;
+}
+
+.modal_transactions-history.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.transactions-details {
+  border-bottom: 1px solid black;
+  padding-bottom: 2px;
+}
+
+.transactions-date-payment {
+  display: flex;
+}
+
+.transactions-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.transactions-payment {
+  display: flex;
+  flex-direction: column;
+}
+
+.close-modal5 {
+  font-size: 20px;
+  cursor: pointer;
+}
+
 /* Order-List CSS */
 
 .qr-btn {
@@ -591,24 +741,6 @@ h3 {
   border-radius: 4px;
   font-size: 12px;
   cursor: pointer;
-}
-
-/* Order List Modal */
-.modal_order-list {
-  display: flex;
-  width: 700px;
-  height: 40vh;
-  position: fixed;
-  top: 54%;
-  left: 59%;
-  transform: translate(-50%, -50%);
-  padding: 2.4rem 2rem 2rem;
-  background: #fff;
-  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  border-radius: 10px;
 }
 
 /* Transaction History CSS */
