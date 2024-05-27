@@ -21,11 +21,8 @@ class EnsureUserHasRole
             if(!$user->role_id) {
                 abort(redirect()->intended('/setup'));
             }
-            if($user->role_id === 3) {
-                abort(redirect()->intended('/admin'));
-            }
-            if($user->role_id === 4) {
-                abort(redirect()->intended('/super'));
+            if($user->role_id === 3 || $user->role_id === 4) {
+                abort(redirect()->intended('/administrator'));
             }
         }
         return $next($request);

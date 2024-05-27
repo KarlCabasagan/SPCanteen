@@ -2,7 +2,11 @@
 
 @section('content1')
 <div class="content">
-    <h1>Hello Admin!</h1>
+    @if(auth()->user()->role_id == 3)
+        <h1>Hello Admin!</h1>
+    @elseif(auth()->user()->role_id == 4)
+        <h1>Hello Super Admin!</h1>
+    @endif
     <div class="row1">
         <div class="box1">
             <div class="box-content">
