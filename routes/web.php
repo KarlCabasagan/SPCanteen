@@ -51,6 +51,11 @@ Route::middleware(['logged-in'])->group(function () {
             Route::get('/profile', function () {
                 return view('user.profile');
             });
+
+            //Route for edit
+            Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+            Route::post('/process.edit/{id}', [UserController::class, 'processEdit'])->name('process.edit');
+
             
             Route::get('/cart', [CartController::class, 'index']);
             Route::get('/cart/delete/{cartId}', [CartController::class, 'destroy']);

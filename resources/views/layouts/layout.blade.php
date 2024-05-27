@@ -15,8 +15,8 @@
 
     <link rel="icon" href="images/favicon.png" type="image/x-icon">
     <!-- Styles -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="@yield('css', 'css/main.css')">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="http://127.0.0.1:8000/@yield('css', 'css/main.css')">
 
     <!-- Javascript -->
     <script type="text/javascript" src="js/function.js"></script>

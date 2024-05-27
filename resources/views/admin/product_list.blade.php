@@ -57,7 +57,7 @@
                     </div>
                     <label for="image">
                         <div class="add-icon">
-                            <iconify-icon icon="material-symbols:add" id="add-icon"></iconify-icon>
+                            <span>Insert Image</span>
                         </div>
                     </label>
                 </div>
@@ -109,7 +109,7 @@
                     </div>
                     <label for="image">
                         <div class="add-icon">
-                            <iconify-icon icon="material-symbols:add" id="add-icon"></iconify-icon>
+                            <span>Update Image</span>
                         </div>
                     </label>
                 </div>

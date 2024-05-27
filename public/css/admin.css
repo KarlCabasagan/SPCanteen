@@ -318,13 +318,13 @@ h3 {
 
 .modal_product-list {
   display: flex;
-  width: 700px;
+  width: 650px;
   height: 40vh;
   position: fixed;
   top: 54%;
   left: 59%;
   transform: translate(-50%, -50%);
-  padding: 2.4rem 2rem 2rem;
+  padding: 2.4rem 2rem 3rem;
   background: #fff;
   box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
   opacity: 0;
@@ -352,7 +352,7 @@ h3 {
 .img-box-fill {
   width: 260px;
   height: 260px;
-  font-size: 260px;
+  font-size: 220px;
   background-color: rgb(216, 215, 215);
   box-shadow: inset 0 1px 10px 0 rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -362,6 +362,7 @@ h3 {
 #img-box-fill {
   width: 260px;
   height: 260px;
+  border-radius: 20px;
 }
 
 .add-icon {
@@ -370,13 +371,16 @@ h3 {
   align-items: center;
   position: absolute;
   background-color: maroon;
-  width: 70px;
-  height: 70px;
-  top: 45%;
-  left: 54%;
+  color: white;
+  width: 260px;
+  height: 58px;
+  top: 89%;
+  left: 53.4%;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
   cursor: pointer;
+  border-radius: 0 0 20px 20px;
+  font-size: 20px;
+  font-weight: 900;
 }
 
 #add-icon {    
@@ -389,7 +393,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  margin-left: 120px;
+  margin: 30px 0 0 120px;
 }
 
 .product-info {
@@ -493,7 +497,7 @@ h3 {
 #close {
   position: absolute;
   top: 0;
-  margin: 14px 0 0 30px;
+  margin: 14px 0 0 16px;
   background-color: white;
   color: maroon;
   font-size: 34px;
@@ -502,20 +506,20 @@ h3 {
 }
 
 .save-btn {
-  margin: 20px 74px 0 0;
+  margin: 20px 66px 0 0;
 }
 
 /* Edit Product Modal CSS */
 
 .modal_edit-list {
   display: flex;
-  width: 700px;
+  width: 650px;
   height: 40vh;
   position: fixed;
   top: 54%;
   left: 59%;
   transform: translate(-50%, -50%);
-  padding: 2.4rem 2rem 2rem;
+  padding: 2.4rem 2rem 3rem;
   background: #fff;
   box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
   opacity: 0;
@@ -789,7 +793,7 @@ h3 {
 
 .orders-detail {
   position: absolute;
-  margin: 7px 0 0 22px;
+  margin: 2px 0 0 22px;
   color: red;
   font-size: 20px;
 }
@@ -876,7 +880,7 @@ h3 {
 
 .transaction-detail {
   position: absolute;
-  margin: 7px 0 0 22px;
+  margin: 2px 0 0 22px;
   color: green;
   font-size: 20px;
 }

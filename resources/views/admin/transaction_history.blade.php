@@ -116,7 +116,7 @@
                 <img style="width: 50px; height: 50px;" src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg" alt="">
             </div>
         </div>
-        <div class="close-modal4">
+        <div class="close-modal5">
             <iconify-icon icon="uil:step-backward-circle"></iconify-icon>
         </div>
     </div>
