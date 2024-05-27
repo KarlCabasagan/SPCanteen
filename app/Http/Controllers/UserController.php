@@ -67,6 +67,11 @@ class UserController extends Controller
         auth()->logout();
         return redirect('/');
     }
+
+    public function showUser(){
+        $users = User::all();
+        return view('admin.manage_user', compact('users'));
+    }
 }
 
 

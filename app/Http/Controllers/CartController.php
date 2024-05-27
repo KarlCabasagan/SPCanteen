@@ -16,7 +16,7 @@ class CartController extends Controller
     {
         $userId = auth()->user()->id;
 
-        $carts = Cart::where('user_id', $userId)->get();
+        $carts = Cart::where('user_id', $userId)->whereNull('order_id')->get();
 
         $totalQuantity = 0;
         $totalPrice = 0;

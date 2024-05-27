@@ -2,56 +2,135 @@
 
 @section('content')
 <div class="container">
-    <div class="cart-content">
-        <div class="cart-header">
-            <a href="cart">
-                <iconify-icon id="back-btn" icon="material-symbols:arrow-back-ios"></iconify-icon>
-            </a>
-            <h1 id="mycart-txt">MY CART</h1>
-            <a class="close-btn" href="/">
-                <iconify-icon id="close-btn" icon="material-symbols-light:close"></iconify-icon>
-            </a>
-        </div>
-        <div class="payment-content">
-            <div class="payment-container">
-                <div class="payment">
-                    <img id="payment-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSMu0uy7QmaOOqFpYfRv6LdinOVhUfJLiEIkvedIA9Ww&s" alt="">
-                    <span id="payment-txt">GCASH</span>
-                    <iconify-icon id="payment-btn1" icon="vaadin:dot-circle"></iconify-icon>
-                </div>
+    <form action="/order/store" id="payment-form" method="POST">
+        @csrf
+        <div class="cart-content">
+            <div class="cart-header">
+                <a href="cart">
+                    <iconify-icon id="back-btn" icon="material-symbols:arrow-back-ios"></iconify-icon>
+                </a>
+                <h1 id="mycart-txt">MY CART</h1>
+                <a class="close-btn" href="/">
+                    <iconify-icon id="close-btn" icon="material-symbols-light:close"></iconify-icon>
+                </a>
             </div>
-            <div class="payment-containers">
-                <div class="payment">
-                    <img id="payments-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJXmMbrItPLMTeMbSZzS46aE6JBdUvO6EtTa7dLw8LQ&s" alt="">
-                    <span id="payments-txt">School Fee</span>
-                    <iconify-icon id="payment-btn2" icon="vaadin:dot-circle"></iconify-icon>
-                </div>
-            </div>
-            <div class="payment-containers">
-                <div class="payment">
-                    <img id="payments-image" src="/images/cash.png" alt="">
-                    <span id="payments-txt">Cash On Hand</span>
-                    <iconify-icon id="payment-btn3" icon="vaadin:dot-circle"></iconify-icon>
-                </div>
-            </div>
-        </div>
-        <div class="payments-container">
-            <div class="price-txt">
-                <div class="products-selected">
-                    <span>Selected</span>
-                    <span>1</span>
-                </div>
-                <div class="products-total">
-                    <span id="total-txt">Total</span>
-                    <h2>₱50</h2>
-                </div>
-            </div>
-            <a class="payments-btn" href="qr-code">
-                <button class="pay-now">
-                    <span id="pay-txt">Pay Now</span>
+            <input type="hidden" name="totalPrice" value="{{$totalPrice}}">
+            <div class="payment-content">
+                <button class="payment-containers" id="payment-containers" onclick="selectPayment1()">
+                    <div class="payment">
+                        <div class="payment-left-side">
+                            <img id="payment-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSMu0uy7QmaOOqFpYfRv6LdinOVhUfJLiEIkvedIA9Ww&s" alt="">
+                            <span id="payment-txt">GCASH</span>
+                        </div>
+                        <div class="payment-right-side">
+                            <input type="radio" name="payment_option" id="payment-btn1" class="payment-btn" value="1">
+                            <label for="payment-btn"></label>
+                        </div>
+                    </div>
                 </button>
-            </a>
+                @if(auth()->user()->role_id == 1)
+                    <button class="payment-containers" id="payment-containers" onclick="selectPayment2()">
+                        <div class="payment">
+                            <div class="payment-left-side">
+                                <img id="payments-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJXmMbrItPLMTeMbSZzS46aE6JBdUvO6EtTa7dLw8LQ&s" alt="">
+                                <span id="payments-txt">School Fee</span>
+                            </div>
+                            <div class="payment-right-side">
+                                <input type="radio" name="payment_option" id="payment-btn2" class="payment-btn" value="2">
+                                <label for="payment-btn"></label>
+                            </div>
+                        </div>
+                </button>
+                @else
+                    <button class="payment-containers" id="payment-containers" onclick="selectPayment4()">
+                        <div class="payment">
+                            <div class="payment-left-side">
+                                <img id="payments-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJXmMbrItPLMTeMbSZzS46aE6JBdUvO6EtTa7dLw8LQ&s" alt="">
+                                <span id="payments-txt">Payroll</span>
+                            </div>
+                            <div class="payment-right-side">
+                                <input type="radio" name="payment_option" id="payment-btn4" class="payment-btn" value="4">
+                                <label for="payment-btn"></label>
+                            </div>
+                        </div>
+                </button>
+                @endif
+                <button class="payment-containers" id="payment-containers" onclick="selectPayment3()">
+                    <div class="payment">
+                        <div class="payment-left-side">
+                            <img id="payments-image" src="/images/cash.png" alt="">
+                            <span id="payments-txt">Cash On Hand</span>
+                        </div>
+                        <div class="payment-right-side">
+                            <input type="radio" name="payment_option"  id="payment-btn3" class="payment-btn" value="3" checked>
+                            <label for="payment-btn"></label> 
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <div class="payments-container">
+                <div class="price-txt">
+                    <div class="products-selected">
+                        <span>Selected Product</span>
+                        <span>{{$productSelected}}</span>
+                    </div>
+                    <div class="products-total">
+                        <span id="total-txt">Total</span>
+                        <h2>₱{{$totalPrice}}</h2>
+                    </div>
+                </div>
+                <a class="payments-btn" href="qr-code">
+                    <button class="pay-now">
+                        <span id="pay-txt">Pay Now</span>
+                    </button>
+                </a>
+            </div>
         </div>
-    </div>
+    </form>
 </div>
+
 @endsection
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const paymentContainers = document.querySelectorAll(".payment-containers");
+
+        paymentContainers.forEach(btn => {
+            btn.addEventListener("click", (e) => {
+                e.preventDefault();
+            });
+        });
+    });
+
+    function selectPayment1() {
+        const radioButton = document.getElementById('payment-btn1');
+        if (radioButton) {
+            radioButton.checked = true;
+
+        }
+    }
+
+    function selectPayment2() {
+        const radioButton = document.getElementById('payment-btn2');
+
+        if (radioButton) {
+            radioButton.checked = true;
+        }
+    }
+
+    function selectPayment3() {
+        const radioButton = document.getElementById('payment-btn3');
+
+        if (radioButton) {
+            radioButton.checked = true;
+        }
+    }
+
+    function selectPayment4() {
+        const radioButton = document.getElementById('payment-btn4');
+
+        if (radioButton) {
+            radioButton.checked = true;
+        }
+    }
+</script>

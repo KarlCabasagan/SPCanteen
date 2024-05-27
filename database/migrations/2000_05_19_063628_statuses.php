@@ -22,9 +22,10 @@ return new class extends Migration
             $timestamp = now();
         
             DB::table('statuses')->insert([
-                ['name' => 'Preparing', 'created_at' => $timestamp, 'updated_at' => $timestamp],
-                ['name' => 'Prepared', 'created_at' => $timestamp, 'updated_at' => $timestamp],
-                ['name' => 'Completed', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'preparing', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'prepared', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'completed', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'cancelled', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ]);
         }
     }

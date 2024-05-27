@@ -4,7 +4,7 @@
 <div class="container">
     <div class="cart-content">
         <div class="cart-header">
-            <a href="javascript:void(0);" onclick="goBack()">
+            <a href="/">
                 <iconify-icon id="back-btn" icon="material-symbols:arrow-back-ios"></iconify-icon>
             </a>
             <h1 id="mycart-txt">MY CART</h1>
