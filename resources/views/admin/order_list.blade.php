@@ -125,6 +125,7 @@
         <span>Amount</span>
         <div class="order-transaction-details">
             <span>₱135.00 PHP</span>
+            <iconify-icon icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
             <span>Processing</span>
         </div>
         <div class="orders-date-payment">
@@ -136,6 +137,39 @@
             <span>Payment type</span>
             <span>GCash</span>
         </div>
+        </div>
+        <span class="transaction-details-txt">Transaction Details</span>
+        <div class="orders-transaction-details">
+            <div class="orders-id-username">
+                <span>Order ID</span>
+                <span>Username</span>
+                <span>Role</span>
+            </div>
+            <div class="orders-order-details">
+                <span>SPC2024-69</span>
+                <span>Romarc Bongcaron</span>
+                <span>STUDENT</span>
+            </div>
+        </div>
+        <span class="transaction-product_list-txt">Product List</span>
+        <div class="orders-product_list-qr_code">
+            <div class="orders-products-list">
+                <div class="orders-products-txt">
+                <span>Chicken Burger</span>
+                </div>
+                <div class="orders-products-txt">
+                <span>Chicken Burger</span>
+                </div>
+                <div class="orders-products-txt">
+                <span>Chicken Burger</span>
+                </div>
+                <div class="orders-products-txt">
+                <span>Chicken Burger</span>
+                </div>
+            </div>
+            <div class="orders-qr-code">
+                <img style="width: 50px; height: 50px;" src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg" alt="">
+            </div>
         </div>
         <div class="close-modal4">
             <iconify-icon icon="uil:step-backward-circle"></iconify-icon>

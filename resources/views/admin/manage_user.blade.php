@@ -15,36 +15,56 @@
                 <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="background-color: white;">
             @foreach ($users as $user)
             <tr>
-                <td style="text-align: center; background-color: white;">{{$user->name}}</td>
-                <td style="text-align: center; background-color: white;">{{$user->email}}</td>
-                <td style="text-align: center; background-color: white;">{{ substr($user->password, 0, 15) }}</td>
-                <td style="text-align: center; background-color: white;">{{$user->image}}</td>
-                <td style="text-align: center; background-color: white;">{{$user->role_id}}</td>
-                <td style="text-align: center; background-color: white;"><a href="/edit"><iconify-icon icon="bx:edit" style="color: black; font-size: 30;"></iconify-icon></a><a href="/delete"><iconify-icon icon="material-symbols-light:delete-outline" style="color: black; font-size: 30;"></iconify-icon></a></td>
+                <td style="text-align: center;">{{$user->name}}</td>
+                <td style="text-align: center;">{{$user->email}}</td>
+                <td style="text-align: center;">{{ substr($user->password, 0, 15) }}</td>
+                <td style="text-align: center;">{{$user->image}}</td>
+                <td style="text-align: center;">{{$user->role_id}}</td>
+                <td style="text-align: center;"><button class="open-modal6"><iconify-icon icon="bx:edit" style="color: black; font-size: 30;"></iconify-icon></button><a href="/delete"><iconify-icon icon="material-symbols-light:delete-outline" style="color: black; font-size: 30;"></iconify-icon></a></td>
             </tr>
             @endforeach
         </tbody>    
     </table>
 </div>
+<div class="modal_user-edit">
+        <span>Amount</span>
+        <div class="transactions-details">
+            <span>₱135.00 PHP</span>
+            <span>Processing</span>
+        </div>
+        <div class="transactions-date-payment">
+            <div class="transactions-date">
+                <span>Transaction Date</span>
+                <span>02/11/24</span>
+            </div>
+            <div class="transactions-payment">
+                <span>Payment type</span>
+                <span>GCash</span>
+            </div>
+        </div>
+        <div class="close-modal5">
+            <iconify-icon icon="uil:step-backward-circle"></iconify-icon>
+        </div>
+    </div>
 </div>
-<!-- <script>
-    const transactionlistModal = document.querySelector(".modal_transactions-history");
+<script>
+    const usermanagementModal = document.querySelector(".modal_user-edit");
 
-    const openModal5Buttons = document.querySelectorAll(".open-modal5");
-    openModal5Buttons.forEach((btn) => {
+    const openModal6Buttons = document.querySelectorAll(".open-modal6");
+    openModal6Buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
-            transactionlistModal.classList.add("active");
+            usermanagementModal.classList.add("active");
         });
     });
 
-    const closeModal5 = document.querySelector(".close-modal5");
-    if (closeModal5) {
-        closeModal5.addEventListener("click", () => {
-            transactionlistModal.classList.remove("active");
+    const closeModal6 = document.querySelector(".close-modal6");
+    if (closeModal6) {
+        closeModal6.addEventListener("click", () => {
+            usermanagementModal.classList.remove("active");
         });
     }
-</script> -->
+</script>
 @endsection

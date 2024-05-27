@@ -125,7 +125,7 @@
 }
 
 .products {
-  max-height: 50vh; 
+  max-height: 51vh; 
   overflow-y: auto; 
 }
 
@@ -741,7 +741,7 @@
 /* Favorite CSS */
 
 .favorite-products {
-  max-height: 64vh; 
+  max-height: 66vh; 
   overflow-y: auto; 
 }
 
@@ -1270,6 +1270,9 @@
 }
 
 .heart-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   background-color: white;
   border: none;
@@ -1281,9 +1284,9 @@
 } 
 
 #heart-icon {
+  margin-top: 4px;
   font-size: 32px;
   color: lightgray;
-  margin: 9px 0 0 1px;
 }
 
 /* Favorite Bottom Sheet Modal */
