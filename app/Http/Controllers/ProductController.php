@@ -95,7 +95,7 @@ class ProductController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|string|max:255',
             'price' => 'required|numeric',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:15000',
             'time' => 'required|integer',
             'category_id' => ['required',Rule::in([1, 2, 3, 4, 5, 6, 7])],
             // 'name' => 'required|string|max:255',

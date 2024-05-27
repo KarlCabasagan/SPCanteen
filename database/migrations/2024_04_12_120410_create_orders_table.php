@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('status_id');
             $table->double('amount');
-            $table->string('qr');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('payment_id');
             $table->timestamps();
