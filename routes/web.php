@@ -86,6 +86,5 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/order_scanner', function () {
             return view('admin.order_scanner');
         });
-        Route::get('/manage_user', [UserController::class, 'showUser']);
     });
 });
