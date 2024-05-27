@@ -147,7 +147,7 @@
                 <div class="drag-icon"><span class="header-icon"></span></div>
             </div>
             <div class="body">
-            <div class="test">
+            <div class="modal-user-history">
             <div class="modal-history-container">
                 <img id="history-product-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTV1mn8AmFrmldZhG7Lc_uTy-NbSemRXlv0FwYOpQY-Hg&s" alt="">
                 <div class="history-details">

@@ -261,7 +261,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  width: 203px;
+  width: 202px;
   height: auto;
   bottom: 0;
   margin-top: 100px;
@@ -269,14 +269,15 @@ h3 {
   background: linear-gradient(to bottom, rgba(128, 0, 0, 0.80), rgba(128, 0, 0, 0.581));
   color: white;
   padding: 5px 10px;
-  overflow: hidden;
-  white-space: normal;
-  word-wrap: break-word;
 }
 
-.label h3 {
+h3 {
   margin: 0;
   font-size: 20px;
+  white-space: nowrap; 
+  width: 180px;
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 
 .icon-container {
@@ -284,20 +285,33 @@ h3 {
   gap: 10px;
   font-size: 32px;
   color: maroon;
+  width: 54px;
+  justify-content: space-evenly;
+}
+
+.edit-delete-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tabler-edit {           
   background-color: #fff;
+  color: maroon;
   border-radius: 5px;
   font-family: "Montserrat";
   cursor: pointer;
+  font-size: 20px;
 }
 
 .trash-outline {       
   background-color: #fff;
+  color: maroon;
   border-radius: 5px;
   font-family: "Montserrat";
   cursor: pointer;
+  margin-left: 4px;
+  font-size: 20px;
 }
 
 /* Add Product Modal CSS*/
