@@ -104,9 +104,9 @@
 
     function selectPayment1() {
         const radioButton = document.getElementById('payment-btn1');
-
         if (radioButton) {
             radioButton.checked = true;
+
         }
     }
 

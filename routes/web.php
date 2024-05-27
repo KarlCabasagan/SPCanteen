@@ -70,7 +70,7 @@ Route::middleware(['logged-in'])->group(function () {
     });
 
     Route::middleware(['admin'])->group(function () {
-        Route::get('/admin', function () {
+        Route::get('/administrator', function () {
             return view('admin.admin');
         });
         Route::get('/product_list', [ProductController::class, 'adminIndex']);
@@ -85,6 +85,9 @@ Route::middleware(['logged-in'])->group(function () {
         });
         Route::get('/order_scanner', function () {
             return view('admin.order_scanner');
+        });
+        Route::get('/manage_user', function () {
+            return view('admin.manage_user');
         });
     });
 });

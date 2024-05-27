@@ -21,7 +21,7 @@ class CheckIfUser
             abort(redirect()->intended('/setup'));
         }
         if($user->role_id === 3 || $user->role_id === 4) {
-            abort(redirect()->intended('/admin'));
+            abort(redirect()->intended('/administrator'));
         }
         
         return $next($request);
