@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -66,6 +67,56 @@ class UserController extends Controller
     public function logout() {
         auth()->logout();
         return redirect('/');
+    }
+
+
+    //edit controller 
+
+    public function edit($id) {
+
+        $user = User::find($id);
+
+        return view('user.edit', ['user' => $user]);
+    }
+
+    public function processEdit(Request $request, $id)
+    {
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'role_id' => 'required|in:1,2', // Ensure role_id is valid
+            'oldpassword' => 'required', // Old password field
+            'password' => 'nullable|confirmed|min:6', // Password confirmation and minimum length
+        ]);
+
+        // Find the user by ID
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+
+        // Check if the old password matches
+        if (!Hash::check($request->oldpassword, $user->password)) {
+            return redirect()->back()->with('error', 'Invalid old password');
+        }
+
+        // Update user details
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role_id = $request->role_id;
+        
+        // Update password if provided
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+
+        // Save the user
+        $user->save();
+
+        // Redirect back with success message
+        return redirect()->route('user.edit', ['id' => $id])->with('success', 'User updated successfully');
     }
 }
 
