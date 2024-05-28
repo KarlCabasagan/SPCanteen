@@ -10,8 +10,8 @@
             <div class="user-info">
                 <img id="user-profile" src="{{ asset('images/profile/' . Auth::user()->image) }}" alt="Profile Picture">
                 <div class="user-profile-edit">
-                    <a href="{{ route('user.edit', ['id' => Auth::user()->id])}}">
-                        <iconify-icon id="user-edit" icon="akar-icons:edit"></iconify-icon>
+                    <a id="user-edit" href="{{ route('user.edit', ['id' => Auth::user()->id])}}">
+                        <iconify-icon id="user-edit-icon" icon="akar-icons:edit"></iconify-icon>
                     </a>
                 </div>
             </div>

@@ -2,7 +2,11 @@
 
 @section('content')
     @section('css', 'css/admin.css')
-    @section('title', 'SPCanteen - Admin')
+    @if (Auth::user()->id === 3)
+        @section('title', 'SPCanteen - Admin')
+    @else
+        @section('title', 'SPCanteen - Super Admin')
+    @endif
     <div class="container">
         @include('layouts.components.admin.admin_navbar')
         @yield('content1')

@@ -24,7 +24,7 @@ return new class extends Migration
             DB::table('statuses')->insert([
                 ['name' => 'preparing', 'created_at' => $timestamp, 'updated_at' => $timestamp],
                 ['name' => 'prepared', 'created_at' => $timestamp, 'updated_at' => $timestamp],
-                ['name' => 'completed', 'created_at' => $timestamp, 'updated_at' => $timestamp],
+                ['name' => 'successful', 'created_at' => $timestamp, 'updated_at' => $timestamp],
                 ['name' => 'cancelled', 'created_at' => $timestamp, 'updated_at' => $timestamp],
             ]);
         }

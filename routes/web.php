@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\CheckIfOrderIsCompleted;
+use App\Http\Middleware\CheckIfUserHasNotCompletedOrders;
 use App\Http\Middleware\CheckIfUserHasProductInCart;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Middleware\CheckUserHasRole;
@@ -50,7 +51,7 @@ Route::middleware(['logged-in'])->group(function () {
             });
             Route::get('/profile', function () {
                 return view('user.profile');
-            });
+            })->name('profile');
 
             //Route for edit
             Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
@@ -64,14 +65,11 @@ Route::middleware(['logged-in'])->group(function () {
             Route::get('/cart/quantity/add/{cartId}', [CartController::class, 'addQuantity']);
             Route::get('/cart/quantity/minus/{cartId}', [CartController::class, 'minusQuantity']);
 
-            Route::get('/payment', [OrderController::class, 'index'])->middleware(CheckIfUserHasProductInCart::class);
+            Route::get('/payment', [OrderController::class, 'paymentPage'])->middleware(CheckIfUserHasProductInCart::class);
 
-            Route::get('/payment', [OrderController::class, 'index'])->middleware(CheckIfUserHasProductInCart::class);
             Route::post('/order/store', [OrderController::class, 'store']);
         });
-        Route::get('/qr-code', function () {
-            return view('user.qr-code');
-        });
+        Route::get('/qr-code', [OrderController::class, 'getOrderId'])->middleware(CheckIfUserHasNotCompletedOrders::class);
     });
 
     Route::middleware(['admin'])->group(function () {
@@ -82,15 +80,12 @@ Route::middleware(['logged-in'])->group(function () {
             Route::post('/addproduct', [ProductController::class, 'store']);
             Route::post('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
-        Route::get('/order_list', function () {
-            return view('admin.order_list');
-        });
-        Route::get('/transaction_history', function () {
-            return view('admin.transaction_history');
-        });
-        Route::get('/order_scanner', function () {
-            return view('admin.order_scanner');
-        });
+        Route::get('/order_list', [OrderController::class, 'index']);
+        Route::get('/order/get/details/{orderId}', [OrderController::class, 'getOrderDetails']);
+        Route::get('/order/get/product/{orderId}', [OrderController::class, 'getOrderProducts']);
+        
+        Route::get('/transaction_history', [OrderController::class, 'index2']);
+
         Route::get('/manage_user', [UserController::class, 'showUser']);
     });
 });

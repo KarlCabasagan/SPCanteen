@@ -3,14 +3,14 @@
 @section('content1')
 <div class="content">
     <h1 style="margin-bottom: 20px;">Manage Users</h1>
-<div class="">
+<div class="" style="width: 100%; padding-top: 20px;">
     <table id="example" class="display nowrap" style="width: 100%; padding-top: 20px;">
         <thead>
             <tr>
                 <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Name</th>
                 <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Email</th>
-                <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Password</th>
                 <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Role ID</th>
+                <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Order Count</th>
                 <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Action</th>
             </tr>
         </thead>
@@ -19,8 +19,8 @@
             <tr>
                 <td style="text-align: center;">{{$user->name}}</td>
                 <td style="text-align: center;">{{$user->email}}</td>
-                <td style="text-align: center;">{{ substr($user->password, 0, 15) }}</td>
                 <td style="text-align: center;">{{$user->role_id}}</td>
+                <td style="text-align: center;">{{$user->totalOrder}}</td>
                 <td style="text-align: center;"><button class="open-modal6"><iconify-icon icon="bx:edit" style="color: black; font-size: 30;"></iconify-icon></button><a href="/delete"><iconify-icon icon="material-symbols-light:delete-outline" style="color: black; font-size: 30;"></iconify-icon></a></td>
             </tr>
             @endforeach

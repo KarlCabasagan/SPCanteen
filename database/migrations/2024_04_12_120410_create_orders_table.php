@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('status_id');
-            $table->double('amount');
+            $table->double('amount', 8, 2);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('payment_id');
             $table->timestamps();

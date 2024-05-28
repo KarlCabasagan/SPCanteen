@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -14,6 +15,72 @@ class OrderController extends Controller
      */
     public function index()
     {
+        $orders = Order::whereIn('status_id', [1, 2])->orderBy('status_id', 'asc')->get();
+        $date = Carbon::now();  // Replace with your date object or retrieval logic
+
+        $formattedDate = $date->format('F d Y');  // Format as "February 07 2024"
+    
+        return view('admin.order_list', compact('orders', 'formattedDate'));
+    }
+
+    public function index2()
+    {
+        $orders = Order::whereIn('status_id', [3, 4])->get();
+        $date = Carbon::now();  // Replace with your date object or retrieval logic
+
+        $formattedDate = $date->format('F d Y');  // Format as "February 07 2024"
+    
+        return view('admin.transaction_history', compact('orders', 'formattedDate'));
+    }
+
+    public function getOrderId()
+    {
+        $userId = auth()->user()->id;
+
+        $order = Order::where('user_id', $userId)->whereIn('status_id', [1, 2])->first();
+        
+        if ($order) {
+            $orderId = $order->id;
+            return view('user.qr-code', compact('orderId'));
+        }
+
+        return redirect('/');
+    }
+
+    public function getOrderDetails($orderId)
+    {
+        $order = Order::where('id', $orderId)->first();
+
+        $order['status_name'] = $order->status->name;
+        $order['user_name'] = $order->user->name;
+        $order['status_name'] = $order->status->name;
+        $order['payment_type'] = $order->payment->name;
+        $order['user_role'] = $order->user->role->name;
+        $order['date'] = $order->created_at->format('m/d/y');
+
+        //dd($order->cart->get()->product->name);
+        return response()->json($order);
+    }
+
+    public function getOrderProducts($orderId)
+    {
+        $carts = Cart::where('order_id', $orderId)->whereNotNull('order_id')->get();
+
+        $formattedCarts = [];
+        foreach ($carts as $cart) {
+            if ($cart->product) {
+                $formattedCarts[] = [
+                    'id' => $cart->id,
+                    'product_name' => $cart->product->name,
+                    'product_quantity' => $cart->quantity,
+                ];
+            }
+        }
+
+        return response()->json($formattedCarts);
+    }
+
+    public function paymentPage() {
         $userId = auth()->user()->id;
 
         $carts = Cart::where('user_id', $userId)->whereNull('order_id')->get();

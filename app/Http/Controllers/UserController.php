@@ -74,9 +74,11 @@ class UserController extends Controller
 
     public function edit($id) {
 
-        $user = User::find($id);
-
-        return view('user.edit', ['user' => $user]);
+        $userId = User::find($id);
+        if ($userId) {
+            return view('user.edit', ['user' => $userId]);
+        }
+        return view('user.profile');
     }
 
     public function processEdit(Request $request, $id)
@@ -85,9 +87,8 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'role_id' => 'required|in:1,2', // Ensure role_id is valid
-            'oldpassword' => 'required', // Old password field
-            'password' => 'nullable|confirmed|min:6', // Password confirmation and minimum length
+            'oldpassword' => 'required',
+            'password' => 'nullable|confirmed|min:8',
         ]);
 
         // Find the user by ID
@@ -105,17 +106,23 @@ class UserController extends Controller
         // Update user details
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->role_id = $request->role_id;
         
-        // Update password if provided
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }
-
-        // Save the user
         $user->save();
 
-        // Redirect back with success message
         return redirect()->route('user.edit', ['id' => $id])->with('success', 'User updated successfully');
+    }
+
+    public function showUser() 
+    {
+        $users = User::where('role_id', [1, 2, 3])->get();
+
+        foreach ($users as $user) {
+            $user['totalOrder'] = $user->orders->whereIn('status_id', [1, 2, 3])->count();
+        }
+
+        return view('admin.manage_user', compact('users'));
     }
 }

@@ -46,7 +46,7 @@ class CartController extends Controller
         $quantity = $request->query('quantity');
         $userId = auth()->user()->id;
 
-        $checkCart = Cart::where('user_id', $userId)->where('product_id', $productId)->first();
+        $checkCart = Cart::where('user_id', $userId)->where('product_id', $productId)->whereNull('order_id')->first();
 
         if ($checkCart) {
             $checkCart->quantity += $quantity;
@@ -71,14 +71,14 @@ class CartController extends Controller
     {
         $userId = auth()->user()->id;
 
-        $checkCart = Cart::where('user_id', $userId)->where('product_id', $productId)->first();
+        $checkCart = Cart::where('user_id', $userId)->where('product_id', $productId)->whereNull('order_id')->first();
 
         if ($checkCart) {
 
             $checkCart->quantity++;
             $checkCart->save();
 
-            $cartData = Cart::where('user_id', $userId)->get();
+            $cartData = Cart::where('user_id', $userId)->whereNull('order_id')->get();
 
             $productCount = $cartData->count();
             return response()->json($productCount);
@@ -95,7 +95,7 @@ class CartController extends Controller
 
             $cart->save();
 
-            $cartData = Cart::where('user_id', $userId)->get();
+            $cartData = Cart::where('user_id', $userId)->whereNull('order_id')->get();
 
             $productCount = $cartData->count();
             return response()->json($productCount);
@@ -110,7 +110,7 @@ class CartController extends Controller
     public function show()
     {
         $userId = auth()->user()->id;
-        $cartData = Cart::where('user_id', $userId)->get();
+        $cartData = Cart::where('user_id', $userId)->whereNull('order_id')->get();
 
         $productCount = $cartData->count();
 
@@ -121,7 +121,7 @@ class CartController extends Controller
     {
         $userId = auth()->user()->id;
 
-        $carts = Cart::where('user_id', $userId)->get();
+        $carts = Cart::where('user_id', $userId)->whereNull('order_id')->get();
         $totalQuantity = 0;
 
         foreach ($carts as $cart) {
@@ -135,7 +135,7 @@ class CartController extends Controller
     {
         $userId = auth()->user()->id;
 
-        $carts = Cart::where('user_id', $userId)->get();
+        $carts = Cart::where('user_id', $userId)->whereNull('order_id')->get();
         $totalPrice = 0;
 
         foreach ($carts as $cart) {
@@ -148,7 +148,7 @@ class CartController extends Controller
     public function addQuantity(Request $request, $cartId) 
     {
         $quantity = $request->query('quantity');
-        $cart = Cart::where('id', $cartId)->first();
+        $cart = Cart::where('id', $cartId)->whereNull('order_id')->first();
 
         $cart->quantity = $quantity;
         $cart->save();
@@ -161,7 +161,7 @@ class CartController extends Controller
     public function minusQuantity(Request $request, $cartId) 
     {
         $quantity = $request->query('quantity');
-        $cart = Cart::where('id', $cartId)->first();
+        $cart = Cart::where('id', $cartId)->whereNull('order_id')->first();
 
         $cart->quantity = $quantity;
         $cart->save();
@@ -193,11 +193,11 @@ class CartController extends Controller
     public function destroy($cartId)
     {   
         $userId = auth()->user()->id;
-        $cart = Cart::where('id', $cartId)->first();
+        $cart = Cart::where('id', $cartId)->whereNull('order_id')->first();
 
         $cart->delete();
 
-        $carts = Cart::where('user_id', $userId)->get();
+        $carts = Cart::where('user_id', $userId)->whereNull('order_id')->get();
         $carts['deletedCartId'] = $cartId;
 
         return response()->json($carts);

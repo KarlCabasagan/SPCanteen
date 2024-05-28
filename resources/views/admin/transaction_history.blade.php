@@ -15,72 +15,54 @@
         </div>
     </div>
     <div class="transaction">
-        <div class="transcation-container">
-            <div class="transaction-detail">
-                <iconify-icon icon="material-symbols-light:circle"></iconify-icon>
+        @foreach($orders as $order)
+            <div class="transcation-container">
+                <div class="orders-detail">
+                    @if($order->status_id === 4)
+                        <iconify-icon icon="material-symbols-light:circle" style="color: maroon;"></iconify-icon>
+                    @else
+                    <iconify-icon icon="material-symbols-light:circle" style="color: #008000;"></iconify-icon>
+                    @endif
+                </div>
+                <div class="orders-details">
+                    <span id="orders-header">Status</span>
+                    <span>{{$order->status->name}}</span>
+                </div>
+                <div class="orders-details">
+                    <span id="orders-header">Amount</span>
+                    <span>₱ {{$order->amount}}</span>
+                </div>
+                <div class="orders-details">
+                    <span id="orders-header">Date</span>
+                    <span>{{$order->created_at->format('j F Y')}}</span>
+                </div>
+                <div class="orders-details">
+                    <span id="orders-header">Order ID</span>
+                    <span>SPC2024-{{$order->id}}</span>
+                </div>
+                <div class="orders-details open-modal5" data-order-id="{{$order->id}}">
+                    <span id="orders-details">Details</span>
+                </div>
             </div>
-            <div class="transaction-details">
-                <span id="transaction-header">Status</span>
-                <span>Successful</span>
-            </div>
-            <div class="transaction-details">
-                <span id="transaction-header">Amount</span>
-                <span>₱ 50.00</span>
-            </div>
-            <div class="transaction-details">
-                <span id="transaction-header">Date</span>
-                <span>4 February 2024</span>
-            </div>
-            <div class="transaction-details">
-                <span id="transaction-header">Transaction ID</span>
-                <span>SPC2024-69</span>
-            </div>
-            <div class="transaction-details open-modal5">
-                <span id="transaction-details">Details</span>
-            </div>
-        </div>
-        <div class="transcation-container">
-            <div class="transaction-detail">
-                <iconify-icon icon="material-symbols-light:circle"></iconify-icon>
-            </div>
-            <div class="transaction-details">
-                <span id="transaction-header">Status</span>
-                <span>Successful</span>
-            </div>
-            <div class="transaction-details">
-                <span id="transaction-header">Amount</span>
-                <span>₱ 50.00</span>
-            </div>
-            <div class="transaction-details">
-                <span id="transaction-header">Date</span>
-                <span>4 February 2024</span>
-            </div>
-            <div class="transaction-details">
-                <span id="transaction-header">Transaction ID</span>
-                <span>SPC2024-69</span>
-            </div>
-            <div class="transaction-details open-modal5">
-                <span id="transaction-details">Details</span>
-            </div>
-        </div>
+        @endforeach
     </div>
 
     <!--------- Transaction Details Modal -------->
     <div class="modal_transactions-history">
         <span>Amount</span>
         <div class="order-transaction-details">
-            <span>₱135.00 PHP</span>
-            <iconify-icon icon="material-symbols-light:circle" class="transactions-success-icon"></iconify-icon>
-            <span>Processing</span>
+            <span id="order-amount">₱135.00 PHP</span>
+            <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
+            <span id="order-status">Processing</span>
         </div>
         <div class="orders-date-payment">
             <div class="orders-transaction-date">
                 <span>Transaction Date</span>
-                <span>02/11/24</span>
+                <span id="order-date">02/11/24</span>
             </div>
         <div class="orders-transaction-payment">
             <span>Payment type</span>
-            <span>GCash</span>
+            <span id="payment-type">GCash</span>
         </div>
         </div>
         <span class="transaction-details-txt">Transaction Details</span>
@@ -91,29 +73,20 @@
                 <span>Role</span>
             </div>
             <div class="orders-order-details">
-                <span>SPC2024-69</span>
-                <span>Romarc Bongcaron</span>
-                <span>STUDENT</span>
+                <span id="order-id">SPC2024-69</span>
+                <span id="user-name">Romarc Bongcaron</span>
+                <span id="role-name">STUDENT</span>
             </div>
         </div>
         <span class="transaction-product_list-txt">Product List</span>
         <div class="orders-product_list-qr_code">
-            <div class="orders-products-list">
-                <div class="orders-products-txt">
-                <span>Chicken Burger</span>
-                </div>
-                <div class="orders-products-txt">
-                <span>Chicken Burger</span>
-                </div>
-                <div class="orders-products-txt">
-                <span>Chicken Burger</span>
-                </div>
-                <div class="orders-products-txt">
-                <span>Chicken Burger</span>
-                </div>
+            <div id="orders-products-list" class="orders-products-list">
+                <!-- <div id="orders-products-txt" class="orders-products-txt">
+                    <span></span>
+                </div> -->
             </div>
             <div class="orders-qr-code">
-                <img style="width: 50px; height: 50px;" src="https://cdn.britannica.com/17/155017-050-9AC96FC8/Example-QR-code.jpg" alt="">
+                <div id="qrcode"></div>
             </div>
         </div>
         <div class="close-modal5">
@@ -128,6 +101,65 @@
     openModal5Buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
             transactionlistModal.classList.add("active");
+            
+            const orderId = btn.dataset.orderId;
+
+            fetch(`/order/get/details/${orderId}`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("orders-products-list").innerHTML = "";
+                document.getElementById("qrcode").innerHTML = "";
+                document.getElementById("order-amount").innerHTML = `₱${data.amount}`;
+                if (data.status_id === 1) {
+                    document.getElementById("modal-circle").style.color = "#FFD700";
+                } else {
+                    document.getElementById("modal-circle").style.color = "#008000";
+                }
+                document.getElementById("order-status").innerHTML = data.status_name;
+                document.getElementById("order-date").innerHTML = data.date;
+                document.getElementById("payment-type").innerHTML = data.payment_type;
+                document.getElementById("order-id").innerHTML = `SPC2024-${data.id}`;
+                document.getElementById("user-name").innerHTML = data.user.name;
+                document.getElementById("role-name").innerHTML = data.user.role.name;
+                
+                //Get Products
+                fetch(`/order/get/product/${orderId}`)
+                .then(response => response.json())
+                .then(data => {
+                    //console.log(data);
+                    data.forEach((cart) => {
+                        const ordersProductsList = document.getElementById('orders-products-list');
+
+                        if (ordersProductsList) {
+                            const newProductItem = document.createElement('div');
+                            newProductItem.classList.add('orders-products-txt');
+
+                            const productNameSpan = document.createElement('span');
+                            productNameSpan.textContent = cart.product_name;
+
+                            newProductItem.appendChild(productNameSpan);
+                            ordersProductsList.appendChild(newProductItem);
+                        }
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+                
+                var qrcode = new QRCode("qrcode", {
+                    text: `${data.id}`,
+                    width: 50,
+                    height: 50,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : QRCode.CorrectLevel.H
+                });
+
+
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            });
         });
     });
 
