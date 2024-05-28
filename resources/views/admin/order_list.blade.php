@@ -134,11 +134,15 @@
             document.getElementById("qrcode").innerHTML = "";
             document.getElementById("complete-order").dataset.orderId = "";
             document.getElementById("cancel-order").dataset.orderId = "";
+            document.getElementById("ready-order").dataset.orderId = "";
+            document.getElementById("order-status").dataset.orderId = "";
             
             const orderId = decodedText;
 
             document.getElementById("complete-order").dataset.orderId = orderId;
             document.getElementById("cancel-order").dataset.orderId = orderId;
+            document.getElementById("ready-order").dataset.orderId = orderId;
+            document.getElementById("order-status").dataset.orderId = orderId;
 
             fetch(`/order/get/details/scan/${orderId}`)
             .then(response => response.json())
