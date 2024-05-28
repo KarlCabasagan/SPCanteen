@@ -7,6 +7,7 @@ use App\Models\Order;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -45,6 +46,45 @@ class OrderController extends Controller
         }
 
         return view('admin.admin', compact('totalOrders', 'completedOrders', 'cancelledOrders', 'totalRevenue'));
+    }
+
+    public function getChartData()
+    {
+        $orders = Order::whereIn('status_id', [1, 2, 3])->select(
+            DB::raw('MONTH(created_at) as month'),
+            DB::raw('SUM(amount) as total_amount')
+        )
+        ->groupBy('month')
+        ->get();
+        
+        $total_amount_per_month = [];
+        $monthNames = [
+            1 => 'Jan',
+            2 => 'Feb',
+            3 => 'Mar',
+            4 => 'Apr',
+            5 => 'May',
+            6 => 'Jun',
+            7 => 'Jul',
+            8 => 'Aug',
+            9 => 'Sep',
+            10 => 'Oct',
+            11 => 'Nov',
+            12 => 'Dec',
+        ];
+        
+        foreach ($orders as $order) {
+          $month = $order->month;
+          $total_amount = $order->total_amount;
+        
+          // Check if month mapping exists, otherwise use numeric value
+          $monthName = isset($monthNames[$month]) ? $monthNames[$month] : $month;
+          
+          $total_amount_per_month[$monthName] = $total_amount;
+        }
+
+          //dd($total_amount_per_month);
+          return response()->json($total_amount_per_month);
     }
 
     public function getOrderId()

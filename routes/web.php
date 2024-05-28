@@ -74,6 +74,9 @@ Route::middleware(['logged-in'])->group(function () {
 
     Route::middleware(['admin'])->group(function () {
         Route::get('/administrator', [OrderController::class, 'getStatistics']);
+        Route::get('/api/chart/data', [OrderController::class, 'getChartData']);
+
+        
         Route::get('/product_list', [ProductController::class, 'adminIndex']);
             Route::post('/addproduct', [ProductController::class, 'store']);
             Route::post('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
