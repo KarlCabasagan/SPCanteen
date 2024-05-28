@@ -702,6 +702,10 @@ h3 {
   cursor: pointer;
 }
 
+#ready-order {
+  margin-left: 20px;
+}
+
 /* Transaction Details Modal CSS */
 
 .modal_transactions-history {
