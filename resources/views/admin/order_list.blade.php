@@ -24,14 +24,14 @@
             <div class="transcation-container" id="transcation-container-{{$order->id}}">
                 <div class="orders-detail">
                     @if($order->status_id === 1)
-                        <iconify-icon icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
+                        <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
                     @else
-                    <iconify-icon icon="material-symbols-light:circle" style="color: #008000;"></iconify-icon>
+                        <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #008000;"></iconify-icon>
                     @endif
                 </div>
                 <div class="orders-details">
                     <span id="orders-header">Status</span>
-                    <span>{{$order->status->name}}</span>
+                    <span id="status-name-{{$order->id}}">{{$order->status->name}}</span>
                 </div>
                 <div class="orders-details">
                     <span id="orders-header">Amount</span>
@@ -69,7 +69,8 @@
         <div class="order-transaction-details">
             <span id="order-amount">₱135.00 PHP</span>
             <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
-            <span id="order-status">Processing</span>
+            <span id="order-status" data-order-id="">Processing</span>
+            <button id="ready-order" data-order-id="" onclick="readyOrder(this.dataset.orderId)">Change Order Status</button>
         </div>
         <div class="orders-date-payment">
             <div class="orders-transaction-date">
@@ -220,12 +221,16 @@
                 document.getElementById("qrcode").innerHTML = "";
                 document.getElementById("complete-order").dataset.orderId = "";
                 document.getElementById("cancel-order").dataset.orderId = "";
+                document.getElementById("ready-order").dataset.orderId = "";
+                document.getElementById("order-status").dataset.orderId = "";
 
                 orderlistModal.classList.add("active");
                 const orderId = btn.dataset.orderId;
 
                 document.getElementById("complete-order").dataset.orderId = orderId;
                 document.getElementById("cancel-order").dataset.orderId = orderId;
+                document.getElementById("ready-order").dataset.orderId = orderId;
+                document.getElementById("order-status").dataset.orderId = orderId;
 
                 fetch(`/order/get/details/${orderId}`)
                 .then(response => response.json())
@@ -271,7 +276,7 @@
                         text: `${data.id}`,
                         width: 50,
                         height: 50,
-                        colorDark : "#000000",
+                        colorDark : "maroon",
                         colorLight : "#ffffff",
                         correctLevel : QRCode.CorrectLevel.H
                     });
@@ -292,6 +297,27 @@
         });
     }
 
+    function readyOrder(orderId) {
+        fetch(`/order/change/status/${orderId}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data == 1) {
+                document.getElementById(`modal-circle`).style.color = '#FFD700';
+                document.getElementById(`order-status`).innerHTML = 'Preparing';
+                document.getElementById(`status-name-${orderId}`).innerHTML = 'Preparing';
+                document.getElementById(`circle-main-${orderId}`).style.color = '#FFD700';
+            } else {
+                document.getElementById(`modal-circle`).style.color = '#008000';
+                document.getElementById(`order-status`).innerHTML = 'Prepared';
+                document.getElementById(`status-name-${orderId}`).innerHTML = 'Prepared';
+                document.getElementById(`circle-main-${orderId}`).style.color = '#008000';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
     function completeOrder(orderId) {
         fetch(`/order/complete/${orderId}`)
         .then(response => response.json())
@@ -308,7 +334,7 @@
         fetch(`/order/cancel/${orderId}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById(`transcation-container-${data}`).style.display = 'none';
+            document.getElementById(`modal-circle`).style.color = 'none';
             orderlistModal.classList.remove("active");
         })
         .catch(error => {

@@ -87,6 +87,7 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/order/get/product/{orderId}', [OrderController::class, 'getOrderProducts']);
         Route::get('/order/complete/{orderId}', [OrderController::class, 'completeOrder']);
         Route::get('/order/cancel/{orderId}', [OrderController::class, 'cancelOrder']);
+        Route::get('/order/change/status/{orderId}', [OrderController::class, 'changeStatus']);
         
         Route::get('/transaction_history', [OrderController::class, 'index2']);
         Route::get('/order/get/details2/{orderId}', [OrderController::class, 'getOrderDetails2']);

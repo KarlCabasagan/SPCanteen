@@ -214,6 +214,22 @@ class OrderController extends Controller
         return response()->json($order->id);
     }
 
+    public function changeStatus($orderId)
+    {
+        $order = Order::where('id', $orderId)->whereIn('status_id', [1, 2])->first();
+
+        if ($order->status_id == 1) {
+            $order->status_id = 2;
+            $order->save();
+        } else {
+            $order->status_id = 1;
+            $order->save();
+        }
+        
+        return response()->json($order->status_id);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      */
