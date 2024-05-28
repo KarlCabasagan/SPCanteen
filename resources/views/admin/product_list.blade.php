@@ -25,15 +25,19 @@
             <div class="label">
                 <h3>{{$product->name}}</h3>
                 <div class="icon-container">
+                    <div class="edit-delete-btns">
+                        <div class="edit-button">
                     <button class="open-modal2">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                     </button>
+                    </div>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                         @csrf
                         <button type="submit" class="delete-button">
                             <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
                         </button>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -53,7 +57,7 @@
                     </div>
                     <label for="image">
                         <div class="add-icon">
-                            <iconify-icon icon="material-symbols:add" id="add-icon"></iconify-icon>
+                            <span>Insert Image</span>
                         </div>
                     </label>
                 </div>
@@ -105,7 +109,7 @@
                     </div>
                     <label for="image">
                         <div class="add-icon">
-                            <iconify-icon icon="material-symbols:add" id="add-icon"></iconify-icon>
+                            <span>Update Image</span>
                         </div>
                     </label>
                 </div>

@@ -31,7 +31,7 @@
       @if(Auth::user()->role_id == 4)
         <div class="nav-btns">
           <a class="active" href="manage_user">
-            <iconify-icon icon="fluent:clipboard-task-list-16-regular" style="font-size: 26px;"></iconify-icon>
+            <iconify-icon icon="fluent:notepad-person-24-regular" style="font-size: 26px;"></iconify-icon>
             <span id="nav-txt">Manage Users</span>
           </a>
         </div>

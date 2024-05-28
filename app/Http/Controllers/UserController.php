@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -67,6 +68,61 @@ class UserController extends Controller
         auth()->logout();
         return redirect('/');
     }
+
+
+    //edit controller 
+
+    public function edit($id) {
+
+        $userId = User::find($id);
+        if ($userId) {
+            return view('user.edit', ['user' => $userId]);
+        }
+        return view('user.profile');
+    }
+
+    public function processEdit(Request $request, $id)
+    {
+        // Validate the request
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'oldpassword' => 'required',
+            'password' => 'nullable|confirmed|min:8',
+        ]);
+
+        // Find the user by ID
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+
+        // Check if the old password matches
+        if (!Hash::check($request->oldpassword, $user->password)) {
+            return redirect()->back()->with('error', 'Invalid old password');
+        }
+
+        // Update user details
+        $user->name = $request->name;
+        $user->email = $request->email;
+        
+        if ($request->password) {
+            $user->password = Hash::make($request->password);
+        }
+        $user->save();
+
+        return redirect()->route('user.edit', ['id' => $id])->with('success', 'User updated successfully');
+    }
+
+    public function showUser() 
+    {
+        $users = User::where('role_id', [1, 2, 3])->get();
+
+        foreach ($users as $user) {
+            $user['totalOrder'] = $user->orders->whereIn('status_id', [1, 2, 3])->count();
+        }
+
+        return view('admin.manage_user', compact('users'));
+    }
 }
-
-

@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('content')
+@section('content1')
 <div class="content">
     <div class="favorites-header">
         <div class="header">

@@ -15,7 +15,7 @@
                 </div>
                 <div class="sales-txt">
                     <div class="header">
-                        <h3>75</h3>
+                        <h3>{{$totalOrders}}</h3>
                     </div>
                     <div class="total-completed">
                         <p>Total Orders</p>
@@ -34,10 +34,10 @@
                 </div>
                 <div class="sales-txt">
                     <div class="header">
-                        <h3>75</h3>
+                        <h3>{{$completedOrders}}</h3>
                     </div>
                     <div class="total-completed">
-                        <p>Total Orders</p>
+                        <p>Completed Orders</p>
                     </div>
                     <div class="percentage-days">
                         <img id="arrow-icon" src="images/arrow-icon.png">
@@ -53,10 +53,10 @@
                 </div>
                 <div class="sales-txt">
                     <div class="header">
-                        <h3>75</h3>
+                        <h3>{{$cancelledOrders}}</h3>
                     </div>
                     <div class="total-completed">
-                        <p>Total Orders</p>
+                        <p>Cancelled Orders</p>
                     </div>
                     <div class="percentage-days">
                         <img id="arrow-icon" src="images/arrow-icon.png">
@@ -72,10 +72,10 @@
                 </div>
                 <div class="sales-txt">
                     <div class="header">
-                        <h3>75</h3>
+                        <h3>{{$totalRevenue}}</h3>
                     </div>
                     <div class="total-completed">
-                        <p>Total Orders</p>
+                        <p>Total Revenue</p>
                     </div>
                     <div class="percentage-days">
                         <img id="arrow-icon" src="images/arrow-icon.png">

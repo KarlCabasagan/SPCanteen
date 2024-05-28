@@ -216,7 +216,7 @@ h3 {
 
 .search-container .search-button {
   float: right;
-  padding: 6px 10px;
+  padding: 8.1px 10px;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -261,22 +261,23 @@ h3 {
   justify-content: space-between;
   align-items: center;
   position: absolute;
-  width: 203px;
+  width: 202px;
   height: auto;
   bottom: 0;
   margin-top: 100px;
   border-radius: 0 0 10px 10px;
   background: linear-gradient(to bottom, rgba(128, 0, 0, 0.80), rgba(128, 0, 0, 0.581));
   color: white;
-  padding: 5px 10px;
-  overflow: hidden;
-  white-space: normal;
-  word-wrap: break-word;
+  padding: 12px 10px;
 }
 
-.label h3 {
+h3 {
   margin: 0;
   font-size: 20px;
+  white-space: nowrap; 
+  width: 180px;
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 
 .icon-container {
@@ -284,33 +285,46 @@ h3 {
   gap: 10px;
   font-size: 32px;
   color: maroon;
+  width: 54px;
+  justify-content: space-evenly;
+}
+
+.edit-delete-btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tabler-edit {           
   background-color: #fff;
+  color: maroon;
   border-radius: 5px;
   font-family: "Montserrat";
   cursor: pointer;
+  font-size: 20px;
 }
 
 .trash-outline {       
   background-color: #fff;
+  color: maroon;
   border-radius: 5px;
   font-family: "Montserrat";
   cursor: pointer;
+  margin-left: 4px;
+  font-size: 20px;
 }
 
 /* Add Product Modal CSS*/
 
 .modal_product-list {
   display: flex;
-  width: 700px;
+  width: 650px;
   height: 40vh;
   position: fixed;
   top: 54%;
   left: 59%;
   transform: translate(-50%, -50%);
-  padding: 2.4rem 2rem 2rem;
+  padding: 2.4rem 2rem 3rem;
   background: #fff;
   box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
   opacity: 0;
@@ -328,6 +342,8 @@ h3 {
 .modal-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .modal-icon {
@@ -338,7 +354,7 @@ h3 {
 .img-box-fill {
   width: 260px;
   height: 260px;
-  font-size: 260px;
+  font-size: 220px;
   background-color: rgb(216, 215, 215);
   box-shadow: inset 0 1px 10px 0 rgba(0, 0, 0, 0.25);
   border-radius: 20px;
@@ -348,6 +364,7 @@ h3 {
 #img-box-fill {
   width: 260px;
   height: 260px;
+  border-radius: 20px;
 }
 
 .add-icon {
@@ -356,13 +373,16 @@ h3 {
   align-items: center;
   position: absolute;
   background-color: maroon;
-  width: 70px;
-  height: 70px;
-  top: 45%;
-  left: 54%;
+  color: white;
+  width: 260px;
+  height: 58px;
+  top: 89%;
+  left: 53.4%;
   transform: translate(-50%, -50%);
-  border-radius: 50%;
   cursor: pointer;
+  border-radius: 0 0 20px 20px;
+  font-size: 20px;
+  font-weight: 900;
 }
 
 #add-icon {    
@@ -375,7 +395,7 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  margin-left: 120px;
+  margin: 30px 0 0 120px;
 }
 
 .product-info {
@@ -479,8 +499,8 @@ h3 {
 #close {
   position: absolute;
   top: 0;
-  margin: 14px 0 0 30px;
-  background-color: white;
+  margin: 14px 0 0 16px;
+  background: none;
   color: maroon;
   font-size: 34px;
   cursor: pointer;
@@ -488,20 +508,20 @@ h3 {
 }
 
 .save-btn {
-  margin: 20px 74px 0 0;
+  margin: 20px 66px 0 0;
 }
 
 /* Edit Product Modal CSS */
 
 .modal_edit-list {
   display: flex;
-  width: 700px;
+  width: 650px;
   height: 40vh;
   position: fixed;
   top: 54%;
   left: 59%;
   transform: translate(-50%, -50%);
-  padding: 2.4rem 2rem 2rem;
+  padding: 2.4rem 2rem 3rem;
   background: #fff;
   box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
   opacity: 0;
@@ -520,8 +540,8 @@ h3 {
 
 .modal_qr-scanner {
   display: flex;
-  width: 700px;
-  height: 40vh;
+  width: 25rem;
+  height: 20rem;
   position: fixed;
   top: 54%;
   left: 59%;
@@ -533,6 +553,14 @@ h3 {
   pointer-events: none;
   transition: opacity 0.5s ease;
   border-radius: 10px;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+#reader {
+  width: 20rem;
+  height: 40vh;
 }
 
 .modal_qr-scanner.active {
@@ -546,7 +574,6 @@ h3 {
 .modal_orders-list {
   display: flex;
   flex-direction: column;
-  width: 500px;
   height: 70vh;
   position: fixed;
   top: 54%;
@@ -568,26 +595,91 @@ h3 {
 }
 
 .order-transaction-details {
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid black;
   padding-bottom: 2px;
 }
 
+.orders-pending-icon {
+  margin-left: 10px; 
+  color: red;
+}
+
 .orders-date-payment {
   display: flex;
+  width: 462px;
+  justify-content: space-between;
 }
 
-.orders-transaction-date {
+.orders-transaction-date, .orders-transaction-payment {
   display: flex;
   flex-direction: column;
 }
 
-.orders-transaction-payment {
+.transaction-details-txt {
+  color: maroon;
+  font-weight: 900;
+  border-bottom: 1px solid black;
+  padding-bottom: 2px;
+  margin: 10px 0 10px 0;
+}
+
+.orders-transaction-details {
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+}
+
+.orders-id-username, .orders-order-details {
   display: flex;
   flex-direction: column;
+}
+
+.transaction-product_list-txt {
+  color: maroon;
+  font-weight: 900;
+  border-bottom: 1px solid black;
+  padding-bottom: 2px;
+  margin: 10px 0 10px 0;
+}
+
+.orders-product_list-qr_code {
+  display: flex;
+  width: 500px;
+  justify-content: space-between;
+}
+
+.orders-products-list {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  justify-content: space-between;
+  width: 380px;
+}
+
+.orders-products-txt {
+  width: 120px;
 }
 
 .close-modal4 {
+  width: 8px;
   font-size: 20px;
+  cursor: pointer;
+}
+
+.action-container {
+  display: flex;
+  justify-content: center;
+  width: 100%
+}
+
+.order-action{
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+}
+
+.order-action button {
   cursor: pointer;
 }
 
@@ -626,6 +718,11 @@ h3 {
   display: flex;
 }
 
+.transactions-success-icon {
+  margin-left: 10px; 
+  color: green;
+}
+
 .transactions-date {
   display: flex;
   flex-direction: column;
@@ -659,8 +756,8 @@ h3 {
 }
 
 .add-header-orders {
-  width: 60rem;
-  margin: 5rem 0 0 4rem;
+  width: 69rem;
+  margin: 5rem 0 0 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -682,7 +779,7 @@ h3 {
 
 .search-container-orders .search-button-orders {
   float: right;
-  padding: 6px 10px;
+  padding: 8.1px 10px;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -722,7 +819,7 @@ h3 {
 
 .orders-detail {
   position: absolute;
-  margin: 7px 0 0 22px;
+  margin: 2px 0 0 22px;
   color: red;
   font-size: 20px;
 }
@@ -809,7 +906,7 @@ h3 {
 
 .transaction-detail {
   position: absolute;
-  margin: 7px 0 0 22px;
+  margin: 2px 0 0 22px;
   color: green;
   font-size: 20px;
 }
@@ -828,4 +925,37 @@ h3 {
   border-radius: 4px;
   font-size: 12px;
   cursor: pointer;
+}
+
+/* User Management Modal CSS */
+
+.modal_user-edit {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 70vh;
+  position: fixed;
+  top: 54%;
+  left: 59%;
+  transform: translate(-50%, -50%);
+  padding: 2.4rem 2rem 2rem;
+  background: #fff;
+  box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  border-radius: 10px;
+}
+
+.modal_user-edit.active {
+  display: flex;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Manage User */
+
+
+th, td {
+  text-align: center;
 }
