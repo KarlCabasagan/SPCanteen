@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.user')
 
 @section('content')
     @section('css', 'css/user.css')
