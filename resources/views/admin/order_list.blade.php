@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+<script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 @section('content1')
 <div class="content">
     <h1 style="margin-bottom: 5px;">Order List</h1>
@@ -20,7 +21,7 @@
     </div>
     <div class="orders">
         @foreach($orders as $order)
-            <div class="transcation-container">
+            <div class="transcation-container" id="transcation-container-{{$order->id}}">
                 <div class="orders-detail">
                     @if($order->status_id === 1)
                         <iconify-icon icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
@@ -53,10 +54,12 @@
 
     <!--------- QR Scanner Modal -------->
     <div class="modal_qr-scanner">
-        <div class="modal-container">
-            <div class="close-modal3">
+        <div class="close-modal3">
                 <iconify-icon id="close" icon="material-symbols-light:close"></iconify-icon>
             </div>
+        <div class="modal-container">
+        <span id="id-not-found" style="color: red; margin-bottom: 10px; display:none;">Order is not found or not yet prepared.</span>
+            <div id="reader"></div>
         </div>
     </div>
 
@@ -74,7 +77,7 @@
                 <span id="order-date">02/11/24</span>
             </div>
         <div class="orders-transaction-payment">
-            <span>Payment type</span>
+            <span>Payment Type</span>
             <span id="payment-type">GCash</span>
         </div>
         </div>
@@ -105,35 +108,42 @@
         <div class="close-modal4">
             <iconify-icon icon="uil:step-backward-circle"></iconify-icon>
         </div>
+        <div class="action-container">
+            <div class="order-action">
+                <button id="complete-order" data-order-id="" onclick="completeOrder(this.dataset.orderId)">Complete Order</button>
+                <button id="cancel-order" data-order-id="" onclick="cancelOrder(this.dataset.orderId)">Cancel Order</button>
+            </div>
+        </div>
     </div>
 </div>
+
 <script>
-const openModal3 = document.querySelector(".open-modal3");
-const closeModal3 = document.querySelector(".close-modal3");
-const qrscannerModal = document.querySelector(".modal_qr-scanner");
-const orderlistModal = document.querySelector(".modal_orders-list");
+    const openModal3 = document.querySelector(".open-modal3");
+    const closeModal3 = document.querySelector(".close-modal3");
+    const qrscannerModal = document.querySelector(".modal_qr-scanner");
+    const orderlistModal = document.querySelector(".modal_orders-list");
 
-if (openModal3 && closeModal3 && qrscannerModal) {
-  openModal3.addEventListener("click", () => {
-    qrscannerModal.classList.add("active");
-  });
-
-  closeModal3.addEventListener("click", () => {
-    qrscannerModal.classList.remove("active");
-  });
-}
-
-const openModal4Buttons = document.querySelectorAll(".open-modal4");
-  openModal4Buttons.forEach((btn) => {
-        btn.addEventListener("click", () => {
+    if (openModal3 && closeModal3 && qrscannerModal) {
+    openModal3.addEventListener("click", () => {
+        qrscannerModal.classList.add("active");
+        function onScanSuccess(decodedText, decodedResult) {
+            console.log("Scanned");
+            
             document.getElementById("orders-products-list").innerHTML = "";
             document.getElementById("qrcode").innerHTML = "";
-            orderlistModal.classList.add("active");
-            const orderId = btn.dataset.orderId;
+            document.getElementById("complete-order").dataset.orderId = "";
+            document.getElementById("cancel-order").dataset.orderId = "";
+            
+            const orderId = decodedText;
 
-            fetch(`/order/get/details/${orderId}`)
+            document.getElementById("complete-order").dataset.orderId = orderId;
+            document.getElementById("cancel-order").dataset.orderId = orderId;
+
+            fetch(`/order/get/details/scan/${orderId}`)
             .then(response => response.json())
             .then(data => {
+                qrscannerModal.classList.remove("active");
+                orderlistModal.classList.add("active");
                 document.getElementById("order-amount").innerHTML = `₱${data.amount}`;
                 if (data.status_id === 1) {
                     document.getElementById("modal-circle").style.color = "#FFD700";
@@ -160,7 +170,7 @@ const openModal4Buttons = document.querySelectorAll(".open-modal4");
                             newProductItem.classList.add('orders-products-txt');
 
                             const productNameSpan = document.createElement('span');
-                            productNameSpan.textContent = cart.product_name;
+                            productNameSpan.textContent = `${cart.product_name} x${cart.product_quantity}`;
 
                             newProductItem.appendChild(productNameSpan);
                             ordersProductsList.appendChild(newProductItem);
@@ -180,20 +190,130 @@ const openModal4Buttons = document.querySelectorAll(".open-modal4");
                     correctLevel : QRCode.CorrectLevel.H
                 });
 
-
             })
             .catch(error => {
-            console.error('Error:', error);
+                document.getElementById("id-not-found").style.display = "block";
+                setTimeout(function() {
+                    console.log("hu");
+                    document.getElementById("id-not-found").style.display = "none";
+                }, 2500);
             });
             
-        });
+        }
+
+        let html5QrcodeScanner = new Html5QrcodeScanner(
+        "reader",
+        { fps: 1, qrbox: {width: 200, height: 200} },
+        /* verbose= */ false);
+        html5QrcodeScanner.render(onScanSuccess);
     });
 
-const closeModal4 = document.querySelector(".close-modal4");
-if (closeModal4) {
-    closeModal4.addEventListener("click", () => {
-        orderlistModal.classList.remove("active");
+    closeModal3.addEventListener("click", () => {
+        qrscannerModal.classList.remove("active");
     });
-}
+    }
+
+    const openModal4Buttons = document.querySelectorAll(".open-modal4");
+    openModal4Buttons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                document.getElementById("orders-products-list").innerHTML = "";
+                document.getElementById("qrcode").innerHTML = "";
+                document.getElementById("complete-order").dataset.orderId = "";
+                document.getElementById("cancel-order").dataset.orderId = "";
+
+                orderlistModal.classList.add("active");
+                const orderId = btn.dataset.orderId;
+
+                document.getElementById("complete-order").dataset.orderId = orderId;
+                document.getElementById("cancel-order").dataset.orderId = orderId;
+
+                fetch(`/order/get/details/${orderId}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("order-amount").innerHTML = `₱${data.amount}`;
+                    if (data.status_id === 1) {
+                        document.getElementById("modal-circle").style.color = "#FFD700";
+                    } else {
+                        document.getElementById("modal-circle").style.color = "#008000";
+                    }
+                    document.getElementById("order-status").innerHTML = data.status_name;
+                    document.getElementById("order-date").innerHTML = data.date;
+                    document.getElementById("payment-type").innerHTML = data.payment_type;
+                    document.getElementById("order-id").innerHTML = `SPC2024-${data.id}`;
+                    document.getElementById("user-name").innerHTML = data.user.name;
+                    document.getElementById("role-name").innerHTML = data.user.role.name;
+                    
+                    //Get Products
+                    fetch(`/order/get/product/${orderId}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        //console.log(data);
+                        data.forEach((cart) => {
+                            const ordersProductsList = document.getElementById('orders-products-list');
+
+                            if (ordersProductsList) {
+                                const newProductItem = document.createElement('div');
+                                newProductItem.classList.add('orders-products-txt');
+
+                                const productNameSpan = document.createElement('span');
+                                productNameSpan.textContent = `${cart.product_name} x${cart.product_quantity}`;
+
+                                newProductItem.appendChild(productNameSpan);
+                                ordersProductsList.appendChild(newProductItem);
+                            }
+                        });
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+                    
+                    var qrcode = new QRCode("qrcode", {
+                        text: `${data.id}`,
+                        width: 50,
+                        height: 50,
+                        colorDark : "#000000",
+                        colorLight : "#ffffff",
+                        correctLevel : QRCode.CorrectLevel.H
+                    });
+
+
+                })
+                .catch(error => {
+                console.error('Error:', error);
+                });
+                
+            });
+        });
+
+    const closeModal4 = document.querySelector(".close-modal4");
+    if (closeModal4) {
+        closeModal4.addEventListener("click", () => {
+            orderlistModal.classList.remove("active");
+        });
+    }
+
+    function completeOrder(orderId) {
+        fetch(`/order/complete/${orderId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById(`transcation-container-${data}`).style.display = 'none';
+            orderlistModal.classList.remove("active");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
+
+    function cancelOrder(orderId) {
+        fetch(`/order/cancel/${orderId}`)
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById(`transcation-container-${data}`).style.display = 'none';
+            orderlistModal.classList.remove("active");
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    }
 </script>
 @endsection

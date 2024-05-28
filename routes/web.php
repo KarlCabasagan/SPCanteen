@@ -73,18 +73,20 @@ Route::middleware(['logged-in'])->group(function () {
     });
 
     Route::middleware(['admin'])->group(function () {
-        Route::get('/administrator', function () {
-            return view('admin.admin');
-        });
+        Route::get('/administrator', [OrderController::class, 'getStatistics']);
         Route::get('/product_list', [ProductController::class, 'adminIndex']);
             Route::post('/addproduct', [ProductController::class, 'store']);
             Route::post('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
 
         Route::get('/order_list', [OrderController::class, 'index']);
         Route::get('/order/get/details/{orderId}', [OrderController::class, 'getOrderDetails']);
+        Route::get('/order/get/details/scan/{orderId}', [OrderController::class, 'getOrderDetailsScan']);
         Route::get('/order/get/product/{orderId}', [OrderController::class, 'getOrderProducts']);
+        Route::get('/order/complete/{orderId}', [OrderController::class, 'completeOrder']);
+        Route::get('/order/cancel/{orderId}', [OrderController::class, 'cancelOrder']);
         
         Route::get('/transaction_history', [OrderController::class, 'index2']);
+        Route::get('/order/get/details2/{orderId}', [OrderController::class, 'getOrderDetails2']);
 
         Route::get('/manage_user', [UserController::class, 'showUser']);
     });

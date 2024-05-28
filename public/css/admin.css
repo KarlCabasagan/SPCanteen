@@ -342,6 +342,8 @@ h3 {
 .modal-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .modal-icon {
@@ -538,8 +540,8 @@ h3 {
 
 .modal_qr-scanner {
   display: flex;
-  width: 20rem;
-  height: 40vh;
+  width: 25rem;
+  height: 20rem;
   position: fixed;
   top: 54%;
   left: 59%;
@@ -552,6 +554,13 @@ h3 {
   transition: opacity 0.5s ease;
   border-radius: 10px;
   flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+#reader {
+  width: 20rem;
+  height: 40vh;
 }
 
 .modal_qr-scanner.active {
@@ -655,6 +664,22 @@ h3 {
 .close-modal4 {
   width: 8px;
   font-size: 20px;
+  cursor: pointer;
+}
+
+.action-container {
+  display: flex;
+  justify-content: center;
+  width: 100%
+}
+
+.order-action{
+  display: flex;
+  justify-content: space-between;
+  width: 20rem;
+}
+
+.order-action button {
   cursor: pointer;
 }
 

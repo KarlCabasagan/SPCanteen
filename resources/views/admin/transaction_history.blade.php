@@ -3,7 +3,7 @@
 @section('content1')
 <div class="content">
     <h1 style="margin-bottom: 5px;">Transaction History</h1>
-    <span style="margin-left: 7px; font-size: 30px;">February 07 2024</span>
+    <span style="margin-left: 7px; font-size: 30px;">{{$formattedDate}}</span>
     <div class="add-header-transaction">
         <div class="search-container-transaction">
             <form action="" method="GET">
@@ -61,7 +61,7 @@
                 <span id="order-date">02/11/24</span>
             </div>
         <div class="orders-transaction-payment">
-            <span>Payment type</span>
+            <span>Payment Type</span>
             <span id="payment-type">GCash</span>
         </div>
         </div>
@@ -104,7 +104,7 @@
             
             const orderId = btn.dataset.orderId;
 
-            fetch(`/order/get/details/${orderId}`)
+            fetch(`/order/get/details2/${orderId}`)
             .then(response => response.json())
             .then(data => {
                 document.getElementById("orders-products-list").innerHTML = "";
@@ -135,7 +135,7 @@
                             newProductItem.classList.add('orders-products-txt');
 
                             const productNameSpan = document.createElement('span');
-                            productNameSpan.textContent = cart.product_name;
+                            productNameSpan.textContent = `${cart.product_name} x${cart.product_quantity}`;
 
                             newProductItem.appendChild(productNameSpan);
                             ordersProductsList.appendChild(newProductItem);

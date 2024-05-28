@@ -26,11 +26,25 @@ class OrderController extends Controller
     public function index2()
     {
         $orders = Order::whereIn('status_id', [3, 4])->get();
-        $date = Carbon::now();  // Replace with your date object or retrieval logic
+        $date = Carbon::now();
 
-        $formattedDate = $date->format('F d Y');  // Format as "February 07 2024"
+        $formattedDate = $date->format('F d Y');
     
         return view('admin.transaction_history', compact('orders', 'formattedDate'));
+    }
+
+    public function getStatistics() {
+        $totalOrders = Order::whereIn('status_id', [1, 2, 3])->count();
+        $completedOrders = Order::where('status_id', 3)->get()->count();
+        $cancelledOrders = Order::where('status_id', 4)->get()->count();
+        $orders = Order::where('status_id', 3)->get();
+
+        $totalRevenue = 0;
+        foreach ($orders as $order) {
+            $totalRevenue += $order->amount;
+        }
+
+        return view('admin.admin', compact('totalOrders', 'completedOrders', 'cancelledOrders', 'totalRevenue'));
     }
 
     public function getOrderId()
@@ -49,7 +63,32 @@ class OrderController extends Controller
 
     public function getOrderDetails($orderId)
     {
-        $order = Order::where('id', $orderId)->first();
+        $order = Order::where('id', $orderId)->whereIn('status_id', [1, 2])->first();
+
+        if (!$order) {
+            throw new \Exception('Order not found.');
+            return response()->json();
+        }
+
+        $order['status_name'] = $order->status->name;
+        $order['user_name'] = $order->user->name;
+        $order['status_name'] = $order->status->name;
+        $order['payment_type'] = $order->payment->name;
+        $order['user_role'] = $order->user->role->name;
+        $order['date'] = $order->created_at->format('m/d/y');
+
+        //dd($order->cart->get()->product->name);
+        return response()->json($order);
+    }
+
+    public function getOrderDetailsScan($orderId)
+    {
+        $order = Order::where('id', $orderId)->where('status_id', 2)->first();
+
+        if (!$order) {
+            throw new \Exception('Order not found.');
+            return response()->json();
+        }
 
         $order['status_name'] = $order->status->name;
         $order['user_name'] = $order->user->name;
@@ -80,6 +119,26 @@ class OrderController extends Controller
         return response()->json($formattedCarts);
     }
 
+    public function getOrderDetails2($orderId)
+    {
+        $order = Order::where('id', $orderId)->whereIn('status_id', [3, 4])->first();
+
+        if (!$order) {
+            throw new \Exception('Order not found.');
+            return response()->json();
+        }
+
+        $order['status_name'] = $order->status->name;
+        $order['user_name'] = $order->user->name;
+        $order['status_name'] = $order->status->name;
+        $order['payment_type'] = $order->payment->name;
+        $order['user_role'] = $order->user->role->name;
+        $order['date'] = $order->created_at->format('m/d/y');
+
+        //dd($order->cart->get()->product->name);
+        return response()->json($order);
+    }
+
     public function paymentPage() {
         $userId = auth()->user()->id;
 
@@ -93,6 +152,26 @@ class OrderController extends Controller
         }
 
         return view('user.payment', compact('totalPrice', 'productSelected'));
+    }
+
+    public function completeOrder($orderId)
+    {
+        $order = Order::where('id', $orderId)->where('status_id', 2)->first();
+
+        $order->status_id = 3;
+        $order->save();
+        
+        return response()->json($order->id);
+    }
+
+    public function cancelOrder($orderId)
+    {
+        $order = Order::where('id', $orderId)->whereIn('status_id', [1, 2])->first();
+
+        $order->status_id = 4;
+        $order->save();
+        
+        return response()->json($order->id);
     }
 
     /**
