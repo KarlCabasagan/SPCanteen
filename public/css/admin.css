@@ -999,8 +999,16 @@ h3 {
   pointer-events: all;
 }
 
+.close-modal6 {
+  font-size: 20px;
+  cursor: pointer;
+}
 /* Manage User */
 
+#profile-picture {
+  width: 100px;
+  height: 100px;
+}
 
 th, td {
   text-align: center;

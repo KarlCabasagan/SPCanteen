@@ -3,6 +3,7 @@
 use App\Http\Middleware\CheckAuth;
 use App\Http\Middleware\CheckIfAdmin;
 use App\Http\Middleware\CheckIfOrderIsCompleted;
+use App\Http\Middleware\CheckIfSuperAdmin;
 use App\Http\Middleware\CheckIfUser;
 use App\Http\Middleware\CheckUserHasRole;
 use App\Http\Middleware\EnsureUserHasRole;
@@ -29,6 +30,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->appendToGroup('noPendingOrder', [
             CheckIfOrderIsCompleted::class,
+        ]);
+        $middleware->appendToGroup('superAdmin', [
+            CheckIfSuperAdmin::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

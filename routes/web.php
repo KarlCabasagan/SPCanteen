@@ -93,7 +93,12 @@ Route::middleware(['logged-in'])->group(function () {
         
         Route::get('/transaction_history', [OrderController::class, 'index2']);
         Route::get('/order/get/details2/{orderId}', [OrderController::class, 'getOrderDetails2']);
-
-        Route::get('/manage_user', [UserController::class, 'showUser']);
+        
+        Route::middleware(['superAdmin'])->group(function () {
+            Route::get('/manage_user', [UserController::class, 'showUser']);
+            Route::get('/user/{id}', [UserController::class, 'show']);
+            Route::post('/user/edit/{id}', [UserController::class, 'adminEdit']);
+            Route::get('/user/delete/{id}', [UserController::class, 'delete']);
+        });
     });
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
@@ -81,6 +82,30 @@ class UserController extends Controller
         return view('user.profile');
     }
 
+    public function adminEdit(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        
+        $validateData = $request->validate([
+            'name' => ['required', 'min:3', 'max:30',],
+            'email' => ['required', 'min:3', 'max:200',],
+            'role' => ['required', Rule::in([1, 2, 3, 4])]
+        ]);
+
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->role_id = $request->input('role');
+
+        $user->save();
+
+        return redirect('/manage_user');
+    }
+
+    public function show(User $id)
+    {
+        return response()->json($id);
+    }
+
     public function processEdit(Request $request, $id)
     {
         // Validate the request
@@ -117,12 +142,27 @@ class UserController extends Controller
 
     public function showUser() 
     {
-        $users = User::where('role_id', [1, 2, 3])->get();
+        $userId = auth()->user()->id;
+        $users = User::whereNot('id', $userId)->get();
 
         foreach ($users as $user) {
             $user['totalOrder'] = $user->orders->whereIn('status_id', [1, 2, 3])->count();
         }
 
         return view('admin.manage_user', compact('users'));
+    }
+
+    public function delete(User $id)
+    {
+        $filePath = public_path('images/profile/' . $id->image);
+        // dd($filePath);
+        if (File::exists($filePath)) {
+            if (basename($filePath) !== 'default.png') {
+                File::delete($filePath);
+            }
+        }
+        $id->delete();
+
+        return response()->json($id);
     }
 }
