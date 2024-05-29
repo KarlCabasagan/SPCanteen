@@ -365,6 +365,13 @@ h3 {
   flex-direction: column;
 }
 
+.modal-container-add, .modal-container-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
 .modal-icon {
   position: relative;
   top: 20px;
@@ -381,6 +388,22 @@ h3 {
 }
 
 #img-box-fill {
+  width: 260px;
+  height: 260px;
+  border-radius: 20px;
+}
+
+.img-box-fill-edit {
+  width: 260px;
+  height: 260px;
+  font-size: 220px;
+  background-color: rgb(216, 215, 215);
+  box-shadow: inset 0 1px 10px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-left: 20px;
+}
+
+#img-box-fill-edit {
   width: 260px;
   height: 260px;
   border-radius: 20px;

@@ -8,6 +8,7 @@ use App\Models\Favorite;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -123,17 +124,54 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        $product = Product::where('id', $id)->first();
+
+        // dd($product);
+        return response()->json($product);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, $id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:15000',
+            'time' => 'required|integer',
+            'category_id' => ['required',Rule::in([1, 2, 3, 4, 5, 6, 7])],
+        ]);
+
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->time = $request->input('time');
+        $product->category_id = $request->input('category_id');
+
+        if ($request->hasFile('images')) {
+            $file = $request->file('images');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/product'), $filename);
+            
+            $filePath = public_path('images/product/' . $product->image);
+            if (File::exists($filePath)) {
+                if (basename($filePath) !== 'default.jpg') {
+                    File::delete($filePath);
+                }
+            }
+
+            $product->image = $filename;
+        } else {
+            $product->image = $product->image;
+        }
+
+        $product->save();
+
+        return redirect('/product_list');
     }
 
     /**
@@ -149,7 +187,16 @@ class ProductController extends Controller
      */
     public function destroy(Product $id)
     {
+        $filePath = public_path('images/product/' . $id->image);
+        // dd($filePath);
+        if (File::exists($filePath)) {
+            if (basename($filePath) !== 'default.jpg') {
+                File::delete($filePath);
+            }
+        }
+
         $id->delete();
+
         return redirect('/product_list')->with('success', 'Product deleted successfully!');
     }
 }
