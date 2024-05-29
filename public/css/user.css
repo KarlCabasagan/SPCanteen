@@ -616,15 +616,33 @@
   margin-top: 8px;
 }
 
+.status-order-container {
+  display: flex;
+  flex-direction: row;
+  width: 140px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.status-order-container iconify-icon{
+  margin-top: 10px;
+}
+
+#status-order {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
 .code-container {
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: white;
-  margin-top: 40px;
+  margin-top: 10px;
   width: 300px; 
   height: 300px; 
   border-radius: 20px;
+  flex-direction: row;
 }
 
 /* #qrcode {
