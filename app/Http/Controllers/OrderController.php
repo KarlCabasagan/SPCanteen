@@ -34,6 +34,25 @@ class OrderController extends Controller
         return view('admin.transaction_history', compact('orders', 'formattedDate'));
     }
 
+    public function index3()
+    {
+        $userId = auth()->user()->id;
+        $orders = Order::where('status_id', 3)->where('user_id', $userId)->orderBy('id', 'desc')->get();
+        $date = Carbon::now();
+        
+        $formattedDate = $date->format('F d Y');
+        $orders = Order::all();
+        
+        $cartIds = $orders->map(function ($order) {
+            return $order->cart->map(function ($cart) {
+                return $cart->id;
+            });
+        });
+        
+        dd($cartIds);
+        return view('user.history', compact('orders', 'formattedDate'));
+    }
+
     public function getStatistics() {
         $totalOrders = Order::whereIn('status_id', [1, 2, 3])->count();
         $completedOrders = Order::where('status_id', 3)->get()->count();

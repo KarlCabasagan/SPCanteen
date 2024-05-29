@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\CheckAuth;
 use App\Http\Middleware\CheckIfAdmin;
+use App\Http\Middleware\CheckIfBelongsToAuthUser;
 use App\Http\Middleware\CheckIfOrderIsCompleted;
 use App\Http\Middleware\CheckIfSuperAdmin;
 use App\Http\Middleware\CheckIfUser;
@@ -33,6 +34,9 @@ return Application::configure(basePath: dirname(__DIR__))
         ]);
         $middleware->appendToGroup('superAdmin', [
             CheckIfSuperAdmin::class,
+        ]);
+        $middleware->appendToGroup('editUser', [
+            CheckIfBelongsToAuthUser::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
