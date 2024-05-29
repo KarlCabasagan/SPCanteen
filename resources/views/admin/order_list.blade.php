@@ -338,7 +338,7 @@
         fetch(`/order/cancel/${orderId}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById(`modal-circle`).style.color = 'none';
+            document.getElementById(`transcation-container-${data}`).style.display = 'none';
             orderlistModal.classList.remove("active");
         })
         .catch(error => {
