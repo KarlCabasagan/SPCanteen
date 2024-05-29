@@ -517,7 +517,6 @@ h3 {
   position: absolute;
   top: 0;
   margin: 14px 0 0 16px;
-  background-color: white;
   color: maroon;
   font-size: 34px;
   cursor: pointer;
@@ -613,20 +612,31 @@ h3 {
 
 .order-transaction-details {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
-  padding-bottom: 2px;
+  border-bottom: 2px solid lightgray;
+  padding: 4px 0 10px 0;
+}
+
+.orders-details-header {
+  display: flex;
+  align-items: center;
 }
 
 .orders-pending-icon {
-  margin-left: 10px; 
+  margin: 0 4px 0 4px; 
   color: red;
+}
+
+#order-status {
+  font-weight: 900;
 }
 
 .orders-date-payment {
   display: flex;
   width: 462px;
   justify-content: space-between;
+  margin: 8px 0 14px 0;
 }
 
 .orders-transaction-date, .orders-transaction-payment {
@@ -634,12 +644,16 @@ h3 {
   flex-direction: column;
 }
 
+#order-date, #payment-type {
+  font-weight: 900;
+}
+
 .transaction-details-txt {
   color: maroon;
-  font-weight: 900;
-  border-bottom: 1px solid black;
-  padding-bottom: 2px;
-  margin: 10px 0 10px 0;
+  font-weight: bolder;
+  border-bottom: 2px solid lightgray;
+  padding-bottom: 8px;
+  margin: 12px 0 14px 0;
 }
 
 .orders-transaction-details {
@@ -656,26 +670,45 @@ h3 {
 .transaction-product_list-txt {
   color: maroon;
   font-weight: 900;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid lightgray;
   padding-bottom: 2px;
-  margin: 10px 0 10px 0;
+  margin: 20px 0 14px 0;
 }
 
 .orders-product_list-qr_code {
   display: flex;
   width: 500px;
   justify-content: space-between;
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis;
 }
 
 .orders-products-list {
   display: grid;
   grid-template-columns: auto auto auto;
-  justify-content: space-between;
-  width: 380px;
+}
+
+#order-amount {
+  color: maroon;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.orders-status {
+  padding-right: 8px;
+  margin-left: 14px;
+  display: flex;
+  align-items: center;
+  background-color: #E5E4E2;
+  border-radius: 10px;
+  font-size: 12px;
 }
 
 .orders-products-txt {
-  width: 120px;
+  font-size: 14px;
+  font-weight: 900;
+  margin-right: 18px;
 }
 
 .close-modal4 {
@@ -701,8 +734,21 @@ h3 {
 }
 
 #ready-order {
+  color: maroon;
+  font-weight: 900;
   margin-left: 20px;
 }
+
+#close-details {
+  position: absolute;
+  top: 0;
+  margin: 14px 0 0 488px;
+  color: maroon;
+  font-size: 34px;
+  cursor: pointer;
+  font-family: "Montserrat";
+}
+
 
 /* Transaction Details Modal CSS */
 
@@ -728,6 +774,13 @@ h3 {
   display: flex;
   opacity: 1;
   pointer-events: all;
+}
+
+.order-transactions-details {
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid lightgray;
+  padding: 4px 0 10px 0;
 }
 
 .transactions-details {
@@ -800,7 +853,7 @@ h3 {
 
 .search-container-orders .search-button-orders {
   float: right;
-  padding: 8.1px 10px;
+  padding: 8px 10px;
   font-size: 17px;
   border: none;
   cursor: pointer;
@@ -887,7 +940,7 @@ h3 {
 
 .search-container-transaction .search-button-transaction {
   float: right;
-  padding: 6px 10px;
+  padding: 8px 10px;
   font-size: 17px;
   border: none;
   cursor: pointer;

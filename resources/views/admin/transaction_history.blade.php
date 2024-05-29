@@ -50,10 +50,12 @@
     <!--------- Transaction Details Modal -------->
     <div class="modal_transactions-history">
         <span>Amount</span>
-        <div class="order-transaction-details">
+        <div class="order-transactions-details">
             <span id="order-amount">₱135.00 PHP</span>
-            <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
-            <span id="order-status">Processing</span>
+            <div class="orders-status">
+                <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
+                <span id="order-status" data-order-id="">Processing</span>
+            </div>
         </div>
         <div class="orders-date-payment">
             <div class="orders-transaction-date">
@@ -90,7 +92,7 @@
             </div>
         </div>
         <div class="close-modal5">
-            <iconify-icon icon="uil:step-backward-circle"></iconify-icon>
+            <iconify-icon id="close-details" icon="material-symbols-light:close"></iconify-icon>
         </div>
     </div>
 </div>

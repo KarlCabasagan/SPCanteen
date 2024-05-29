@@ -67,9 +67,15 @@
     <div class="modal_orders-list">
         <span>Amount</span>
         <div class="order-transaction-details">
-            <span id="order-amount">₱135.00 PHP</span>
-            <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
-            <span id="order-status" data-order-id="">Processing</span>
+            <div class="orders-details-header">
+                <div class="order-amount">
+                    <span id="order-amount">₱135.00 PHP</span>
+                </div>
+                <div class="orders-status">
+                    <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
+                    <span id="order-status" data-order-id="">Processing</span>
+                </div>
+            </div>
             <button id="ready-order" data-order-id="" onclick="readyOrder(this.dataset.orderId)">Change Order Status</button>
         </div>
         <div class="orders-date-payment">
@@ -77,10 +83,10 @@
                 <span>Transaction Date</span>
                 <span id="order-date">02/11/24</span>
             </div>
-        <div class="orders-transaction-payment">
-            <span>Payment Type</span>
-            <span id="payment-type">GCash</span>
-        </div>
+            <div class="orders-transaction-payment">
+                <span>Payment Type</span>
+                <span id="payment-type">GCash</span>
+            </div>
         </div>
         <span class="transaction-details-txt">Transaction Details</span>
         <div class="orders-transaction-details">
@@ -107,7 +113,7 @@
             </div>
         </div>
         <div class="close-modal4">
-            <iconify-icon icon="uil:step-backward-circle"></iconify-icon>
+            <iconify-icon id="close-details" icon="material-symbols-light:close"></iconify-icon>
         </div>
         <div class="action-container">
             <div class="order-action">
