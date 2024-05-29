@@ -27,7 +27,7 @@
                 <div class="icon-container">
                     <div class="edit-delete-btns">
                         <div class="edit-button">
-                    <button class="open-modal2">
+                    <button class="open-modal2" data-product-id="{{$product->id}}">
                         <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
                     </button>
                     </div>
@@ -48,8 +48,9 @@
     <div class="modal_product-list">
         <form action="/addproduct" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="modal-container">
-                <input type="file" id="image" name="image" accept="image/*" onchange="previewProductImage(this);" style="display: none;">
+            <div class="modal-container-add">
+                <input type="file" id="image" name="image" accept="image/*" onchange="previewProductImage(this);"
+                    style="display: none;">
                 <div class="modal-icon">
                     <div class="img-box-fill">
                         <img id="img-box-fill" src="images/product/default.jpg">
@@ -99,16 +100,16 @@
     <div class="modal_edit-list">
         <form action="/addproduct" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="modal-container">
-                <input type="file" id="image" name="image" accept="image/*" onchange="previewProductImage(this);" 
+            <div class="modal-container-edit">
+                <input type="file" id="images" name="images" accept="image/*" onchange="previewProductImageEdit(this);"
                     style="display: none;">
                 <div class="modal-icon">
-                    <div class="img-box-fill">
-                        <img id="img-box-fill" src="images/product/default.jpg">
+                    <div class="img-box-fill-edit">
+                        <img id="img-box-fill-edit" src="images/product/default.jpg">
                     </div>
-                    <label for="image">
+                    <label for="images">
                         <div class="add-icon">
-                            <span>Update Image</span>
+                            <span>Change Image</span>
                         </div>
                     </label>
                 </div>
@@ -153,10 +154,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const closeModal1 = document.querySelector(".close-modal1");
   const productlistModal = document.querySelector(".modal_product-list");
   const editlistModal = document.querySelector(".modal_edit-list");
+  const editForm = editlistModal.querySelector("form");
 
   if (openModal1 && closeModal1 && productlistModal) {
     openModal1.addEventListener("click", () => {
-      productlistModal.classList.add("active");
+        productlistModal.classList.add("active");
     });
 
     closeModal1.addEventListener("click", () => {
@@ -166,15 +168,31 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const openModal2Buttons = document.querySelectorAll(".open-modal2");
   openModal2Buttons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-      editlistModal.classList.add("active");
+    btn.addEventListener("click", async (event) => {
+        event.preventDefault();
+        
+        const productId = btn.dataset.productId;
+
+        const response = await fetch(`/products/${productId}`);
+        const productData = await response.json();
+
+        editForm.querySelector("#product-name").value = productData.name;
+        editForm.querySelector("#product-price").value = productData.price;
+        editForm.querySelector("#product-time").value = productData.time;
+        editForm.querySelector("#product-categories").value = productData.category_id;
+        document.getElementById("img-box-fill-edit").src = `images/product/${productData.image}`;
+
+        editForm.action = `/products/edit/${productId}`;
+
+        editlistModal.classList.add("active");
+
     });
   });
 
   const closeModal2 = document.querySelector(".close-modal2");
   if (closeModal2) {
     closeModal2.addEventListener("click", () => {
-      editlistModal.classList.remove("active");
+        editlistModal.classList.remove("active");
     });
   }
 });
@@ -190,5 +208,19 @@ function previewProductImage(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+function previewProductImageEdit(input) {
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+
+    reader.onload = function(e) {
+      document.getElementById('img-box-fill-edit').src = e.target.result;
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+
 </script>
 @endsection

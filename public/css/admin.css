@@ -363,6 +363,13 @@ h3 {
   justify-content: center;
 }
 
+.modal-container-add, .modal-container-edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
 .modal-icon {
   position: relative;
   top: 20px;
@@ -379,6 +386,22 @@ h3 {
 }
 
 #img-box-fill {
+  width: 260px;
+  height: 260px;
+  border-radius: 20px;
+}
+
+.img-box-fill-edit {
+  width: 260px;
+  height: 260px;
+  font-size: 220px;
+  background-color: rgb(216, 215, 215);
+  box-shadow: inset 0 1px 10px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  margin-left: 20px;
+}
+
+#img-box-fill-edit {
   width: 260px;
   height: 260px;
   border-radius: 20px;
@@ -871,7 +894,7 @@ h3 {
   color: white;
 }
 
-.transcation-container {
+.transaction-container {
   width: 100%;
   height: 90px;
   background-color: white;
@@ -880,27 +903,40 @@ h3 {
   justify-content: space-between;
   align-items: center;
   border-radius: 20px;
+}
+
+.orders {
   margin-top: 30px;
+  max-height: 67vh; 
+  overflow-y: auto;
+  padding: 0 4px 0 2px;
 }
 
 .orders-details {
+  transform: translateY(-20%);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 2px 30px 0 60px;
+  margin: 0 30px 0 60px;
+  font-weight: bold;
+}
+
+.orders-detailed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 30px 0 60px;
   font-weight: bold;
 }
 
 .orders-detail {
-  position: absolute;
   margin: 2px 0 0 22px;
   color: red;
   font-size: 20px;
 }
 
 #orders-header {
-  position: absolute;
-  transform: translateY(-160%);
+  transform: translateY(-50%);
   font-size: 12px;
   opacity: 0.55;
 }
@@ -958,7 +994,14 @@ h3 {
   color: white;
 }
 
-.transcation-container {
+.transaction {
+  margin-top: 30px;
+  max-height: 67vh; 
+  overflow-y: auto;
+  padding: 0 4px 0 2px;
+}
+
+.transaction-container {
   width: 100%;
   height: 90px;
   background-color: white;
@@ -967,7 +1010,7 @@ h3 {
   justify-content: space-between;
   align-items: center;
   border-radius: 20px;
-  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .transaction-details {
@@ -1027,8 +1070,16 @@ h3 {
   pointer-events: all;
 }
 
+.close-modal6 {
+  font-size: 20px;
+  cursor: pointer;
+}
 /* Manage User */
 
+#profile-picture {
+  width: 100px;
+  height: 100px;
+}
 
 th, td {
   text-align: center;

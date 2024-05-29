@@ -16,7 +16,7 @@
     </div>
     <div class="transaction">
         @foreach($orders as $order)
-            <div class="transcation-container">
+            <div class="transaction-container">
                 <div class="orders-detail">
                     @if($order->status_id === 4)
                         <iconify-icon icon="material-symbols-light:circle" style="color: maroon;"></iconify-icon>
@@ -40,7 +40,7 @@
                     <span id="orders-header">Order ID</span>
                     <span>SPC2024-{{$order->id}}</span>
                 </div>
-                <div class="orders-details open-modal5" data-order-id="{{$order->id}}">
+                <div class="orders-detailed open-modal5" data-order-id="{{$order->id}}">
                     <span id="orders-details">Details</span>
                 </div>
             </div>

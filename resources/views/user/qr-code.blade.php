@@ -11,11 +11,24 @@
         <div class="code-content">
             <img id="code-profile" src="images/profile/{{Auth::user()->image}}" alt="{{Auth::user()->name}}.jpg">
             <span id="code-name">{{Auth::user()->name}}</span>
+            <div class="status-order-container">
+                @if($order->status_id == 1)
+                    <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
+                @else
+                    <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #008000;"></iconify-icon>
+                @endif
+                <span id="status-order">{{$order->status->name}}</span>
+                @if($order->status_id == 1)
+                    <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
+                @else
+                    <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #008000;"></iconify-icon>
+                @endif
+            </div>
             <div class="code-container">
                 <div id="qrcode"></div>
                 <script type="text/javascript">
-                new QRCode(document.getElementById("qrcode"), "{{$orderId}}");
-            </script>
+                new QRCode(document.getElementById("qrcode"), "{{$order->id}}");
+                </script>
             </div>
             <span id="code-txt">Scan this code to see your order.</span>
         </div>

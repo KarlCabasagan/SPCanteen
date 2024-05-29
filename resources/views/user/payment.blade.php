@@ -42,7 +42,7 @@
                         </div>
                 </button>
                 @else
-                    <button class="payment-containers" id="payment-containers" onclick="selectPayment4()">
+                <button class="payment-containers" id="payment-containers" onclick="selectPayment4()">
                         <div class="payment">
                             <div class="payment-left-side">
                                 <img id="payments-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJXmMbrItPLMTeMbSZzS46aE6JBdUvO6EtTa7dLw8LQ&s" alt="">
@@ -88,9 +88,6 @@
         </div>
     </form>
 </div>
-
-@endsection
-
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         const paymentContainers = document.querySelectorAll(".payment-containers");
@@ -106,7 +103,6 @@
         const radioButton = document.getElementById('payment-btn1');
         if (radioButton) {
             radioButton.checked = true;
-
         }
     }
 
@@ -134,3 +130,4 @@
         }
     }
 </script>
+@endsection

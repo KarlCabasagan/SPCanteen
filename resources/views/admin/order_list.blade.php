@@ -21,7 +21,7 @@
     </div>
     <div class="orders">
         @foreach($orders as $order)
-            <div class="transcation-container" id="transcation-container-{{$order->id}}">
+            <div class="transaction-container" id="transcation-container-{{$order->id}}">
                 <div class="orders-detail">
                     @if($order->status_id === 1)
                         <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
@@ -45,7 +45,7 @@
                     <span id="orders-header">Order ID</span>
                     <span>SPC2024-{{$order->id}}</span>
                 </div>
-                <div class="orders-details open-modal4" data-order-id="{{$order->id}}">
+                <div class="orders-detailed open-modal4" data-order-id="{{$order->id}}">
                     <span id="orders-details">Details</span>
                 </div>
             </div>
@@ -344,7 +344,7 @@
         fetch(`/order/cancel/${orderId}`)
         .then(response => response.json())
         .then(data => {
-            document.getElementById(`modal-circle`).style.color = 'none';
+            document.getElementById(`transcation-container-${data}`).style.display = 'none';
             orderlistModal.classList.remove("active");
         })
         .catch(error => {

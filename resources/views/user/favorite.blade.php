@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('content1')
+@section('content')
 <div class="content">
     <div class="favorites-header">
         <div class="header">
@@ -29,34 +29,40 @@
         </div>
     </div>
     <div class="favorite-products" id="favorite-products">
-        @foreach ($favorites as $favorite)
-            <div class="product-container" id="product-container-{{$favorite->product->id}}">
-                <div class="product-content">
-                    <div class="product-image">
-                        <button class="show-modal" data-product="{{$favorite->product}}">
-                            <img id="product-image" src="images/product/{{$favorite->product->image}}" alt="{{$favorite->product->name}}">
-                        </button>
-                        <button class="favorite-heart-container" id="favorite-heart-container" data-product-id="{{$favorite->product->id}}">
-                            <iconify-icon id="favorite-heart-icon" icon="material-symbols:favorite"></iconify-icon>
-                        </button>
-                    </div>
-                    <div class="products-info">
-                        <div class="product-info">
-                            <div class="product-time">
-                                <iconify-icon id="timer-icon" icon="svg-spinners:clock"></iconify-icon>
-                                <span id="product-time">{{$favorite->product->time}} mins</span>
-                            </div>
-                            <div class="product-name-price">
-                                <h1 id="product-name">{{$favorite->product->name}}</h1>
-                                <span id="products-price">₱{{$favorite->product->price}}</span>
+        @if (!$favorites)
+            <div class="container-empty">
+                <img src="images/empties.png" alt="Empty">
+            </div>
+        @else
+            @foreach ($favorites as $favorite)
+                <div class="product-container" id="product-container-{{$favorite->product->id}}">
+                    <div class="product-content">
+                        <div class="product-image">
+                            <button class="show-modal" data-product="{{$favorite->product}}">
+                                <img id="product-image" src="images/product/{{$favorite->product->image}}" alt="{{$favorite->product->name}}">
+                            </button>
+                            <button class="favorite-heart-container" id="favorite-heart-container" data-product-id="{{$favorite->product->id}}">
+                                <iconify-icon id="favorite-heart-icon" icon="material-symbols:favorite"></iconify-icon>
+                            </button>
+                        </div>
+                        <div class="products-info">
+                            <div class="product-info">
+                                <div class="product-time">
+                                    <iconify-icon id="timer-icon" icon="svg-spinners:clock"></iconify-icon>
+                                    <span id="product-time">{{$favorite->product->time}} mins</span>
+                                </div>
+                                <div class="product-name-price">
+                                    <h1 id="product-name">{{$favorite->product->name}}</h1>
+                                    <span id="products-price">₱{{$favorite->product->price}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @endforeach
+            @endforeach
+        @endif
     </div>
-    <!-- @include('layouts.components.user.user_navbar') -->
+    @include('layouts.components.user.user_navbar')
     <form class="bottom-sheet" id="bottom-sheet">
         <div class="sheet-overlay"></div>
         <div class="content">

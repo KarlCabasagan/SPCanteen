@@ -79,7 +79,9 @@ Route::middleware(['logged-in'])->group(function () {
         
         Route::get('/product_list', [ProductController::class, 'adminIndex']);
             Route::post('/addproduct', [ProductController::class, 'store']);
-            Route::post('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+            Route::post('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+            Route::get('/products/{id}', [ProductController::class, 'show']);
+            Route::post('/products/edit/{id}', [ProductController::class, 'edit']);
 
         Route::get('/order_list', [OrderController::class, 'index']);
         Route::get('/order/get/details/{orderId}', [OrderController::class, 'getOrderDetails']);
@@ -91,7 +93,12 @@ Route::middleware(['logged-in'])->group(function () {
         
         Route::get('/transaction_history', [OrderController::class, 'index2']);
         Route::get('/order/get/details2/{orderId}', [OrderController::class, 'getOrderDetails2']);
-
-        Route::get('/manage_user', [UserController::class, 'showUser']);
+        
+        Route::middleware(['superAdmin'])->group(function () {
+            Route::get('/manage_user', [UserController::class, 'showUser']);
+            Route::get('/user/{id}', [UserController::class, 'show']);
+            Route::post('/user/edit/{id}', [UserController::class, 'adminEdit']);
+            Route::get('/user/delete/{id}', [UserController::class, 'delete']);
+        });
     });
 });
