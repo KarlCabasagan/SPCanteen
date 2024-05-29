@@ -173,17 +173,15 @@ document.addEventListener("DOMContentLoaded", function() {
         
         const productId = btn.dataset.productId;
 
-        // Fetch product details using product ID
         const response = await fetch(`/products/${productId}`);
         const productData = await response.json();
 
-        // Populate edit form fields with product data
         editForm.querySelector("#product-name").value = productData.name;
         editForm.querySelector("#product-price").value = productData.price;
         editForm.querySelector("#product-time").value = productData.time;
-        editForm.querySelector("#product-categories").value = productData.category_id; // Assuming category_id field exists
+        editForm.querySelector("#product-categories").value = productData.category_id;
         document.getElementById("img-box-fill-edit").src = `images/product/${productData.image}`;
-        // Update edit form action URL with product ID
+
         editForm.action = `/products/edit/${productId}`;
 
         editlistModal.classList.add("active");
