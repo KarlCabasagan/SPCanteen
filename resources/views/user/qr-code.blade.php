@@ -24,13 +24,17 @@
                     <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #008000;"></iconify-icon>
                 @endif
             </div>
-            <div class="code-container">
-                <div id="qrcode"></div>
-                <script type="text/javascript">
-                new QRCode(document.getElementById("qrcode"), "{{$order->id}}");
-                </script>
-            </div>
-            <span id="code-txt">Scan this code to see your order.</span>
+            @if($order->status_id == 2)
+                <div class="code-container">
+                    <div id="qrcode"></div>
+                    <script type="text/javascript">
+                    new QRCode(document.getElementById("qrcode"), "{{$order->id}}");
+                    </script>
+                </div>
+                <span id="code-txt">Scan this code to see your order.</span>
+            @else
+                <img id="prep-animation" src="images/niga-cook.gif" alt="">
+            @endif
         </div>
     </div>
 </div>
