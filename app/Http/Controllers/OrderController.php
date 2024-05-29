@@ -38,19 +38,28 @@ class OrderController extends Controller
     {
         $userId = auth()->user()->id;
         $orders = Order::where('status_id', 3)->where('user_id', $userId)->orderBy('id', 'desc')->get();
-        $date = Carbon::now();
+
+        $orderIds = $orders->pluck('id');
+        $carts = Cart::where('id', $userId)->whereNotNull('order_id')->whereIn('order_id', $orderIds)->get();
+
+        $formattedCarts = [];
+        foreach ($carts as $cart) {
+            if ($cart->product) {
+                $formattedCarts[] = [
+                    'id' => $cart->id,
+                    'product_name' => $cart->product->name,
+                    'product_quantity' => $cart->quantity,
+                ];
+            }
+        }
         
-        $formattedDate = $date->format('F d Y');
-        $orders = Order::all();
-        
-        $cartIds = $orders->map(function ($order) {
-            return $order->cart->map(function ($cart) {
-                return $cart->id;
-            });
-        });
-        
-        dd($cartIds);
-        return view('user.history', compact('orders', 'formattedDate'));
+        foreach ($orders as $order) {
+            $cart = Cart::where('order_id', $order->id)->count();
+            $order['totalCarts'] = $cart;
+        }
+
+        //dd($cartIds);
+        return view('user.history', compact('orders', 'carts'));
     }
 
     public function getStatistics() {
