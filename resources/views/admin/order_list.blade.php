@@ -21,7 +21,7 @@
     </div>
     <div class="orders">
         @foreach($orders as $order)
-            <div class="transaction-container" id="transcation-container-{{$order->id}}">
+            <div class="transaction-container1" id="transcation-container-{{$order->id}}">
                 <div class="orders-detail">
                     @if($order->status_id === 1)
                         <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
