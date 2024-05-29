@@ -49,8 +49,7 @@
         <form action="/addproduct" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="modal-container">
-                <input type="file" id="image" name="image" accept="image/*" onchange="previewProductImage(this);"
-                    style="display: none;">
+                <input type="file" id="image" name="image" accept="image/*" onchange="previewProductImage(this);" style="display: none;">
                 <div class="modal-icon">
                     <div class="img-box-fill">
                         <img id="img-box-fill" src="images/product/default.jpg">
@@ -64,13 +63,13 @@
                 <div class="modal-content">
                     <div class="product-info">
                         <div class="product-name">
-                            <input id="product-name" name="name" type="text" placeholder="Product Name">
+                            <input id="product-name" name="name" type="text" placeholder="Product Name" required>
                         </div>
                         <div class="product-price">
-                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00">
+                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00" required>
                         </div>
                         <div class="product-time">
-                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)">
+                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)" required>
                         </div>
                         <div class="product-categories">
                             <label id="select-category">Select Category</label>

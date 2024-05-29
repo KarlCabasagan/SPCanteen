@@ -18,7 +18,7 @@
                         <img id="avatar" src="images/default.png">
                         <label id="pfp" for="profilePicture">
                             <div class="camera-icon-bg">
-                                <i class="fas fa-camera cam"></i>
+                                <iconify-icon icon="entypo:camera" class="cam"></iconify-icon>
                             </div>
                         </label>
                     </div>

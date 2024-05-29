@@ -361,8 +361,6 @@ h3 {
 .modal-container {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 .modal-icon {
@@ -519,7 +517,7 @@ h3 {
   position: absolute;
   top: 0;
   margin: 14px 0 0 16px;
-  background: none;
+  background-color: white;
   color: maroon;
   font-size: 34px;
   cursor: pointer;
