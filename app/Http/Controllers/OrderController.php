@@ -94,8 +94,7 @@ class OrderController extends Controller
         $order = Order::where('user_id', $userId)->whereIn('status_id', [1, 2])->first();
         
         if ($order) {
-            $orderId = $order->id;
-            return view('user.qr-code', compact('orderId'));
+            return view('user.qr-code', compact('order'));
         }
 
         return redirect('/');

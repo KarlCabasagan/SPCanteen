@@ -13,7 +13,7 @@ class FavoriteController extends Controller
     {   
         $userId = auth()->user()->id;
 
-        $cartData = Cart::where('user_id', $userId)->get();
+        $cartData = Cart::where('user_id', $userId)->whereNull('order_id')->get();
         $productCount = $cartData->count();
 
         $favorites = Favorite::where('user_id', $userId)->get();

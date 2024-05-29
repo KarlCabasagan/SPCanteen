@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('content1')
+@section('content')
 <div class="content">
     <div class="favorites-header">
         <div class="header">
@@ -56,7 +56,7 @@
             </div>
         @endforeach
     </div>
-    <!-- @include('layouts.components.user.user_navbar') -->
+    @include('layouts.components.user.user_navbar')
     <form class="bottom-sheet" id="bottom-sheet">
         <div class="sheet-overlay"></div>
         <div class="content">
