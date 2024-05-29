@@ -46,17 +46,17 @@ Route::middleware(['logged-in'])->group(function () {
             Route::get('/favorite', [FavoriteController::class, 'index']);
             Route::get('/favorite/remove/{productId}', [FavoriteController::class, 'removeFavorite']);
 
-            Route::get('/history', function () {
-                return view('user.history');
-            });
+            Route::get('/history', [OrderController::class, 'index3']);
+
             Route::get('/profile', function () {
                 return view('user.profile');
             })->name('profile');
 
             //Route for edit
-            Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
-            Route::post('/process.edit/{id}', [UserController::class, 'processEdit'])->name('process.edit');
-
+            Route::middleware(['editUser'])->group(function () {
+                Route::get('/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+                Route::post('/process.edit/{id}', [UserController::class, 'processEdit'])->name('process.edit');
+            });
             
             Route::get('/cart', [CartController::class, 'index']);
             Route::get('/cart/delete/{cartId}', [CartController::class, 'destroy']);
