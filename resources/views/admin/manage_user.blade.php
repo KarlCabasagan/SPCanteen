@@ -43,7 +43,7 @@
                 <span>GCash</span>
             </div>
         </div>
-        <div class="close-modal5">
+        <div class="close-modal6">
             <iconify-icon icon="uil:step-backward-circle"></iconify-icon>
         </div>
     </div>
