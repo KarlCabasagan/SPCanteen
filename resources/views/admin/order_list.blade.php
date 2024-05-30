@@ -21,7 +21,7 @@
     <div id="order-data" data-orders='@json($orders)'></div>
     <div class="orders">
         @foreach($orders as $order)
-            <div class="transcation-container" id="transcation-container-{{$order->id}}" data-order-id="SPC2024-{{$order->id}}" data-user-name="{{$order->username}}">
+            <div class="transaction-container1" id="transcation-container-{{$order->id}}" data-order-id="SPC2024-{{$order->id}}" data-user-name="{{$order->username}}">
                 <div class="orders-detail">
                     @if($order->status_id === 1)
                         <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
@@ -45,7 +45,7 @@
                     <span id="orders-header">Order ID</span>
                     <span>SPC2024-{{$order->id}}</span>
                 </div>
-                <div class="orders-details open-modal4" data-order-id="{{$order->id}}">
+                <div class="orders-detailed open-modal4" data-order-id="{{$order->id}}">
                     <span id="orders-details">Details</span>
                 </div>
             </div>
@@ -67,9 +67,15 @@
     <div class="modal_orders-list">
         <span>Amount</span>
         <div class="order-transaction-details">
-            <span id="order-amount">₱135.00 PHP</span>
-            <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
-            <span id="order-status" data-order-id="">Processing</span>
+            <div class="orders-details-header">
+                <div class="order-amount">
+                    <span id="order-amount">₱135.00 PHP</span>
+                </div>
+                <div class="orders-status">
+                    <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
+                    <span id="order-status" data-order-id="">Processing</span>
+                </div>
+            </div>
             <button id="ready-order" data-order-id="" onclick="readyOrder(this.dataset.orderId)">Change Order Status</button>
         </div>
         <div class="orders-date-payment">
@@ -77,10 +83,10 @@
                 <span>Transaction Date</span>
                 <span id="order-date">02/11/24</span>
             </div>
-        <div class="orders-transaction-payment">
-            <span>Payment Type</span>
-            <span id="payment-type">GCash</span>
-        </div>
+            <div class="orders-transaction-payment">
+                <span>Payment Type</span>
+                <span id="payment-type">GCash</span>
+            </div>
         </div>
         <span class="transaction-details-txt">Transaction Details</span>
         <div class="orders-transaction-details">
@@ -107,7 +113,7 @@
             </div>
         </div>
         <div class="close-modal4">
-            <iconify-icon icon="uil:step-backward-circle"></iconify-icon>
+            <iconify-icon id="close-details" icon="material-symbols-light:close"></iconify-icon>
         </div>
         <div class="action-container">
             <div class="order-action">
@@ -362,11 +368,11 @@
     const fuse = new Fuse(orders, options);
 
     const displayResults = (results) => {
-        const containers = document.querySelectorAll('.transcation-container');
+        const containers = document.querySelectorAll('.transaction-container1');
         containers.forEach(container => container.style.display = 'none');
 
         results.forEach(result => {
-            const container = document.querySelector(`.transcation-container[data-order-id="${result.item.id}"]`);
+            const container = document.querySelector(`.transaction-container1[data-order-id="${result.item.id}"]`);
             // console.log(result.item);
             if (container) {
                 container.style.display = '';
@@ -375,7 +381,7 @@
     };
 
     const displayAllResults = () => {
-        const containers = document.querySelectorAll('.transcation-container');
+        const containers = document.querySelectorAll('.transaction-container1');
         containers.forEach(container => container.style.display = '');
     };
 

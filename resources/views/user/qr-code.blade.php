@@ -5,24 +5,9 @@
 @section('content')
 <div class="container">
     <div class="cart-content">
-        <div class="qr-header">
-            <h1 id="mycart-txt">MY QR CODE</h1>
-        </div>
         <div class="code-content">
-            <img id="code-profile" src="images/profile/{{Auth::user()->image}}" alt="{{Auth::user()->name}}.jpg">
-            <span id="code-name">{{Auth::user()->name}}</span>
             <div class="status-order-container">
-                @if($order->status_id == 1)
-                    <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
-                @else
-                    <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #008000;"></iconify-icon>
-                @endif
-                <span id="status-order">{{$order->status->name}}</span>
-                @if($order->status_id == 1)
-                    <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #FFD700;"></iconify-icon>
-                @else
-                    <iconify-icon id="circle-main-{{$order->id}}" icon="material-symbols-light:circle" style="color: #008000;"></iconify-icon>
-                @endif
+                <span id="status-order" style="font-size: 34px;">{{$order->status->name}}</span>
             </div>
             @if($order->status_id == 2)
                 <div class="code-container">
@@ -33,7 +18,8 @@
                 </div>
                 <span id="code-txt">Scan this code to see your order.</span>
             @else
-                <img id="prep-animation" src="images/niga-cook.gif" alt="">
+                <img id="prep-animation" src="images/Preparing.gif" alt="">
+                <span id="preparing-txt">We already preparing your order <br> please wait.</span>
             @endif
         </div>
     </div>

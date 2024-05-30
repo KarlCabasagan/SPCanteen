@@ -63,13 +63,13 @@
                 <div class="modal-content">
                     <div class="product-info">
                         <div class="product-name">
-                            <input id="product-name" name="name" type="text" placeholder="Product Name">
+                            <input id="product-name" name="name" type="text" placeholder="Product Name" required>
                         </div>
                         <div class="product-price">
-                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00">
+                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00" required>
                         </div>
                         <div class="product-time">
-                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)">
+                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)" required>
                         </div>
                         <div class="product-categories">
                             <label id="select-category">Select Category</label>
