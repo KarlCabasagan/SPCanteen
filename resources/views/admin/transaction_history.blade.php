@@ -1,22 +1,22 @@
 @extends('layouts.admin')
 
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6"></script>
 @section('content1')
 <div class="content">
     <h1 style="margin-bottom: 5px;">Transaction History</h1>
     <span style="margin-left: 7px; font-size: 30px;">{{$formattedDate}}</span>
     <div class="add-header-transaction">
         <div class="search-container-transaction">
-            <form action="" method="GET">
-                <input id="search" type="text" name="search" placeholder="Search...">
-                <button type="submit" class="search-button-transaction">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+            <input id="search" type="text" name="search" placeholder="Search...">
+            <button type="submit" class="search-button-transaction">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
     </div>
+    <div id="order-data" data-orders='@json($orders)'></div>
     <div class="transaction">
         @foreach($orders as $order)
-            <div class="transcation-container">
+            <div class="transcation-container" data-order-id="SPC2024-{{$order->id}}" data-user-name="{{$order->username}}">
                 <div class="orders-detail">
                     @if($order->status_id === 4)
                         <iconify-icon icon="material-symbols-light:circle" style="color: maroon;"></iconify-icon>
@@ -169,5 +169,57 @@
             transactionlistModal.classList.remove("active");
         });
     }
+
+    const orderDataElement = document.getElementById('order-data');
+    const orders = JSON.parse(orderDataElement.getAttribute('data-orders')).map(order => ({
+        id: `SPC2024-${order.id}`,
+        user: order.username,
+        status: order.status_name,
+    }));
+
+    const options = {
+        keys: ['id', 'user', 'status'],
+        threshold: 0.1
+    };
+
+    const fuse = new Fuse(orders, options);
+
+    const displayResults = (results) => {
+        const containers = document.querySelectorAll('.transcation-container');
+        containers.forEach(container => container.style.display = 'none');
+
+        results.forEach(result => {
+            const container = document.querySelector(`.transcation-container[data-order-id="${result.item.id}"]`);
+            // console.log(result.item);
+            if (container) {
+                container.style.display = '';
+            }
+        });
+    };
+
+    const displayAllResults = () => {
+        const containers = document.querySelectorAll('.transcation-container');
+        containers.forEach(container => container.style.display = '');
+    };
+
+    document.getElementById('search').addEventListener('input', (e) => {
+        const query = e.target.value;
+        console.log();
+        if (query.trim() === '') {
+            displayAllResults();
+        } else {
+            const results = fuse.search(query);
+            // console.log(results);
+            displayResults(results);
+        }
+    });
+
+    displayAllResults();
+
+    document.getElementById('search').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.target.blur();
+        }
+    });
 </script>
 @endsection
