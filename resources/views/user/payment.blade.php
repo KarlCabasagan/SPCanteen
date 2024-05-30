@@ -24,7 +24,7 @@
                         </div>
                         <div class="payment-right-side">
                             <input type="radio" name="payment_option" id="payment-btn1" class="payment-btn" value="1">
-                            <label for="payment-btn"></label>
+                            <label for="payment-gcash"></label>
                         </div>
                     </div>
                 </button>
@@ -32,12 +32,12 @@
                     <button class="payment-containers" id="payment-containers" onclick="selectPayment2()">
                         <div class="payment">
                             <div class="payment-left-side">
-                                <img id="payments-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJXmMbrItPLMTeMbSZzS46aE6JBdUvO6EtTa7dLw8LQ&s" alt="">
-                                <span id="payments-txt">School Fee</span>
+                                <img id="payment-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJXmMbrItPLMTeMbSZzS46aE6JBdUvO6EtTa7dLw8LQ&s" alt="">
+                                <span id="payment-txt">School Fee</span>
                             </div>
                             <div class="payment-right-side">
                                 <input type="radio" name="payment_option" id="payment-btn2" class="payment-btn" value="2">
-                                <label for="payment-btn"></label>
+                                <label for="payment-schoolfee"></label>
                             </div>
                         </div>
                 </button>
@@ -45,29 +45,32 @@
                     <button class="payment-containers" id="payment-containers" onclick="selectPayment4()">
                         <div class="payment">
                             <div class="payment-left-side">
-                                <img id="payments-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJXmMbrItPLMTeMbSZzS46aE6JBdUvO6EtTa7dLw8LQ&s" alt="">
-                                <span id="payments-txt">Payroll</span>
+                                <img id="payment-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRJXmMbrItPLMTeMbSZzS46aE6JBdUvO6EtTa7dLw8LQ&s" alt="">
+                                <span id="payment-txt">Payroll</span>
                             </div>
                             <div class="payment-right-side">
                                 <input type="radio" name="payment_option" id="payment-btn4" class="payment-btn" value="4">
-                                <label for="payment-btn"></label>
+                                <label for="payment-"></label>
                             </div>
                         </div>
-                </button>
+                 </button>
                 @endif
                 <button class="payment-containers" id="payment-containers" onclick="selectPayment3()">
                     <div class="payment">
                         <div class="payment-left-side">
-                            <img id="payments-image" src="/images/cash.png" alt="">
-                            <span id="payments-txt">Cash On Hand</span>
+                            <img id="payment-image" src="/images/cash.png" alt="">
+                            <span id="payment-txt">Cash On Hand</span>
                         </div>
                         <div class="payment-right-side">
                             <input type="radio" name="payment_option"  id="payment-btn3" class="payment-btn" value="3" checked>
-                            <label for="payment-btn"></label> 
+                            <label for="payment-cod"></label> 
                         </div>
-                    </div>
+                    </div>      
                 </button>
             </div>
+            
+            <div id="note" class="note">Note: Failure to pay will result in automatic @if (auth()->user()->role_id == 1) addition to your school fee. @else subtraction to your payroll.@endif</div>
+
             <div class="payments-container">
                 <div class="price-txt">
                     <div class="products-selected">
@@ -106,31 +109,33 @@
         const radioButton = document.getElementById('payment-btn1');
         if (radioButton) {
             radioButton.checked = true;
-
+            document.getElementById("note").style.opacity = "0";
         }
     }
 
     function selectPayment2() {
         const radioButton = document.getElementById('payment-btn2');
-
         if (radioButton) {
             radioButton.checked = true;
+            document.getElementById("note").style.opacity = "0";
         }
     }
 
     function selectPayment3() {
         const radioButton = document.getElementById('payment-btn3');
-
         if (radioButton) {
             radioButton.checked = true;
+            document.getElementById("note").style.opacity = "1";
         }
     }
 
     function selectPayment4() {
         const radioButton = document.getElementById('payment-btn4');
-
         if (radioButton) {
             radioButton.checked = true;
+            document.getElementById("note").style.opacity = "0";
         }
     }
+
+    
 </script>
