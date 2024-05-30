@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6"></script>
 @section('content1')
 <div class="content">
     <h1>Product List</h1>
@@ -9,18 +10,16 @@
             <span id="add-txt">Add Product</span>
         </button>
         <div class="search-container">
-            <form action="" method="GET">
-                <input id="search" type="text" name="search" placeholder="Search...">
-                <button type="submit" class="search-button">
-                    <i class="fas fa-search"></i>
-                </button>
-            </form>
+            <input id="search" type="text" name="search" placeholder="Search...">
+            <button type="submit" class="search-button">
+                <i class="fas fa-search"></i>
+            </button>
         </div>
     </div>
-
+    <div id="product-data" data-products='@json($products)'></div>
     <div class="product-list">
         @foreach ($products as $product)
-        <div class="product">
+        <div class="product" data-product-id="{{$product->id}}">
             <img id="product-img" src="images/product/{{$product->image}}" alt="{{$product->name}}">
             <div class="label">
                 <h3>{{$product->name}}</h3>
@@ -221,6 +220,55 @@ function previewProductImageEdit(input) {
   }
 }
 
+const productDataElement = document.getElementById('product-data');
+const products = JSON.parse(productDataElement.getAttribute('data-products')).map(product => ({
+    id: product.id,
+    name: product.name,
+}));
 
+const options = {
+    keys: ['id', 'name'],
+    threshold: 0.4
+};
+
+const fuse = new Fuse(products, options);
+
+const displayResults = (results) => {
+    const containers = document.querySelectorAll('.product');
+    containers.forEach(container => container.style.display = 'none');
+
+    results.forEach(result => {
+        const container = document.querySelector(`.product[data-product-id="${result.item.id}"]`);
+        // console.log(result.item);
+        if (container) {
+            container.style.display = '';
+        }
+    });
+};
+
+const displayAllResults = () => {
+    const containers = document.querySelectorAll('.product');
+    containers.forEach(container => container.style.display = '');
+};
+
+document.getElementById('search').addEventListener('input', (e) => {
+    const query = e.target.value;
+    console.log();
+    if (query.trim() === '') {
+        displayAllResults();
+    } else {
+        const results = fuse.search(query);
+        // console.log(results);
+        displayResults(results);
+    }
+});
+
+displayAllResults();
+
+document.getElementById('search').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.target.blur();
+    }
+});
 </script>
 @endsection

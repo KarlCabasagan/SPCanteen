@@ -17,17 +17,27 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::whereIn('status_id', [1, 2])->orderBy('status_id', 'asc')->get();
-        $date = Carbon::now();  // Replace with your date object or retrieval logic
+        $date = Carbon::now();
 
-        $formattedDate = $date->format('F d Y');  // Format as "February 07 2024"
+        foreach ($orders as $order) {
+            $order['username'] = $order->user->name;
+            $order['status_name'] = $order->status->name;
+        }
+
+        $formattedDate = $date->format('F d Y');
     
         return view('admin.order_list', compact('orders', 'formattedDate'));
     }
 
     public function index2()
     {
-        $orders = Order::whereIn('status_id', [3, 4])->get();
+        $orders = Order::whereIn('status_id', [3, 4])->orderBy('status_id', 'desc')->get();
         $date = Carbon::now();
+
+        foreach ($orders as $order) {
+            $order['username'] = $order->user->name;
+            $order['status_name'] = $order->status->name;
+        }
 
         $formattedDate = $date->format('F d Y');
     
@@ -105,7 +115,6 @@ class OrderController extends Controller
           $month = $order->month;
           $total_amount = $order->total_amount;
         
-          // Check if month mapping exists, otherwise use numeric value
           $monthName = isset($monthNames[$month]) ? $monthNames[$month] : $month;
           
           $total_amount_per_month[$monthName] = $total_amount;
