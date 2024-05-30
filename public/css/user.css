@@ -518,38 +518,90 @@
 
 .payment-right-side {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50px;
 }
 
 #payment-image {
   width: 56px;
   border-radius: 14px;
-  margin: 16px 0 0 16px;
+  margin: 0 0 0 16px;
 }
 
 #payment-txt {
   font-weight: bold;
   font-size: 24px;
-  margin: 12px 0 0 12px;
-}
-
-#payments-image {
-  width: 56px;
-  border-radius: 14px;
-  margin: 18px 0 0 16px;
-}
-
-#payments-txt {
-  font-weight: bold;
-  font-size: 24px;
-  margin: 14px 0 0 12px;
+  margin: 0 0 0 12px;
 }
 
 .payment-btn {
-  font-size: 24px;
-  color: #D3D3D3;
-  margin: 14px 12px 0 0;
+    accent-color: maroon;
+    transform: scale(1.5);
+}
+
+/* .payment-btn + label {
+    display: flex;
+    position: relative;
+    margin: 0 16px 0 0;
+    cursor: pointer;
+    line-height: 25px; 
+    color: rgb(250, 250, 250); 
+}
+
+.payment-btn + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px; 
+    height: 15px; 
+    border: 2px solid #ccc; 
+    border-radius: 50%;
+    background-color: transparent;
+}
+
+#payment-btn1:checked + label::before {
+    background-color: transparent;
+    border-color: maroon;
+}
+
+#payment-btn2:checked + label::before {
+  background-color: transparent;
+  border-color: maroon;
+}
+
+#payment-btn3:checked + label::before {
+  background-color: transparent;
+  border-color: maroon;
+}
+
+.payment-btn:checked + label::after {
+    content: "";
+    position: absolute;
+    left: 4px; 
+    top: 4px; 
+    width: 11px; 
+    height: 11px; 
+    background-color: maroon;
+    border-radius: 50%;
+}
+
+.payment-btn:checked + label {
+    color: rgb(183, 41, 41); 
+} */
+
+.note { 
+  text-align:center;
+  margin-top: 25px;
+  padding: 25px 25px 25px 25px;
+  color: maroon;
+}
+
+.selected {
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .payments-container {
@@ -564,6 +616,7 @@
   box-shadow: 0 0 4px 0 #A9A9A9;
   animation: slideUp 0.5s ease-in-out;
 }
+
 
 .payments-btn {
   display: flex;
