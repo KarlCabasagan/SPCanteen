@@ -184,7 +184,7 @@ h3 {
 
 .add-header {
   width: 60rem;
-  margin: 5rem 0 0 4rem;
+  margin: 5rem 0 0 68px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -598,6 +598,10 @@ h3 {
 }
 
 #reader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 20rem;
   height: 40vh;
 }
@@ -657,8 +661,6 @@ h3 {
 
 .orders-date-payment {
   display: flex;
-  width: 462px;
-  justify-content: space-between;
   margin: 8px 0 14px 0;
 }
 
@@ -681,8 +683,14 @@ h3 {
 
 .orders-transaction-details {
   display: flex;
-  width: 500px;
-  justify-content: space-between;
+}
+
+.orders-transaction-payment {
+  margin-left: 152px;
+}
+
+.orders-order-details {
+  margin-left: 200px;
 }
 
 .orders-id-username, .orders-order-details {
@@ -703,7 +711,6 @@ h3 {
   width: 500px;
   justify-content: space-between;
   white-space: nowrap; 
-  overflow: hidden; 
   text-overflow: ellipsis;
 }
 
@@ -741,6 +748,7 @@ h3 {
 }
 
 .action-container {
+  margin-top: 120px;
   display: flex;
   justify-content: center;
   width: 100%
@@ -770,6 +778,13 @@ h3 {
   font-size: 34px;
   cursor: pointer;
   font-family: "Montserrat";
+}
+
+#complete-order, #cancel-order {
+  background-color: maroon;
+  color: white;
+  padding: 8px 12px 8px 12px;
+  border-radius: 4px;
 }
 
 
@@ -853,7 +868,7 @@ h3 {
 }
 
 .add-header-orders {
-  width: 69rem;
+  width: 70rem;
   margin: 5rem 0 0 0;
   display: flex;
   justify-content: space-between;
@@ -913,6 +928,10 @@ h3 {
   padding: 0 4px 0 2px;
 }
 
+.orders::-webkit-scrollbar {
+  display: none;
+}
+
 .orders-details {
   transform: translateY(-20%);
   display: flex;
@@ -954,7 +973,7 @@ h3 {
 /* Transaction History CSS */
 
 .add-header-transaction {
-  width: 60rem;
+  width: 66rem;
   margin: 5rem 0 0 4rem;
   display: flex;
   justify-content: space-between;

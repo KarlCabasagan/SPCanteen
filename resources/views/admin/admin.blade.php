@@ -38,7 +38,7 @@
                         <h3>{{$completedOrders}}</h3>
                     </div>
                     <div class="total-completed">
-                        <p>Completed Orders</p>
+                        <p>Completed</p>
                     </div>
                     <div class="percentage-days">
                         <img id="arrow-icon" src="images/arrow-icon.png">
@@ -57,7 +57,7 @@
                         <h3>{{$cancelledOrders}}</h3>
                     </div>
                     <div class="total-completed">
-                        <p>Cancelled Orders</p>
+                        <p>Cancelled</p>
                     </div>
                     <div class="percentage-days">
                         <img id="arrow-icon" src="images/arrow-icon.png">
