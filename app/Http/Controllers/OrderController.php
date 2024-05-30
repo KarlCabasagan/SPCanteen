@@ -88,7 +88,7 @@ class OrderController extends Controller
 
     public function getChartData()
     {
-        $orders = Order::whereIn('status_id', [1, 2, 3])->select(
+        $orders = Order::where('status_id', 3)->select(
             DB::raw('MONTH(created_at) as month'),
             DB::raw('SUM(amount) as total_amount')
         )
