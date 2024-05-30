@@ -16,7 +16,7 @@
     <div id="order-data" data-orders='@json($orders)'></div>
     <div class="transaction">
         @foreach($orders as $order)
-            <div class="transcation-container" data-order-id="SPC2024-{{$order->id}}" data-user-name="{{$order->username}}">
+            <div class="transaction-container2" data-order-id="SPC2024-{{$order->id}}" data-user-name="{{$order->username}}">
                 <div class="orders-detail">
                     @if($order->status_id === 4)
                         <iconify-icon icon="material-symbols-light:circle" style="color: maroon;"></iconify-icon>
@@ -40,7 +40,7 @@
                     <span id="orders-header">Order ID</span>
                     <span>SPC2024-{{$order->id}}</span>
                 </div>
-                <div class="orders-details open-modal5" data-order-id="{{$order->id}}">
+                <div class="orders-detailed open-modal5" data-order-id="{{$order->id}}">
                     <span id="orders-details">Details</span>
                 </div>
             </div>
@@ -50,10 +50,12 @@
     <!--------- Transaction Details Modal -------->
     <div class="modal_transactions-history">
         <span>Amount</span>
-        <div class="order-transaction-details">
+        <div class="order-transactions-details">
             <span id="order-amount">₱135.00 PHP</span>
-            <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
-            <span id="order-status">Processing</span>
+            <div class="orders-status">
+                <iconify-icon id="modal-circle" icon="material-symbols-light:circle" class="orders-pending-icon"></iconify-icon>
+                <span id="order-status" data-order-id="">Processing</span>
+            </div>
         </div>
         <div class="orders-date-payment">
             <div class="orders-transaction-date">
@@ -90,7 +92,7 @@
             </div>
         </div>
         <div class="close-modal5">
-            <iconify-icon icon="uil:step-backward-circle"></iconify-icon>
+            <iconify-icon id="close-details" icon="material-symbols-light:close"></iconify-icon>
         </div>
     </div>
 </div>
@@ -185,11 +187,11 @@
     const fuse = new Fuse(orders, options);
 
     const displayResults = (results) => {
-        const containers = document.querySelectorAll('.transcation-container');
+        const containers = document.querySelectorAll('.transaction-container2');
         containers.forEach(container => container.style.display = 'none');
 
         results.forEach(result => {
-            const container = document.querySelector(`.transcation-container[data-order-id="${result.item.id}"]`);
+            const container = document.querySelector(`.transaction-container2[data-order-id="${result.item.id}"]`);
             // console.log(result.item);
             if (container) {
                 container.style.display = '';
@@ -198,7 +200,7 @@
     };
 
     const displayAllResults = () => {
-        const containers = document.querySelectorAll('.transcation-container');
+        const containers = document.querySelectorAll('.transaction-container2');
         containers.forEach(container => container.style.display = '');
     };
 
