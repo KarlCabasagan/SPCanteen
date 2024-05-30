@@ -23,7 +23,14 @@
                     <td style="text-align: center;">{{$user->email}}</td>
                     <td style="text-align: center;">{{$user->role_id}}</td>
                     <td style="text-align: center;">{{$user->totalOrder}}</td>
-                    <td style="text-align: center;"><button class="open-modal6" data-user-id="{{$user->id}}"><iconify-icon icon="bx:edit" style="color: black; font-size: 30;"></iconify-icon></button><button data-user-id="{{$user->id}}" onclick="deleteUser(this.dataset.userId)"><iconify-icon icon="material-symbols-light:delete-outline" style="color: black; font-size: 30;"></iconify-icon></button></td>
+                    <td style="text-align: center;">
+                        <button class="open-modal6" style="font-size: 18px;" data-user-id="{{$user->id}}">
+                            <iconify-icon icon="bx:edit" style="color: black;"></iconify-icon>
+                        </button>
+                        <button style="font-size: 18px;" data-user-id="{{$user->id}}" onclick="deleteUser(this.dataset.userId)">
+                            <iconify-icon icon="material-symbols-light:delete-outline" style="color: black;"></iconify-icon>
+                        </button>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
@@ -32,16 +39,28 @@
     <div class="modal_user-edit">
         <form method="POST">
             @csrf
-            <img id="profile-picture" src="images/profile/default.png" alt="Profile Picture">
-            <input type="text" id="user-name" name="name" value="" placeholder="Username">
-            <input type="text" id="user-email" name="email" value="" placeholder="Email">
-            <div class="role" id="user-role">
-                <input type="radio" name="role" value="1">Student</input>
-                <input type="radio" name="role" value="2">Faculty</input>
-                <input type="radio" name="role" value="3">Admin</input>
-                <input type="radio" name="role" value="4">Super Admin</input>
+            <div class="manage-user-profile-modal">
+                <div class="manage-user-profile">
+                    <img id="profile-picture" src="images/profile/default.png" alt="Profile Picture" style="border-radius: 10px;">
+                </div>
+                <div class="manage-user-edit">
+                    <label class="manage-username">Username</label>
+                    <input type="text" class="manage-user-info" id="user-name" name="name" value="" placeholder="Username">
+                    <label class="manage-email">Email</label>
+                    <input type="text" class="manage-user-info" id="user-email" name="email" value="" placeholder="Email">
+                </div>
             </div>
-            <button>Save</button>
+            <div class="role" id="user-role">
+                <div class="manage-student">
+                    <input type="radio" name="role" value="1" class="manage-user-student">Student</input>
+                </div>
+                <div class="manage-student">
+                    <input type="radio" name="role" value="2" class="manage-user-faculty">Faculty</input>
+                </div>
+            </div>
+            <div class="manage-save">
+                <button id="manage-save">Save</button>
+            </div>
         </form>
         <div class="close-modal6">
             <iconify-icon id="close" icon="material-symbols-light:close"></iconify-icon>
@@ -92,8 +111,5 @@
 
         document.getElementById(`user-row-${userData.id}`).style.display = 'none';
     }
-
-        
-
 </script>
 @endsection
