@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -19,8 +21,25 @@ class UserController extends Controller
         if(auth()->attempt(['name' => $incomingFields['name'], 'password' => $incomingFields['password']])) {
             $request->session()->regenerate();
         }
+        $errors = [];
 
-        return redirect('/');
+        // Check if email is invalid
+        if (!User::where('name', $request->name)->exists()) {
+            $errors['name'] = 'Invalid Username.';
+        }
+    
+        // Check if password is incorrect
+        if (!Auth::validate($incomingFields)) {
+            $errors['password'] = 'Wrong Password.';
+        }
+    
+        // If there are errors, redirect back with error messages
+        if (!empty($errors)) {
+            return redirect('/')->withErrors($errors);
+        }
+    
+        // If no user found or wrong password, redirect back with generic error
+        return redirect('/')->with('error', 'Wrong name/Password');
     }
 
     public function register(Request $request) {
