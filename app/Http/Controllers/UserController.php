@@ -23,23 +23,20 @@ class UserController extends Controller
         }
         $errors = [];
 
-        // Check if email is invalid
         if (!User::where('name', $request->name)->exists()) {
-            $errors['name'] = 'Invalid Username.';
+            $errors['name'] = 'Incorrect username or password.';
+            return redirect('/')->withErrors($errors);
         }
     
-        // Check if password is incorrect
         if (!Auth::validate($incomingFields)) {
             $errors['password'] = 'Wrong Password.';
         }
     
-        // If there are errors, redirect back with error messages
         if (!empty($errors)) {
             return redirect('/')->withErrors($errors);
         }
     
-        // If no user found or wrong password, redirect back with generic error
-        return redirect('/')->with('error', 'Wrong name/Password');
+        return redirect('/');
     }
 
     public function register(Request $request) {

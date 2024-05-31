@@ -106,6 +106,12 @@
                         <img id="logo" src="/images/SPCanteen.png" alt="SPCanteen.png">
                     </div>
                     <div class="form">
+                    @error('name')
+                        <p style="color: red; margin-left: 20px; position: absolute;">{{$message}}</p>
+                    @enderror
+                    @error('password')
+                        <p style="color: red; margin-left: 20px; position: absolute;">{{$message}}</p>
+                    @enderror
                         <form action="/login" method="POST">
                             @csrf
                             <div class="input-container">
@@ -113,17 +119,11 @@
                                 <label>Username</label>
                                 <i class="fa-solid fa-user"></i>
                             </div>
-                            @error('name')
-                    <p style="color: red; ">{{$message}}</p>
-                @enderror
                             <div class="input-container">
                                 <input type="password" name="password" class="input-field" required>
                                 <label>Password</label>
                                 <i class="fa-solid fa-eye" onclick="togglePassword(this, 'password')"></i>
                             </div>
-                            @error('password')
-                    <p style="color: red;">{{$message}}</p>
-                @enderror
                             <div class="forgot-password">
                                 <a id="forgot-password" href="#">Forgot Password?</a>
                             </div>
