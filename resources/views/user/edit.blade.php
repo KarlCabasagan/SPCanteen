@@ -9,7 +9,7 @@
             </a>
             <h5>Edit Profile</h5>
         </div>
-
+        <img id="user-profile" src="{{ asset('images/profile/' . Auth::user()->image) }}" alt="Profile Picture">
         <div class="user-edit-inputs">
             <form action="{{ route('process.edit', ['id' => $user->id ]) }}" method="POST">
                 @csrf
@@ -35,7 +35,7 @@
                         <input class="edit-user-fields" type="password" name="password_confirmation">
                     </div>
                     <div class="user-edit-btn">
-                        <input class="edit-user-btn" type="submit" name="submit" value="Submit">
+                        <input class="edit-user-btn" type="submit" name="submit" value="Update Profile">
                     </div>
                 </div>
             </form>

@@ -1476,14 +1476,18 @@
 }
 
 .user-edit-btn {
+  display: flex;
+  justify-content: center;
   margin-top: 16px;
 }
 
 .edit-user-btn {
-  width: 350px; 
-  height: 40px;
+  width: 300px; 
+  height: 50px;
   background-color: maroon;
   color:white;
   padding: 4px;
-  border-radius: 4px;
+  font-size: 18px;
+  border-radius: 30px;
+  font-family: "Montserrat";
 }
