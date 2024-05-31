@@ -1155,6 +1155,13 @@ th, td {
 .manage-faculty {
   display: flex;
   align-items: center;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+.manage-admin {
+  display: flex;
+  align-items: center;
   font-size: 14px;
 }
 

@@ -54,8 +54,11 @@
                 <div class="manage-student">
                     <input type="radio" name="role" value="1" class="manage-user-student">Student</input>
                 </div>
-                <div class="manage-student">
+                <div class="manage-faculty">
                     <input type="radio" name="role" value="2" class="manage-user-faculty">Faculty</input>
+                </div>
+                <div class="manage-admin">
+                    <input type="radio" name="role" value="3" class="manage-user-admin">Admin</input>
                 </div>
             </div>
             <div class="manage-save">
