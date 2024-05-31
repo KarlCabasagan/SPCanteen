@@ -80,6 +80,10 @@ input:-webkit-autofill:active {
   transition: background-color 9999s ease-in-out 0s;
 }
 
+img {
+  object-fit: cover;
+}
+
 input[type="radio"] {
   accent-color: maroon;
 }
