@@ -184,7 +184,7 @@ h3 {
 
 .add-header {
   width: 60rem;
-  margin: 5rem 0 0 68px;
+  margin: 5rem 0 0 69px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -245,6 +245,10 @@ h3 {
   margin: 30px 60px;
   overflow-y: auto;
   max-height: 70vh;
+}
+
+.product-list::-webkit-scrollbar {
+  display: none;
 }
 
 .product {
@@ -1068,13 +1072,24 @@ h3 {
   cursor: pointer;
 }
 
+/* Manage User */
+
+#profile-picture {
+  width: 100px;
+  height: 100px;
+}
+
+th, td {
+  text-align: center;
+}
+
 /* User Management Modal CSS */
 
 .modal_user-edit {
   display: flex;
   flex-direction: column;
-  width: 500px;
-  height: 70vh;
+  width: 300px;
+  height: 25vh;
   position: fixed;
   top: 54%;
   left: 59%;
@@ -1094,17 +1109,83 @@ h3 {
   pointer-events: all;
 }
 
+.manage-user-profile-modal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+}
+
+.manage-user-edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.manage-username, .manage-email {
+  font-size: 12px;
+}
+
+.manage-user-info {
+  background-color:	#E5E4E2;
+  color: #71797E;
+  border: none;
+  padding: 8px 8px 8px 4px;
+  border-radius: 4px;
+}
+
+#user-email {
+  margin-bottom: 4px;
+}
+
+.role {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.manage-student {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+.manage-faculty {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  font-size: 14px;
+}
+
+.manage-admin {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.manage-user-student, .manage-user-faculty {
+  cursor: pointer;
+  accent-color: maroon;
+  transform: scale(1);
+}
+
+.manage-save {
+  display: flex;
+  justify-content: center;
+}
+
+#manage-save {
+  background-color: maroon;
+  color: white;
+  padding: 10px 24px 10px 24px;
+  margin-top: 20px;
+  border-radius: 8px;
+}
+
 .close-modal6 {
   font-size: 20px;
   cursor: pointer;
-}
-/* Manage User */
-
-#profile-picture {
-  width: 100px;
-  height: 100px;
-}
-
-th, td {
-  text-align: center;
+  margin-left: 278px;
 }
