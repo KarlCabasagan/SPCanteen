@@ -113,11 +113,17 @@
                                 <label>Username</label>
                                 <i class="fa-solid fa-user"></i>
                             </div>
+                            @error('name')
+                    <p style="color: red; ">{{$message}}</p>
+                @enderror
                             <div class="input-container">
                                 <input type="password" name="password" class="input-field" required>
                                 <label>Password</label>
                                 <i class="fa-solid fa-eye" onclick="togglePassword(this, 'password')"></i>
                             </div>
+                            @error('password')
+                    <p style="color: red;">{{$message}}</p>
+                @enderror
                             <div class="forgot-password">
                                 <a id="forgot-password" href="#">Forgot Password?</a>
                             </div>
