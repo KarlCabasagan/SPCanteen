@@ -1298,11 +1298,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 8px;
+  margin-top: 18px;
 }
 
-#price {
-  font: 20px;
+.price {
+  font-size: 26px;
   font-weight: bolder;
 }
 
@@ -1310,7 +1310,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 20px 10px 0 10px;
+  margin: 40px 4px 0 10px;
 }
 
 .quantity-btns {
