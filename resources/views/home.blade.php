@@ -5,25 +5,25 @@
         @section('css', 'css/auth.css')
         <div class="onboarding-carousel">
         <div class="onboarding-slide" style="background-color: #ADD8E6;">
-            <img src="login.png" style="width: 300px; margin-top: 180px;">
+            <img src="images/login.png" style="width: 300px; margin-top: 180px;">
             <span style="color: black; font-size: 22px;">Welcome to <b style="color: maroon;">SPCanteen</b></span>
             <span style="color: gray; font-size: 17px; opacity: 1; margin-top: 8px;">Create and Setup <br> your account.</span>
         </div>
 
         <div class="onboarding-slide" style="background-color: #ADD8E6;">
-            <img src="time.png" style="width: 300px; margin-top: 180px;">
+            <img src="images/time.png" style="width: 300px; margin-top: 180px;">
             <span style="color: black; font-size: 22px;">Save Time</span>
             <span style="color: gray; font-size: 17px; opacity: 1; margin-top: 8px;">You can order anytime <br> inside the campus.</span>
         </div>
 
         <div class="onboarding-slide" style="background-color: #ADD8E6;">
-            <img src="qrcode.png" style="width: 300px; margin-top: 180px;">
+            <img src="images/qrcode.png" style="width: 300px; margin-top: 180px;">
             <span style="color: black; font-size: 22px;">QR Code</span>
             <span style="color: gray; font-size: 17px; opacity: 1; margin-top: 8px;">You will get a QR Code <br> when your order has been prepared.</span>
         </div>
 
         <div class="onboarding-slide" style="background-color: #ADD8E6;">
-            <img src="coffee.png" style="width: 300px; margin-top: 180px;">
+            <img src="images/coffee.png" style="width: 300px; margin-top: 180px;">
             <span style="color: black; font-size: 22px;">QR Scanner</span>
             <span style="color: gray; font-size: 17px; opacity: 1; margin-top: 8px;">You can user your QR Code <br> to get your order in the canteen.</span>
         </div>

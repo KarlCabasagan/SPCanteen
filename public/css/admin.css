@@ -459,9 +459,35 @@ h3 {
   width: 122%;
 }
 
+.product-availablity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 44px;
+  font-size: 14px;
+}
+
+.available {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.not-available {
+  display: flex;
+  align-items: center;
+}
+
+.availability-btn {
+  accent-color: maroon;
+  transform: scale(0.98);
+  margin-top: 2.50px;
+  cursor: pointer;
+}
+
 .product-categories {
-  margin: 10px 14px 0 10px;
-  width: 100%;
+  margin-top: 10px;
+  width: 101%;
 }
 
 .product-name label,
@@ -1075,8 +1101,8 @@ h3 {
 /* Manage User */
 
 #profile-picture {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 140px;
 }
 
 th, td {
@@ -1088,8 +1114,8 @@ th, td {
 .modal_user-edit {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  height: 25vh;
+  width: 350px;
+  height: 30.50vh;
   position: fixed;
   top: 54%;
   left: 59%;
@@ -1113,7 +1139,7 @@ th, td {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 300px;
+  width: 360px;
 }
 
 .manage-user-edit {
@@ -1122,7 +1148,7 @@ th, td {
   justify-content: center;
 }
 
-.manage-username, .manage-email {
+.manage-username, .manage-email, .manage-student-id {
   font-size: 12px;
 }
 
@@ -1182,18 +1208,18 @@ th, td {
   padding: 10px 24px 10px 24px;
   margin-top: 20px;
   border-radius: 8px;
+  font-size: 16px;
 }
 
 .close-modal6 {
-  font-size: 20px;
   cursor: pointer;
-  margin-left: 278px;
+  margin-left: 328px;
 }
 
 /* Fade-Out Transition */
 
 #splash-screen {
-  background-color: white;
+  background-color: #e5e4e2;
   color: #fff;
   height: 100%;
   display: flex;

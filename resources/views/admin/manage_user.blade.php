@@ -48,6 +48,8 @@
                     <input type="text" class="manage-user-info" id="user-name" name="name" value="" placeholder="Username">
                     <label class="manage-email">Email</label>
                     <input type="text" class="manage-user-info" id="user-email" name="email" value="" placeholder="Email">
+                    <label class="manage-student-id">School ID</label>
+                    <input type="text" class="manage-user-info" id="user-student-id" name="user-student-id" value="" placeholder="2022-01308">
                 </div>
             </div>
             <div class="role" id="user-role">
