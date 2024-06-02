@@ -193,3 +193,101 @@ i {
   margin: 24px 8px 0 0;
   cursor: pointer;
 }
+
+/* Intro CSS */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Inter";
+}
+
+.onboarding-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+  width: 100vw;
+}
+
+.onboarding-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.onboarding-slide {
+  flex: 0 0 84%;
+  scroll-snap-align: start;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.onboarding-slide h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.onboarding-slide p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.onboarding-slide button {
+  background-color: white;
+  color: #333;
+  padding: 0.8rem 1.6rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.slider {
+  display: none;
+}
+
+.dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dots label {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: #FFFFFF;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.dots label.active {
+  background-color: maroon;
+}
+
+/* Fade-Out Transition */
+
+#splash-screen {
+  background-color: white;
+  color: #fff;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  transition: opacity 1.5s ease;
+}
+
+#content {
+  display: none;
+}
