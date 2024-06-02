@@ -23,7 +23,7 @@
                             <span id="payment-txt">GCASH</span>
                         </div>
                         <div class="payment-right-side">
-                            <input type="radio" name="payment_option" id="payment-btn1" class="payment-btn" value="1">
+                            <input type="radio" name="payment_option" id="payment-btn1" class="payment-btn" value="1" checked>
                             <label for="payment-gcash"></label>
                         </div>
                     </div>
@@ -62,14 +62,14 @@
                             <span id="payment-txt">Cash On Hand</span>
                         </div>
                         <div class="payment-right-side">
-                            <input type="radio" name="payment_option"  id="payment-btn3" class="payment-btn" value="3" checked>
+                            <input type="radio" name="payment_option"  id="payment-btn3" class="payment-btn" value="3">
                             <label for="payment-cod"></label> 
                         </div>
                     </div>      
                 </button>
             </div>
             
-            <div id="note" class="note">Note: Failure to pay will result in automatic @if (auth()->user()->role_id == 1) addition to your school fee. @else subtraction to your payroll.@endif</div>
+            <div style="opacity: 0;" id="note" class="note">Note: Failure to pay will result in automatic @if (auth()->user()->role_id == 1) addition to your school fee. @else subtraction to your payroll.@endif</div>
 
             <div class="payments-container">
                 <div class="price-txt">

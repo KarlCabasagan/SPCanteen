@@ -21,6 +21,7 @@ class OrderController extends Controller
 
         foreach ($orders as $order) {
             $order['username'] = $order->user->name;
+            $order['school_id'] = $order->user->school_id;
             $order['status_name'] = $order->status->name;
         }
 
@@ -36,6 +37,7 @@ class OrderController extends Controller
 
         foreach ($orders as $order) {
             $order['username'] = $order->user->name;
+            $order['school_id'] = $order->user->school_id;
             $order['status_name'] = $order->status->name;
         }
 

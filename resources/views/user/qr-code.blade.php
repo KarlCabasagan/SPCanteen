@@ -10,6 +10,7 @@
                 <span id="status-order" style="font-size: 34px;">{{$order->status->name}}</span>
             </div>
             @if($order->status_id == 2)
+                <span style="font-size: 20px; margin-top: 100px">{{Auth::user()->school_id}}</span>
                 <div class="code-container">
                     <div id="qrcode"></div>
                     <script type="text/javascript">

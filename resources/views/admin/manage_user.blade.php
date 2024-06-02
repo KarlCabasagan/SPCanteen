@@ -10,6 +10,7 @@
                     <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">ID</th>
                     <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Name</th>
                     <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Email</th>
+                    <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">School ID</th>
                     <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Role ID</th>
                     <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Order Count</th>
                     <th style="text-align: center; background-color: maroon; color: white; padding-left: 30px;">Action</th>
@@ -21,6 +22,7 @@
                     <td style="text-align: center;">{{$user->id}}</td>
                     <td style="text-align: center;">{{$user->name}}</td>
                     <td style="text-align: center;">{{$user->email}}</td>
+                    <td style="text-align: center;">{{$user->school_id}}</td>
                     <td style="text-align: center;">{{$user->role_id}}</td>
                     <td style="text-align: center;">{{$user->totalOrder}}</td>
                     <td style="text-align: center;">
@@ -49,7 +51,7 @@
                     <label class="manage-email">Email</label>
                     <input type="text" class="manage-user-info" id="user-email" name="email" value="" placeholder="Email">
                     <label class="manage-student-id">School ID</label>
-                    <input type="text" class="manage-user-info" id="user-student-id" name="user-student-id" value="" placeholder="2022-01308">
+                    <input type="text" class="manage-user-info" id="user-school-id" name="school_id" value="" placeholder="2022-01308">
                 </div>
             </div>
             <div class="role" id="user-role">
@@ -98,6 +100,7 @@
             editForm.querySelector("#profile-picture").src = `images/profile/${userData.image}`;
             editForm.querySelector("#user-name").value = userData.name;
             editForm.querySelector("#user-email").value = userData.email;
+            editForm.querySelector("#user-school-id").value = userData.school_id;
             editForm.querySelector("#user-role").value = userData.role_id;
 
             editForm.action = `/user/edit/${userData.id}`;

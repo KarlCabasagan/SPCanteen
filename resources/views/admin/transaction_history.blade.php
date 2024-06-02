@@ -72,11 +72,13 @@
             <div class="orders-id-username">
                 <span>Order ID</span>
                 <span>Username</span>
+                <span>School ID</span>
                 <span>Role</span>
             </div>
             <div class="orders-order-details">
                 <span id="order-id">SPC2024-69</span>
                 <span id="user-name">Romarc Bongcaron</span>
+                <span id="user-school-id">2022-2022</span>
                 <span id="role-name">STUDENT</span>
             </div>
         </div>
@@ -122,6 +124,7 @@
                 document.getElementById("payment-type").innerHTML = data.payment_type;
                 document.getElementById("order-id").innerHTML = `SPC2024-${data.id}`;
                 document.getElementById("user-name").innerHTML = data.user.name;
+                document.getElementById("user-school-id").innerHTML = data.user.school_id;
                 document.getElementById("role-name").innerHTML = data.user.role.name;
                 
                 //Get Products
@@ -176,11 +179,12 @@
     const orders = JSON.parse(orderDataElement.getAttribute('data-orders')).map(order => ({
         id: `SPC2024-${order.id}`,
         user: order.username,
+        school_id: order.school_id,
         status: order.status_name,
     }));
 
     const options = {
-        keys: ['id', 'user', 'status'],
+        keys: ['id', 'user', 'status', 'school_id'],
         threshold: 0.1
     };
 
