@@ -21,19 +21,31 @@
         @foreach ($products as $product)
         <div class="product" data-product-id="{{$product->id}}">
             <img id="product-img" src="images/product/{{$product->image}}" alt="{{$product->name}}">
-            <div class="label">
+            @if ($product->availability == 0)
+                <div class="label" style="background: linear-gradient(to top, gray, transparent);">
+            @else
+                <div class="label" style="background: linear-gradient(to top, maroon, transparent);">
+            @endif
                 <h3>{{$product->name}}</h3>
                 <div class="icon-container">
                     <div class="edit-delete-btns">
                         <div class="edit-button">
                     <button class="open-modal2" data-product-id="{{$product->id}}">
-                        <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
+                        @if ($product->availability == 0)
+                            <iconify-icon style="color: darkgray;" icon="tabler:edit" class="tabler-edit"></iconify-icon>
+                        @else
+                            <iconify-icon icon="tabler:edit" class="tabler-edit"></iconify-icon>
+                        @endif
                     </button>
                     </div>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                         @csrf
                         <button type="submit" class="delete-button">
-                            <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
+                            @if ($product->availability == 0)
+                                <iconify-icon style="color: darkgray;" icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
+                            @else
+                                <iconify-icon icon="mdi:trash-outline" class="trash-outline"></iconify-icon>
+                            @endif
                         </button>
                     </form>
                     </div>
@@ -70,16 +82,6 @@
                         </div>
                         <div class="product-time">
                             <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)" style="text-align: center;" required>
-                        </div>
-                        <div class="product-availablity">
-                            <div class="available">
-                                <input type="radio" class="availability-btn">
-                                <label>Available</label>
-                            </div>
-                            <div class="not-available">
-                                <input type="radio" class="availability-btn">
-                                <label>Not Available</label>
-                            </div>
                         </div>
                         <div class="product-categories">
                             <label id="select-category">Select Category</label>
@@ -133,14 +135,14 @@
                         <div class="product-time">
                             <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)" style="text-align: center;">
                         </div>
-                        <div class="product-availablity">
+                        <div class="product-availablity" id="product-availablity">
                             <div class="available">
-                                <input type="radio" class="availability-btn">
-                                <label>Available</label>
+                                <input id="avail" name="availability" value="1" type="radio" class="availability-btn">
+                                <label for="avail">Available</label>
                             </div>
                             <div class="not-available">
-                                <input type="radio" class="availability-btn">
-                                <label>Not Available</label>
+                                <input id="not-avail" name="availability" value="0" type="radio" class="availability-btn">
+                                <label for="not-avail">Not Available</label>
                             </div>
                         </div>
                         <div class="product-categories">
@@ -194,6 +196,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
         const response = await fetch(`/products/${productId}`);
         const productData = await response.json();
+
+        const availabilityInput = document.querySelector("#product-availablity input[value='" + productData.availability + "']");
+        console.log(productData.availability);
+
+        if (availabilityInput) {
+        availabilityInput.checked = true;
+        }
 
         editForm.querySelector("#product-name").value = productData.name;
         editForm.querySelector("#product-price").value = productData.price;

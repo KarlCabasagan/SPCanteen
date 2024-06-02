@@ -104,11 +104,13 @@ class UserController extends Controller
         $validateData = $request->validate([
             'name' => ['required', 'min:3', 'max:30',],
             'email' => ['required', 'min:3', 'max:200',],
+            'school_id' => ['nullable', 'string'],
             'role' => ['required', Rule::in([1, 2, 3, 4])]
         ]);
 
         $user->name = $request->input('name');
         $user->email = $request->input('email');
+        $user->school_id = $request->input('school_id');
         $user->role_id = $request->input('role');
 
         $user->save();

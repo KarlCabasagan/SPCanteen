@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->double('price', 8, 2);
             $table->string('image')->nullable();
+            $table->boolean('availability')->default(1);
             $table->unsignedBigInteger('category_id');
             $table->integer('time');
             $table->timestamps();

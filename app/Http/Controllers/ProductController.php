@@ -16,7 +16,7 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
-        $products = Product::all();
+        $products = Product::where('availability', 1)->get();
 
         foreach ($products as $product) {
             $product->name = ucwords($product->name);
@@ -38,11 +38,11 @@ class ProductController extends Controller
     public function getProductsByCategory($id)
     {
         if($id == 0) {
-            $products = Product::all();
+            $products = Product::where('availability', 1)->get();
             return response()->json($products);
         }
         
-        $products = Product::where('category_id', $id)->get();
+        $products = Product::where('category_id', $id)->where('availability', 1)->get();
 
         return response()->json($products);
     }
@@ -63,10 +63,10 @@ class ProductController extends Controller
     {
         $categoryId = $request->query('categoryId');
 
-        $products = Product::where('name', 'like', '%'. $productName. '%')->get();
+        $products = Product::where('availability', 1)->where('name', 'like', '%'. $productName. '%')->get();
 
         if ($categoryId >= 1 && $categoryId <= 7) {
-            $products = Product::where('name', 'like', '%'. $productName. '%')->where('category_id', $categoryId)->get();
+            $products = Product::where('name', 'like', '%'. $productName. '%')->where('category_id', $categoryId)->where('availability', 1)->get();
             
             return response()->json($products);
         }
@@ -74,7 +74,7 @@ class ProductController extends Controller
         if ($products->count() > 0 ) {
             return response()->json($products);
         } else {
-            $products = Product::all();
+            $products = Product::where('availability', 1)->get();
             return response()->json($products);
         }
     }
@@ -144,6 +144,7 @@ class ProductController extends Controller
             'price' => 'required|numeric',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:15000',
             'time' => 'required|integer',
+            'availability' => 'required|boolean',
             'category_id' => ['required',Rule::in([1, 2, 3, 4, 5, 6, 7])],
         ]);
 
@@ -151,6 +152,7 @@ class ProductController extends Controller
         $product->price = $request->input('price');
         $product->time = $request->input('time');
         $product->category_id = $request->input('category_id');
+        $product->availability = $request->input('availability');
 
         if ($request->hasFile('images')) {
             $file = $request->file('images');
