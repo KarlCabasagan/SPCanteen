@@ -52,13 +52,16 @@
             </div>
             <div class="role" id="user-role">
                 <div class="manage-student">
-                    <input type="radio" name="role" value="1" class="manage-user-student">Student</input>
+                    <input id="student" type="radio" name="role" value="1" class="manage-user-student">
+                    <label for="student">Student</label>
                 </div>
                 <div class="manage-faculty">
-                    <input type="radio" name="role" value="2" class="manage-user-faculty">Faculty</input>
+                    <input id="faculty" type="radio" name="role" value="2" class="manage-user-faculty">
+                    <label for="faculty">Faculty</label>
                 </div>
                 <div class="manage-admin">
-                    <input type="radio" name="role" value="3" class="manage-user-admin">Admin</input>
+                    <input id="admin" type="radio" name="role" value="3" class="manage-user-admin">
+                    <label for="admin">Admin</label>
                 </div>
             </div>
             <div class="manage-save">

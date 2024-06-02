@@ -73,7 +73,7 @@ class OrderController extends Controller
     }
 
     public function getStatistics() {
-        $totalOrders = Order::whereIn('status_id', [1, 2, 3])->count();
+        $totalOrders = Order::whereIn('status_id', [1, 2, 3, 4])->count();
         $completedOrders = Order::where('status_id', 3)->get()->count();
         $cancelledOrders = Order::where('status_id', 4)->get()->count();
         $orders = Order::where('status_id', 3)->get();

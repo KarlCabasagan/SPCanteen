@@ -2,7 +2,7 @@
 
 @section('content')
     @section('css', 'css/admin.css')
-    @if (Auth::user()->id === 3)
+    @if (Auth::user()->role_id === 3)
         @section('title', 'SPCanteen - Admin')
     @else
         @section('title', 'SPCanteen - Super Admin')

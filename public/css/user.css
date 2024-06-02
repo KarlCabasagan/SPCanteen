@@ -1425,8 +1425,19 @@
   display: flex; 
   justify-content: center;
   align-items: center; 
-  margin-top: 120px;
+  margin-top: 50px;
   font-size: 30px;
+}
+
+.edit-user-profile {
+  display: flex;
+  justify-content: center;
+}
+
+#edit-user-profile {
+  width: 120px;
+  border-radius: 50%;
+  margin-top: 20px;
 }
 
 .user-edit-icon {
@@ -1437,14 +1448,13 @@
 }
 
 .user-edit-inputs {
-  display:flex; 
-  justify-content:center; 
-  margin-top: 16px;
+  margin: 16px 8px 0 8px;
 }
 
 .user-edit-container {
   display:flex; 
   flex-direction: column;
+  justify-content: center;
 }
 
 .user-edit-name, .user-edit-email, 
@@ -1490,4 +1500,41 @@
   font-size: 18px;
   border-radius: 30px;
   font-family: "Montserrat";
+}
+
+.edit-user-fields {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 98%;
+  background: none;
+}
+
+.edit-user-fields label {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+#edit-user-fields {
+  height: 35px; 
+  border: none;
+  border-bottom: 2px solid maroon;
+  border-radius: 0;
+  padding-left: 4px;
+  flex-grow: 2;
+  color: maroon;
+  font-size: 16px; 
+}
+
+#edit-user-fields:focus {
+  outline: none;
+}
+
+#edit-user-fields::placeholder {
+  color: maroon;
+}
+
+#edit-user-fields::placeholder {
+  color: maroon;
+  text-align: center;
 }

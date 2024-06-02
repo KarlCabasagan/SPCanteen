@@ -22,11 +22,17 @@
                                 <label>Username</label>
                                 <i class="fa-solid fa-user"></i>
                             </div>
+                            @error('name')
+                                <p style="color: red; margin-left: 20px; position: absolute;">{{$message}}</p>
+                            @enderror
                             <div class="input-container">
                                 <input type="text" name="email" class="input-field" required>
                                 <label>Email</label>
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
+                            @error('email')
+                                <p style="color: red; margin-left: 20px; position: absolute;">{{$message}}</p>
+                            @enderror
                             <div class="input-container">
                                 <input type="password" id="password" name="password" class="input-field" required>
                                 <label>Password</label>
@@ -37,6 +43,9 @@
                                 <label>Confirm Password</label>
                                 <i class="fa-solid fa-eye" onclick="togglePassword(this, 'password_confirmation')"></i>
                             </div>
+                            @error('password')
+                                <p style="color: red; margin-left: 20px; position: absolute;">{{$message}}</p>
+                            @enderror
                             <div class="register">
                                 <input type="submit" class="btn" value="REGISTER">
                             </div>
