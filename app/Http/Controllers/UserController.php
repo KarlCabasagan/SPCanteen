@@ -9,7 +9,6 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 
-
 class UserController extends Controller
 {
     public function login(Request $request) {
@@ -83,7 +82,7 @@ class UserController extends Controller
 
     public function logout() {
         auth()->logout();
-        return redirect('/');
+        return redirect('/')->withoutCookie('seenFirstFadeOut');
     }
 
 

@@ -2,6 +2,37 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 @section('content1')
+@if (!Cookie::has('seenFirstFadeOut'))
+    <div id="splash-screen">
+        <div class="logo1">
+            <img class="futuristic-heading" src="/images/SPCanteen.png" alt="SPCanteen.png">
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
+                document.getElementById("splash-screen").style.opacity = 0;
+                
+                setTimeout(function() {
+                    document.getElementById("content").style.display = "block";
+                }, 1000); 
+                
+                setTimeout(function() {
+                    document.getElementById("splash-screen").remove();
+                }, 1500); 
+            }, 1000); 
+        });
+        function switchPage(){
+            
+            document.querySelector('.content').classList.add('fade-out');
+            
+            setTimeout(function() {
+                window.location.href = 'login';
+            }, 100); 
+        }
+    </script>
+@endif
 <div class="content1">
     @if(auth()->user()->role_id == 3)
         <h1>Hello Admin!</h1>

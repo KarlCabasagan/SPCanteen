@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\IntroController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -10,14 +11,13 @@ use App\Http\Middleware\CheckIfUserHasNotCompletedOrders;
 use App\Http\Middleware\CheckIfUserHasProductInCart;
 use App\Http\Middleware\EnsureUserHasRole;
 use App\Http\Middleware\CheckUserHasRole;
+use App\Http\Middleware\MakeCookieForFadeOutTitle;
 use App\Http\Middleware\PreventRegister;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/intro', function () {
-    return view('intro');
-});
+Route::get('/', [ProductController::class, 'index'])->middleware([EnsureUserHasRole::class, CheckIfOrderIsCompleted::class])->name('home');
 
-Route::get('/', [ProductController::class, 'index'])->middleware([EnsureUserHasRole::class, CheckIfOrderIsCompleted::class]);
+Route::get('/after-intro', [IntroController:: class, 'afterIntro']);
 
 Route::post('/login', [UserController::class, 'login']);
 
@@ -47,14 +47,14 @@ Route::middleware(['logged-in'])->group(function () {
             Route::get('/cart/store/single/product/{product}', [CartController::class, 'SingleStoreToCart']);
             Route::get('/product/search/{product}', [ProductController::class, 'searchProduct']);
 
-            Route::get('/favorite', [FavoriteController::class, 'index']);
+            Route::get('/favorite', [FavoriteController::class, 'index'])->middleware(MakeCookieForFadeOutTitle::class);
             Route::get('/favorite/remove/{productId}', [FavoriteController::class, 'removeFavorite']);
 
-            Route::get('/history', [OrderController::class, 'index3']);
+            Route::get('/history', [OrderController::class, 'index3'])->middleware(MakeCookieForFadeOutTitle::class);
 
             Route::get('/profile', function () {
                 return view('user.profile');
-            })->name('profile');
+            })->middleware(MakeCookieForFadeOutTitle::class)->name('profile');
 
             //Route for edit
             Route::middleware(['editUser'])->group(function () {
@@ -62,7 +62,7 @@ Route::middleware(['logged-in'])->group(function () {
                 Route::post('/process.edit/{id}', [UserController::class, 'processEdit'])->name('process.edit');
             });
             
-            Route::get('/cart', [CartController::class, 'index']);
+            Route::get('/cart', [CartController::class, 'index'])->middleware(MakeCookieForFadeOutTitle::class);
             Route::get('/cart/delete/{cartId}', [CartController::class, 'destroy']);
             Route::get('/cart/get/total/quantity', [CartController::class, 'getTotalQuantity']);
             Route::get('/cart/get/total/price', [CartController::class, 'getTotalPrice']);
@@ -81,13 +81,13 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/api/chart/data', [OrderController::class, 'getChartData']);
 
         
-        Route::get('/product_list', [ProductController::class, 'adminIndex']);
+        Route::get('/product_list', [ProductController::class, 'adminIndex'])->middleware(MakeCookieForFadeOutTitle::class);
             Route::post('/addproduct', [ProductController::class, 'store']);
             Route::post('/products/destroy/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
             Route::get('/products/{id}', [ProductController::class, 'show']);
             Route::post('/products/edit/{id}', [ProductController::class, 'edit']);
 
-        Route::get('/order_list', [OrderController::class, 'index']);
+        Route::get('/order_list', [OrderController::class, 'index'])->middleware(MakeCookieForFadeOutTitle::class);
         Route::get('/order/get/details/{orderId}', [OrderController::class, 'getOrderDetails']);
         Route::get('/order/get/details/scan/{orderId}', [OrderController::class, 'getOrderDetailsScan']);
         Route::get('/order/get/product/{orderId}', [OrderController::class, 'getOrderProducts']);
@@ -95,11 +95,11 @@ Route::middleware(['logged-in'])->group(function () {
         Route::get('/order/cancel/{orderId}', [OrderController::class, 'cancelOrder']);
         Route::get('/order/change/status/{orderId}', [OrderController::class, 'changeStatus']);
         
-        Route::get('/transaction_history', [OrderController::class, 'index2']);
+        Route::get('/transaction_history', [OrderController::class, 'index2'])->middleware(MakeCookieForFadeOutTitle::class);
         Route::get('/order/get/details2/{orderId}', [OrderController::class, 'getOrderDetails2']);
         
         Route::middleware(['superAdmin'])->group(function () {
-            Route::get('/manage_user', [UserController::class, 'showUser']);
+            Route::get('/manage_user', [UserController::class, 'showUser'])->middleware(MakeCookieForFadeOutTitle::class);
             Route::get('/user/{id}', [UserController::class, 'show']);
             Route::post('/user/edit/{id}', [UserController::class, 'adminEdit']);
             Route::get('/user/delete/{id}', [UserController::class, 'delete']);
