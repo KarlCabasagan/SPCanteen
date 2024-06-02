@@ -99,6 +99,33 @@
     @else
         @section('css', 'css/auth.css')
         @section('title', 'SPCanteen - Login')
+        <style>
+        #splash-screen {
+    background-color: white;
+    color: #fff;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+    transition: opacity 3s ease;
+}
+
+#content {
+    display: none;
+}
+    </style>
+    
+    <div id="splash-screen">
+    <div class="logo1">
+<img class="futuristic-heading" src="/images/SPCanteen.png" alt="SPCanteen.png">
+</div>
+    </div>
+        <div class="content">
         <div class="container">
             <div class="row">
                 <div class="login-form">
@@ -138,5 +165,33 @@
                 </div>
             </div>
         </div>
+        </div>
+
+        <script>document.addEventListener("DOMContentLoaded", function() {
+    // Simulate loading time
+    setTimeout(function() {
+        // Hide the splash screen gradually
+        document.getElementById("splash-screen").style.opacity = 0;
+
+        // Show the content after the splash screen fades out
+        setTimeout(function() {
+            document.getElementById("content").style.display = "block";
+        }, 2000); // Wait for 3 seconds before showing the content
+
+        // After fading out, remove the splash screen from the DOM
+        setTimeout(function() {
+            document.getElementById("splash-screen").remove();
+        }, 3000); // Remove the splash screen after 6 seconds
+    }, 1000); // Adjust the timeout as needed (3000ms = 3s)
+});
+        function switchPage(){
+            // Fade out the content
+            document.querySelector('.content').classList.add('fade-out');
+            // Delay the redirection to see the transition effect
+            setTimeout(function() {
+                window.location.href = 'login';
+            }, 100); // Adjust the timeout as needed (500ms = 0.5s)
+        }
+    </script>
     @endauth
 @endsection

@@ -13,6 +13,10 @@ use App\Http\Middleware\CheckUserHasRole;
 use App\Http\Middleware\PreventRegister;
 use Illuminate\Support\Facades\Route;
 
+Route::get('/intro', function () {
+    return view('intro');
+});
+
 Route::get('/', [ProductController::class, 'index'])->middleware([EnsureUserHasRole::class, CheckIfOrderIsCompleted::class]);
 
 Route::post('/login', [UserController::class, 'login']);
