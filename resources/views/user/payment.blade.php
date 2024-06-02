@@ -133,7 +133,5 @@
             document.getElementById("note").style.opacity = "0";
         }
     }
-
-    
 </script>
 @endsection
