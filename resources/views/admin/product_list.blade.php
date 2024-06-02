@@ -63,13 +63,23 @@
                 <div class="modal-content">
                     <div class="product-info">
                         <div class="product-name">
-                            <input id="product-name" name="name" type="text" placeholder="Product Name" required>
+                            <input id="product-name" name="name" type="text" placeholder="Product Name" style="text-align: center;" required>
                         </div>
                         <div class="product-price">
-                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00" required>
+                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00" style="text-align: center;" required>
                         </div>
                         <div class="product-time">
-                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)" required>
+                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)" style="text-align: center;" required>
+                        </div>
+                        <div class="product-availablity">
+                            <div class="available">
+                                <input type="radio" class="availability-btn">
+                                <label>Available</label>
+                            </div>
+                            <div class="not-available">
+                                <input type="radio" class="availability-btn">
+                                <label>Not Available</label>
+                            </div>
                         </div>
                         <div class="product-categories">
                             <label id="select-category">Select Category</label>
@@ -115,13 +125,23 @@
                 <div class="modal-content">
                     <div class="product-info">
                         <div class="product-name">
-                            <input id="product-name" name="name" type="text" placeholder="Product Name">
+                            <input id="product-name" name="name" type="text" placeholder="Product Name" style="text-align: center;">
                         </div>
                         <div class="product-price">
-                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00">
+                            <input id="product-price" name="price" type="text" placeholder="₱ 0.00" style="text-align: center;">
                         </div>
                         <div class="product-time">
-                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)">
+                            <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)" style="text-align: center;">
+                        </div>
+                        <div class="product-availablity">
+                            <div class="available">
+                                <input type="radio" class="availability-btn">
+                                <label>Available</label>
+                            </div>
+                            <div class="not-available">
+                                <input type="radio" class="availability-btn">
+                                <label>Not Available</label>
+                            </div>
                         </div>
                         <div class="product-categories">
                             <label id="select-category">Select Category</label>
