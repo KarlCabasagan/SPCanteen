@@ -71,16 +71,6 @@
                         <div class="product-time">
                             <input id="product-time" name="time" type="text" placeholder="Estimated Time (In Minutes)" style="text-align: center;" required>
                         </div>
-                        <div class="product-availablity">
-                            <div class="available">
-                                <input type="radio" class="availability-btn">
-                                <label>Available</label>
-                            </div>
-                            <div class="not-available">
-                                <input type="radio" class="availability-btn">
-                                <label>Not Available</label>
-                            </div>
-                        </div>
                         <div class="product-categories">
                             <label id="select-category">Select Category</label>
                             <select id="product-categories" name="category_id" id="product">
@@ -135,11 +125,11 @@
                         </div>
                         <div class="product-availablity">
                             <div class="available">
-                                <input type="radio" class="availability-btn">
+                                <input name="availability" type="radio" class="availability-btn">
                                 <label>Available</label>
                             </div>
                             <div class="not-available">
-                                <input type="radio" class="availability-btn">
+                                <input name="availability" type="radio" class="availability-btn">
                                 <label>Not Available</label>
                             </div>
                         </div>
