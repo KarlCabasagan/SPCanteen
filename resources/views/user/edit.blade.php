@@ -11,6 +11,13 @@
         </div>
         <div class="edit-user-profile">
             <img id="edit-user-profile" src="{{ asset('images/profile/' . Auth::user()->image) }}" alt="Profile Picture">
+            <div class="profile-picture">
+                <label id="pfp" for="profilePicture">
+                    <div class="camera-icon-bg">
+                        <iconify-icon icon="entypo:camera" class="cam"></iconify-icon>
+                    </div>
+                </label>
+            </div>
         </div>
         <div class="user-edit-inputs">
             <form action="{{ route('process.edit', ['id' => $user->id ]) }}" method="POST">

@@ -1435,7 +1435,7 @@
 }
 
 #edit-user-profile {
-  width: 120px;
+  width: 130px;
   border-radius: 50%;
   margin-top: 20px;
 }
@@ -1448,7 +1448,7 @@
 }
 
 .user-edit-inputs {
-  margin: 4px 8px 0 8px;
+  margin: 2px 8px 0 8px;
 }
 
 .user-edit-container {
@@ -1537,6 +1537,32 @@
 #edit-user-fields::placeholder {
   color: maroon;
   text-align: center;
+}
+
+#pfp {
+  position: absolute;
+  bottom: 1px;
+  right: 2px;
+}
+
+.profile-picture {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.camera-icon-bg {
+  width: 40px;
+  height: 40px;
+  background-color: maroon;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cam {
+  color: white;
+  font-size: 20px;
+  margin: 10px;
 }
 
 /* FadeOut Transition */
