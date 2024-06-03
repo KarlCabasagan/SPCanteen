@@ -20,7 +20,8 @@
             </div>
         </div>
         <div class="user-edit-inputs">
-            <form action="{{ route('process.edit', ['id' => $user->id ]) }}" method="POST">
+            <form action="{{ route('process.edit', ['id' => $user->id ]) }}" method="POST" enctype="multipart/form-data">
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/*" onchange="previewProfilePicture(this);" style="display: none;">
                 @csrf
                 <div class="user-edit-container">
                     <div class="user-edit-name">
@@ -68,4 +69,18 @@
             </div>
         @endif
     </div>
+
+    <script>
+        function previewProfilePicture(input) {
+        if (input.files && input.files[0]) {
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+            document.getElementById('edit-user-profile').src = e.target.result;
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+        }
+    </script>
 @endsection

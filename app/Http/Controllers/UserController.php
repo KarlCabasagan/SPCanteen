@@ -56,7 +56,7 @@ class UserController extends Controller
         $userId = auth()->user()->id;
         
         $incomingFields = $request->validate([
-            'profilePicture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profilePicture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:15000',
             'status' => ['required', Rule::in([1, 2])]
         ]);
 
@@ -127,6 +127,7 @@ class UserController extends Controller
     {
         // Validate the request
         $request->validate([
+            'profilePicture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:15000',
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'oldpassword' => 'required',
@@ -134,7 +135,7 @@ class UserController extends Controller
         ]);
 
         // Find the user by ID
-        $user = User::find($id);
+        $user = User::findOrFail($id);
 
         if (!$user) {
             return redirect()->back()->with('error', 'User not found');
@@ -146,12 +147,30 @@ class UserController extends Controller
         }
 
         // Update user details
+        if ($request->hasFile('profilePicture')) {
+            $file = $request->file('profilePicture');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/profile'), $filename);
+            
+            $filePath = public_path('images/profile/' . $user->image);
+            if (File::exists($filePath)) {
+                if (basename($filePath) !== 'default.png') {
+                    File::delete($filePath);
+                }
+            }
+
+            $user->image = $filename;
+        } else {
+            $user->image = $user->image;
+        }
+
         $user->name = $request->name;
         $user->email = $request->email;
         
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }
+        
         $user->save();
 
         return redirect()->route('user.edit', ['id' => $id])->with('success', 'User updated successfully');
