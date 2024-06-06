@@ -19,11 +19,11 @@
                 </div>
             </div>
         </div>
-        <div class="search-bar">
-            <form action="" class="search-form">
+        <div class="search-bar2">
+            <form action="search-form" class="search-form">
                 <input type="text" id="searchInput" placeholder="Search product . . . ." name="search">
                 <button id="search-btn" type="submit">
-                    <iconify-icon id="search-icon" icon="iconamoon:search-thin"></iconify-icon>
+                    <iconify-icon id="search-icon2" icon="iconamoon:search-thin"></iconify-icon>
                 </button>
             </form>
         </div>

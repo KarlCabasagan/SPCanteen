@@ -13,7 +13,7 @@ function togglePassword(icon, inputId) {
   }
 }
 
-/* Profile Picture (Need pa e fix) */
+/* Profile Picture */
 
 function previewProfilePicture(input) {
   if (input.files && input.files[0]) {

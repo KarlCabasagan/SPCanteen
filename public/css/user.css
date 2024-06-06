@@ -85,10 +85,25 @@
   position: relative;
 }
 
+.search-bar2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 0 6px;
+  position: relative;
+}
+
 .search-bar #search-icon {
   font-size: 18px;
   margin-left: -38em;
   transform: translateY(16%);
+  color: #888;
+}
+
+.search-bar2 #search-icon2 {
+  font-size: 18px;
+  margin-left: -17.50em;
+  transform: translateY(-200%);
   color: #888;
 }
 

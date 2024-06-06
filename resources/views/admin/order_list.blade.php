@@ -58,7 +58,7 @@
                 <iconify-icon id="close" icon="material-symbols-light:close"></iconify-icon>
             </div>
         <div class="modal-container">
-        <span id="id-not-found" style="color: red; margin-bottom: 10px; display:none;">Order is not found or not yet prepared.</span>
+        <span id="id-not-found" style="color: red; position: absolute; bottom: 0; margin-bottom: 18px; display:none;">Order is not found or not yet prepared.</span>
             <div id="reader"></div>
         </div>
     </div>
