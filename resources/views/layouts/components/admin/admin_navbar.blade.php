@@ -48,7 +48,7 @@
         </div>
       </form>
       <div class="copyright">
-        <p style="color: #999; font-size:13px; margin-top:45px;">
+        <p>
           <b>SPCANTEEN</b>
           <br>© 2024 All Rights Reserved
         </p>

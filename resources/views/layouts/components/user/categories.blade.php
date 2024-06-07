@@ -42,7 +42,7 @@
       </a>
       <p class="icon-text">Dessert</p>
     </div>
-    <div class="category">
+    <div class="category" style="margin-right: 8px;">
       <a href="#" data-category-id="7">
         <img id="category-img" src="https://cdn.icon-icons.com/icons2/3277/PNG/512/salad_bowl_food_vegetables_vegan_healthy_food_icon_208011.png" alt="Home" />
       </a>
