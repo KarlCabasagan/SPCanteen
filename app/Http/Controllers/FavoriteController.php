@@ -16,7 +16,11 @@ class FavoriteController extends Controller
         $cartData = Cart::where('user_id', $userId)->whereNull('order_id')->get();
         $productCount = $cartData->count();
 
-        $favorites = Favorite::where('user_id', $userId)->get();
+        $favorites = Favorite::where('user_id', $userId)->with('product')->whereHas('product', function ($query) {$query->where('availability', 1);})->get();
+
+        foreach ($favorites as $favorite) {
+            $favorite['product_name'] = $favorite->product->name;
+        }
 
         return view('user.favorite', compact('favorites', 'productCount'));
     }

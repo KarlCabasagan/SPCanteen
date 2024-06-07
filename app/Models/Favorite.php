@@ -17,4 +17,9 @@ class Favorite extends Model
     public function product() {
         return $this->belongsTo(Product::class);
     }
+
+    public function getAvailabilityAttribute()
+    {
+        return $this->product->availability;
+    }
 }
