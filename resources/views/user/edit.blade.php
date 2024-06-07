@@ -33,7 +33,7 @@
                         <input class="edit-user-fields" id="edit-user-fields" type="email" name="email" value="{{ old('email', $user->email) }}" required>
                     </div>
                     <div class="user-edit-old-password">
-                        <label for="oldpassword">Old Password</label>
+                        <label for="oldpassword">Current Password</label>
                         <input class="edit-user-fields" id="edit-user-fields" type="password" name="oldpassword" required>
                     </div>
                     <div class="user-edit-new-password">

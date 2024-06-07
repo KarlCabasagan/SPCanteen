@@ -21,10 +21,12 @@
             </div>
         </div>
         <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Search product . . . ." name="search">
-            <button id="search-btn" type="submit">
-                <iconify-icon id="search-icon" icon="iconamoon:search-thin"></iconify-icon>
-            </button>
+            <form action="" class="search-form">
+                <input type="text" id="searchInput" placeholder="Search product . . . ." name="search">
+                <button id="search-btn" type="submit">
+                    <iconify-icon id="search-icon" icon="iconamoon:search-thin"></iconify-icon>
+                </button>
+            </form>
         </div>
     </div>
     <div id="favorite-data" data-favorites='@json($favorites)'></div>
