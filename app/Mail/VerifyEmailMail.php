@@ -29,7 +29,7 @@ class VerifyEmailMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Verify Email Mail',
+            subject: 'SPCanteen Email Verification',
         );
     }
 
@@ -55,6 +55,6 @@ class VerifyEmailMail extends Mailable
 
     public function build()
     {
-        return $this->view('verification')->with($this->emailData);
+        return $this->view('mail.verify-email-mail')->with($this->emailData);
     }
 }
