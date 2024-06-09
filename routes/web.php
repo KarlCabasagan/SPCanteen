@@ -6,6 +6,7 @@ use App\Http\Controllers\IntroController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckAuth;
 use App\Http\Middleware\CheckIfOrderIsCompleted;
 use App\Http\Middleware\CheckIfUserHasNotCompletedOrders;
 use App\Http\Middleware\CheckIfUserHasProductInCart;
@@ -19,7 +20,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [ProductController::class, 'index'])->middleware([EnsureUserHasRole::class, CheckIfOrderIsCompleted::class])->name('home');
+Route::get('/', [ProductController::class, 'index'])->middleware([EnsureUserHasRole::class, CheckIfOrderIsCompleted::class, IsVerified::class])->name('home');
 
 Route::get('/verification/verify/{id}/{hash}', function ($id, $hash) {
     $user = User::findOrFail($id);
@@ -46,7 +47,7 @@ Route::get('/register', function () {
 
 Route::post('/register', [UserController::class, 'register']);
 
-Route::get('/verify', [UserController::class, 'sendVerificationEmail'])->middleware(EnsureNotVerified::class);
+Route::get('/verify', [UserController::class, 'sendVerificationEmail'])->middleware(CheckAuth::class, EnsureNotVerified::class);
 
 Route::middleware(IsVerified::class)->group(function () {
     Route::get('/setup', function () {

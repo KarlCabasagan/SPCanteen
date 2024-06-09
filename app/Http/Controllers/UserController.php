@@ -47,14 +47,14 @@ class UserController extends Controller
 
         $verificationCode = Str::random(60);
         $user->verification_code = $verificationCode;
+        $user->save();
 
         $emailData = [
             'name' => $user->name,
-            'verificationCode' => $user->verificationCode,
+            'verificationCode' => $user->verification_code,
             'verificationLink' => route('verification.verify', ['id' => $user->id, 'hash' => Hash::make($user->email)]),
             'imagePath' => asset('images/SPCanteen.png'),
         ];
-        $user->save();
 
         Mail::to($user->email)->send(new VerifyEmailMail($emailData));
         return view('verify');
@@ -73,7 +73,7 @@ class UserController extends Controller
 
         $this->sendVerificationEmail();
 
-        return redirect('/register');
+        return redirect('/verify');
     }
 
     public function setup(Request $request)
@@ -195,8 +195,17 @@ class UserController extends Controller
             $user->email = $request->email;
             $user->email_verified_at = null;
             $this->sendVerificationEmail();
+            if ($request->password) {
+                $user->password = Hash::make($request->password);
+            }
+            
+            $user->save();
+    
+            return redirect()->route('user.edit', ['id' => $id])->with('success', 'User updated successfully');
         }
         
+        $user->email = $request->email;
+
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }

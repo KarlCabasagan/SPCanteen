@@ -16,10 +16,11 @@ class IsVerified
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(!Auth::user()->email_verified_at) {
-            abort(redirect()->intended('/verify'));
+        if(Auth::check()) {
+            if(!Auth::user()->email_verified_at) {
+                abort(redirect()->intended('/verify'));
+            }
         }
-
         return $next($request);
-    }
+     }
 }
