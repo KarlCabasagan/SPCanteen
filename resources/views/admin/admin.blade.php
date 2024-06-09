@@ -62,7 +62,7 @@
         <div class="box2">
             <div class="box-content">
                 <div class="sales-icon">
-                    <img id="box-icon" src="images/icon1.png">
+                    <img id="box-icon" src="images/icon2.png">
                 </div>
                 <div class="sales-txt">
                     <div class="header">
@@ -81,7 +81,7 @@
         <div class="box3">
             <div class="box-content">
                 <div class="sales-icon">
-                    <img id="box-icon" src="images/icon1.png">
+                    <img id="box-icon" src="images/icon3.png">
                 </div>
                 <div class="sales-txt">
                     <div class="header">

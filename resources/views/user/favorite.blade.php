@@ -1,5 +1,6 @@
 @extends('layouts.user')
 
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6"></script>
 @section('content')
 <div class="content">
     <div class="favorites-header">
@@ -20,14 +21,13 @@
             </div>
         </div>
         <div class="search-bar">
-            <form action="" class="search-form">
-                <input type="text" id="searchInput" placeholder="Search product . . . ." name="search">
-                <button id="search-btn" type="submit">
-                    <iconify-icon id="search-icon" icon="iconamoon:search-thin"></iconify-icon>
-                </button>
-            </form>
+            <input type="text" id="searchInput" placeholder="Search product . . . ." name="search">
+            <button id="search-btn" type="submit">
+                <iconify-icon id="search-icon" icon="iconamoon:search-thin"></iconify-icon>
+            </button>
         </div>
     </div>
+    <div id="favorite-data" data-favorites='@json($favorites)'></div>
     <div class="favorite-products" id="favorite-products">
         @if (!$favorites)
             <div class="container-empty">
@@ -35,7 +35,7 @@
             </div>
         @else
             @foreach ($favorites as $favorite)
-                <div class="product-container" id="product-container-{{$favorite->product->id}}">
+                <div class="product-container" id="product-container-{{$favorite->product->id}}" data-product-id="{{$favorite->product_id}}">
                     <div class="product-content">
                         <div class="product-image">
                             <button class="show-modal" data-product="{{$favorite->product}}">
@@ -263,6 +263,57 @@
             console.error('Error:', error);
         });
         hideBottomSheet();
+    });
+    
+    const favoriteDataElement = document.getElementById('favorite-data');
+    const favorites = JSON.parse(favoriteDataElement.getAttribute('data-favorites')).map(favorite => ({
+        id: favorite.product_id,
+        name: favorite.product_name,
+    }));
+
+    const options = {
+        keys: ['id', 'name'],
+        threshold: 0.1
+    };
+
+    const fuse = new Fuse(favorites, options);
+
+    const displayResults = (results) => {
+        const containers = document.querySelectorAll('.product-container');
+        containers.forEach(container => container.style.display = 'none');
+
+        results.forEach(result => {
+            const container = document.querySelector(`.product-container[data-product-id="${result.item.id}"]`);
+            // console.log(result.item);
+            if (container) {
+                container.style.display = '';
+            }
+        });
+    };
+
+    const displayAllResults = () => {
+        const containers = document.querySelectorAll('.product-container');
+        containers.forEach(container => container.style.display = '');
+    };
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+        const query = e.target.value;
+        console.log();
+        if (query.trim() === '') {
+            displayAllResults();
+        } else {
+            const results = fuse.search(query);
+            // console.log(results);
+            displayResults(results);
+        }
+    });
+
+    displayAllResults();
+
+    document.getElementById('searchInput').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.target.blur();
+        }
     });
 </script>
 @endsection

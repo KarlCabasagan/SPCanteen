@@ -746,7 +746,16 @@ h3 {
 
 .orders-products-list {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto;
+}
+
+.orders-products-list {
+  max-height: 16vh; 
+  overflow-y: auto; 
+}
+
+.orders-products-list::-webkit-scrollbar {
+  display: none;
 }
 
 #order-amount {
@@ -778,10 +787,11 @@ h3 {
 }
 
 .action-container {
-  margin-top: 120px;
   display: flex;
   justify-content: center;
-  width: 100%
+  width: 90%;
+  position: fixed;
+  bottom: 30;
 }
 
 .order-action{
