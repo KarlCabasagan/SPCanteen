@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();
             $table->string('school_id')->nullable();
+            $table->string('verification_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
 

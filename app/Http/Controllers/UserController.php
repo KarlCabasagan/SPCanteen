@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\VerifyEmailMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
@@ -38,6 +41,25 @@ class UserController extends Controller
         return redirect('/');
     }
 
+    public function sendVerificationEmail()
+    {   
+        $user = User::where('id', auth()->user()->id)->first();
+
+        $verificationCode = Str::random(60);
+        $user->verification_code = $verificationCode;
+
+        $emailData = [
+            'name' => $user->name,
+            'verificationCode' => $user->verificationCode,
+            'verificationLink' => route('verification.verify', ['id' => $user->id, 'hash' => Hash::make($user->email)]),
+            'imagePath' => asset('images/SPCanteen.png'),
+        ];
+        $user->save();
+
+        Mail::to($user->email)->send(new VerifyEmailMail($emailData));
+        return view('verify');
+    }
+
     public function register(Request $request) {
         $incomingFields = $request->validate([
             'name' => ['required', 'min:3', 'max:30', Rule::unique('users', 'name')],
@@ -48,6 +70,9 @@ class UserController extends Controller
         $incomingFields['password'] = bcrypt($incomingFields['password']);
         $user=User::create($incomingFields);
         auth()->login($user);
+
+        $this->sendVerificationEmail();
+
         return redirect('/register');
     }
 
@@ -165,7 +190,12 @@ class UserController extends Controller
         }
 
         $user->name = $request->name;
-        $user->email = $request->email;
+        
+        if ($user->email != $request->email) {
+            $user->email = $request->email;
+            $user->email_verified_at = null;
+            $this->sendVerificationEmail();
+        }
         
         if ($request->password) {
             $user->password = Hash::make($request->password);
